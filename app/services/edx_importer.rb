@@ -36,20 +36,50 @@ class EdxImporter
   end
 
   def get_results(token)
+    # URL FOR TESTING (20 results)
+    test_url = "/catalog/v1/catalogs/284/courses/"
+    # NUMBER OF COURSES TO RETRIEVE:
+    number_of_courses = 5
+    # STARTING POINT IN CATALOGUE
+    starting_point = 0
+    # URL FOR DEV AND PROD (ARBITRARY NUMBER OF COURSES)
+    url = "https://prod-edx-discovery.edx.org/api/v1/catalogs/284/courses/?limit=#{number_of_courses}&offset=#{starting_point}"
+    # header
     options = {:headers => {'Authorization' => 'JWT ' + token }}
-    url = "/catalog/v1/catalogs/284/courses/" # first url
-    json = self.class.get(url, options)
 
-    # titles = []
-    json["results"].each do |course|
-      puts course["title"]
-      puts get_instructor(course)
-      puts "---"
+    input = self.class.get(url, options)
+
+
+    course_counter = 0
+    input["results"].each do |course|
+      instance_attributes = {}
+      instance_attributes[:title] = course["title"]
+      instance_attributes[:subtitle] = nil
+      instance_attributes[:description] = get_description(course)
+      instance_attributes[:category] = get_category(course)
+      instance_attributes[:price] = get_price(course)
+      instance_attributes[:image] = get_image(course)
+      instance_attributes[:organization] = get_organization(course)
+      instance_attributes[:url] = get_url(course)
+      instance_attributes[:active] = get_status(course)
+      instance_attributes[:language] = get_language(course)
+      instance_attributes[:instructor] = get_instructor(course)
+      instance_attributes[:duration] = get_duration(course)
+      instance_attributes[:duration_unit] = nil
+      instance_attributes[:knowledge_level] = get_knowledge_level(course)
+      new_course = Course.new(instance_attributes)
+      new_course.save!
+
+      course_counter += 1
     end
 
+    puts "---"
+    puts "---"
+    puts "---"
+    puts course_counter
   end
 
-  # "Translator methods"
+  # HELPER METHODS
 
   def get_description(course)
     if !course["full_description"].nil?
@@ -144,10 +174,8 @@ class EdxImporter
     # make string a Time object
     start_date = Time.parse(course["start"])
     end_date = Time.parse(course["end"])
-
     # set range
     date_range_active = start_date..end_date
-
     # compare if current date is in range
     return date_range_active === today_date
   end
@@ -175,37 +203,4 @@ class EdxImporter
     instructors_hash["instructors"] = instructors_array
     instructors_hash.to_json
   end
-  # {:subjects => ["goodbye", "test"]}
-
-    # t.string "title"
-    # t.string "subtitle"
-    # t.text "description"
-    # t.integer "knowledge_level"
-    # t.string "category"
-    # t.string "price"
-    # t.string "image"
-    # t.jsonb "organization", default: "{}"
-    # t.integer "duration"
-    # t.string "duration_unit"
-    # t.string "url"
-    # t.boolean "active", default: false, null: false
-    # t.string "language"
-    # t.jsonb "instructor", default: "{}"
-
-    # titles
-
-    # TO DO
-    #   loop through all result pages
-    #   create helper methods
-    #   create instances
-
-
-    # unless self.class.get(url, options)["next"].nil?
-    #   url = self.class.get(url, options)["next"]
-    #   results << self.class.get(url, options)["next"]
-    #   binding.pry
-    # end
-
-
-
 end
