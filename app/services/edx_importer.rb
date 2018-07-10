@@ -17,7 +17,15 @@ class EdxImporter
 
   def get_data
     token = get_access_token
-    @data = token
+    data = get_results(token["access_token"])
+    titles = []
+    @data = data["results"]
+    @data.class
+    # @data.each do |course|
+    #   titles << course["title"]
+    #
+    # end
+    # title
   end
 
   private
@@ -33,6 +41,18 @@ class EdxImporter
       }
     }
     self.class.post(url, options)
+  end
+
+  def get_results(token)
+    options = {:headers => {'Authorization' => 'JWT ' + token }}
+    url = "/catalog/v1/catalogs/284/courses/" # first url
+
+    self.class.get(url, options)
+    # unless self.class.get(url, options)["next"].nil?
+    #   url = self.class.get(url, options)["next"]
+    #   results << self.class.get(url, options)["next"]
+    #   binding.pry
+    # end
   end
 
 end
