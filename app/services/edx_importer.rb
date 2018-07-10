@@ -36,6 +36,7 @@ class EdxImporter
   end
 
   def get_results(token)
+<<<<<<< Updated upstream
     options = {:headers => {'Authorization' => 'JWT ' + token }}
     url = "/catalog/v1/catalogs/284/courses/" # first url
     json = self.class.get(url, options)
@@ -45,11 +46,57 @@ class EdxImporter
       puts course["title"]
       puts get_instructor(course)
       puts "---"
+=======
+    # URL FOR TESTING (20 results)
+    test_url = "/catalog/v1/catalogs/284/courses/"
+    # NUMBER OF COURSES TO RETRIEVE:
+    number_of_courses = 1319
+    # STARTING POINT IN CATALOGUE
+    starting_point = 0
+    # URL FOR DEV AND PROD (ARBITRARY NUMBER OF COURSES)
+    url = "https://prod-edx-discovery.edx.org/api/v1/catalogs/284/courses/?limit=#{number_of_courses}&offset=#{starting_point}"
+    # header
+    options = {:headers => {'Authorization' => 'JWT ' + token }}
+
+    input = self.class.get(url, options)
+
+    input["results"].each do |course|
+      instance_attributes = {}
+      instance_attributes[:title] = course["title"]
+      instance_attributes[:subtitle] = nil
+      instance_attributes[:description] = get_description(course)
+      instance_attributes[:category] = get_category(course)
+      instance_attributes[:price] = get_price(course)
+      instance_attributes[:image] = get_image(course)
+      instance_attributes[:organization] = get_organization(course)
+      instance_attributes[:url] = get_url(course)
+      instance_attributes[:active] = get_status(course)
+      instance_attributes[:language] = get_language(course)
+      instance_attributes[:instructor] = get_instructor(course)
+      instance_attributes[:duration] = get_duration(course)
+      instance_attributes[:duration_unit] = nil
+      instance_attributes[:knowledge_level] = get_knowledge_level(course)
+
+      if validator(instance_attributes)
+        new_course = Course.new(instance_attributes)
+        new_course.save!
+      end
+
+>>>>>>> Stashed changes
     end
 
   end
 
   # "Translator methods"
+
+  def validator(course_attributes)
+    # course language has to be English
+    if course_attributes[:language] != "English"
+      return false
+    else
+      return true
+    end
+  end
 
   def get_description(course)
     if !course["full_description"].nil?
@@ -142,6 +189,7 @@ class EdxImporter
     # current time in ISO 8601 format
     today_date = Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z')
     # make string a Time object
+<<<<<<< Updated upstream
     start_date = Time.parse(course["start"])
     end_date = Time.parse(course["end"])
 
@@ -150,6 +198,18 @@ class EdxImporter
 
     # compare if current date is in range
     return date_range_active === today_date
+=======
+
+    unless course["start"].nil? || course["end"].nil?
+      start_date = Time.parse(course["start"])
+      end_date = Time.parse(course["end"])
+      # set range
+      date_range_active = start_date..end_date
+      # compare if current date is in range
+      return date_range_active === today_date
+    end
+
+>>>>>>> Stashed changes
   end
 
   def get_language(course)
