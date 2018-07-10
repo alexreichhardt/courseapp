@@ -72,11 +72,6 @@ class EdxImporter
         new_course.save!
       end
     end
-
-    puts "---"
-    puts "---"
-    puts "---"
-    puts course_counter
   end
 
   # HELPER METHODS
@@ -84,6 +79,8 @@ class EdxImporter
   def validator(course_attributes)
     # course language has to be English
     if course_attributes[:language] != "English"
+      return false
+    elsif course_attributes[:active] == nil
       return false
     else
       return true
@@ -136,7 +133,7 @@ class EdxImporter
 
   def get_image(course)
     image = course["course_runs"][0]["image"]
-    image_url = image["src"]
+    image_url = (image.nil?) ? nil : image["src"]
   end
 
   # just retrieves first owner
