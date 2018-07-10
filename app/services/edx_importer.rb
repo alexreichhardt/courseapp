@@ -20,7 +20,6 @@ class EdxImporter
     data = get_results(token["access_token"])
     titles = []
     @data = data["results"]
-    @data.class
     # @data.each do |course|
     #   titles << course["title"]
     #
