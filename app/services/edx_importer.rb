@@ -36,17 +36,7 @@ class EdxImporter
   end
 
   def get_results(token)
-<<<<<<< Updated upstream
-    options = {:headers => {'Authorization' => 'JWT ' + token }}
-    url = "/catalog/v1/catalogs/284/courses/" # first url
-    json = self.class.get(url, options)
 
-    # titles = []
-    json["results"].each do |course|
-      puts course["title"]
-      puts get_instructor(course)
-      puts "---"
-=======
     # URL FOR TESTING (20 results)
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
@@ -81,13 +71,15 @@ class EdxImporter
         new_course = Course.new(instance_attributes)
         new_course.save!
       end
-
->>>>>>> Stashed changes
     end
 
+    puts "---"
+    puts "---"
+    puts "---"
+    puts course_counter
   end
 
-  # "Translator methods"
+  # HELPER METHODS
 
   def validator(course_attributes)
     # course language has to be English
@@ -188,17 +180,6 @@ class EdxImporter
     course = course["course_runs"][0]
     # current time in ISO 8601 format
     today_date = Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z')
-    # make string a Time object
-<<<<<<< Updated upstream
-    start_date = Time.parse(course["start"])
-    end_date = Time.parse(course["end"])
-
-    # set range
-    date_range_active = start_date..end_date
-
-    # compare if current date is in range
-    return date_range_active === today_date
-=======
 
     unless course["start"].nil? || course["end"].nil?
       start_date = Time.parse(course["start"])
@@ -209,7 +190,6 @@ class EdxImporter
       return date_range_active === today_date
     end
 
->>>>>>> Stashed changes
   end
 
   def get_language(course)
@@ -235,37 +215,4 @@ class EdxImporter
     instructors_hash["instructors"] = instructors_array
     instructors_hash.to_json
   end
-  # {:subjects => ["goodbye", "test"]}
-
-    # t.string "title"
-    # t.string "subtitle"
-    # t.text "description"
-    # t.integer "knowledge_level"
-    # t.string "category"
-    # t.string "price"
-    # t.string "image"
-    # t.jsonb "organization", default: "{}"
-    # t.integer "duration"
-    # t.string "duration_unit"
-    # t.string "url"
-    # t.boolean "active", default: false, null: false
-    # t.string "language"
-    # t.jsonb "instructor", default: "{}"
-
-    # titles
-
-    # TO DO
-    #   loop through all result pages
-    #   create helper methods
-    #   create instances
-
-
-    # unless self.class.get(url, options)["next"].nil?
-    #   url = self.class.get(url, options)["next"]
-    #   results << self.class.get(url, options)["next"]
-    #   binding.pry
-    # end
-
-
-
 end
