@@ -79,10 +79,8 @@ class UdemyImporter
       instance_attributes[:duration] = (response["estimated_content_length"].to_i) / 60
       instance_attributes[:duration_unit] = "hours"
       instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
-      hi << instance_attributes
-      p hi.size
     end
-    return "size: #{hi.size}"
+    return instance_attributes
   end
 
   def categories(cat_primary, cat_sub)
