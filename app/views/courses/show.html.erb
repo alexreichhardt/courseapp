@@ -8,8 +8,13 @@
   <% else %>
     <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
   <% end %>
-
+  <!-- Course description -->
   <%= @course.description.html_safe %>
+
+  <!-- Print subtitle if existing -->
+  <% unless @course.subtitle.nil? %>
+    <%= @course.subtitle %>
+  <% end %>
 </div>
 
 
