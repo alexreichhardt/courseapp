@@ -41,6 +41,8 @@ class UdemyImporter
         puts response
         return ids
         break
+      when page_num == 8
+        break
       else
         response["results"].each do |course|
           ids << course["id"]
@@ -66,7 +68,7 @@ class UdemyImporter
       instance_attributes[:title] = response["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = response["description"]
-      instance_attributes[:category] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
+      instance_attributes[:categories] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
       instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
       instance_attributes[:image] = response["image_100x100"]
       instance_attributes[:organization] = nil
