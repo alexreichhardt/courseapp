@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :courses, only: [ :index, :show ]
   resources :users, only: [:show]
 
+  get 'users/edit_avatar' => 'users#edit_avatar', :as => :edit_avatar
+  post 'users/edit_avatar' => 'users#new_avatar', :as => :new_avatar
+
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'

@@ -1,2 +1,46 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="main-container">
+    <div class="info-container col-xs-12 col-sm-8">
+      <div class="card">
+        <div class="tabs">
+          <a class="tab active" href="#">
+            <h3>350</h3>
+            <p>Followers</p>
+          </a>
+          <a class="tab" href="#">
+            <h3>456</h3>
+            <p>Following</p>
+          </a>
+          <a class="tab" href="#">
+            <h3>189</h3>
+            <p>Upvoted</p>
+          </a>
+          <a class="tab" href="#">
+            <h3>13</h3>
+            <p>Submitted</p>
+          </a>
+        </div>
+        <%@courses.flatten.each do |course|%>
+        <h3><%= course.title %></h3>
+        <p> <%= course.description %> </p>
+        <%end%>
+      </div>
+    </div>
+    <div class="contact-container col-xs-12 col-sm-4">
+      <div class="card">
+        <%= @user.avatar_image %>
+        <h2>Hey <%= @user.name %>!</h2>
+        <p>How are you today?</p>
+      </div>
+      <div class="empty-box">
+
+      </div>
+      <div class="card">
+        <p><%= link_to "Change your password", edit_user_registration_path %></p>
+        <p><%= link_to "Change your avatar", edit_avatar_path %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
