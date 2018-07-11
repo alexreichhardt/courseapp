@@ -23,6 +23,10 @@ class CoursesController < ApplicationController
     # price
     # knowledge level
     # plattform
+    if params[:criteria].has_key?(:plattform)
+      selected_options = params[:criteria][:plattform].map { |n| n }
+      @courses = @courses.where(knowledge_level: [selected_options])
+    end
 
 
 
