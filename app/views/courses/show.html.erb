@@ -1,2 +1,4 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<div class="container">
+  <h1><%= @course.title %> </h1>
+  <%= @course.description.html_safe %>
+</div>

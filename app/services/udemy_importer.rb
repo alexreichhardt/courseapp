@@ -25,7 +25,7 @@ class UdemyImporter
     ids = []
     page_num = 1
     loop do
-      url = "/?page=#{page_num}&page_size=100&category=Development"
+      url = "/?page=#{page_num}&page_size=9&category=Development"
       response = self.class.get(url, @options)
       p "Error Code #{response.code}"
       case response.code
@@ -62,11 +62,11 @@ class UdemyImporter
       instance_attributes = {}
       url = "/#{id}?fields[course]=@all"
       response = self.class.get(url, @options)
-      instance_attributes[:provider] = "Udemy"
+      instance_attributes[:plattform] = "Udemy"
       instance_attributes[:title] = response["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = response["description"]
-      instance_attributes[:category] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
+      instance_attributes[:categories] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
       instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
       instance_attributes[:image] = response["image_100x100"]
       instance_attributes[:organization] = nil
