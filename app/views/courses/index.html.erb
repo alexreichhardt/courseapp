@@ -4,6 +4,9 @@
   <% @courses.each do |course| %>
     <div class="card">
      <h2><%= link_to course.title, course_path(course) %></h2>
+      <% unless course.subtitle.nil? %>
+       <h3><%= course.subtitle %> </h3>
+      <% end %>
       <%= truncate(course.description, :length => 100, :escape => false) %>
     </div>
   <% end %>
