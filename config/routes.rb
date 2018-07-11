@@ -5,4 +5,9 @@ Rails.application.routes.draw do
      resources :courses do
       resources :courses, only: [ :index, :show ]
   end
+
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
