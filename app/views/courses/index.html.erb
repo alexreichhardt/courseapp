@@ -1,13 +1,29 @@
 
+
+    <div>
+  <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+    <!-- knowledge level selector -->
+    <%= f.input :knowledge_level, :as => :check_boxes, :collection => ["beginner","intermediate", "advanced"], :checked => params[:criteria][:knowledge_level] %>
+    </div>
+
+    <%= f.hidden_field :search, :value => @search_input %>
+    <%= f.button :submit, "Hunt"%>
+  <% end %>
+
+
 <div class="container">
   <h1>All Courses</h1>
   <% @courses.each do |course| %>
     <div class="card">
      <h2><%= link_to course.title, course_path(course) %></h2>
+      <h3><%= course.knowledge_level %> </h3>
       <% unless course.subtitle.nil? %>
        <h3><%= course.subtitle %> </h3>
+
       <% end %>
       <%= truncate(course.description, :length => 100, :escape => false) %>
     </div>
   <% end %>
 </div>
+
+

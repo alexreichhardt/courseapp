@@ -3,11 +3,31 @@ class CoursesController < ApplicationController
 
   def index
 
-    if params[:criteria][:search].nil? || params[:criteria][:search] == ""
+    @search_input = params[:criteria][:search]
+
+    if @search_input.nil? || @search_input == ""
+      # display all courses if user makes no input
       @courses = Course.all
     else
-      @courses = Course.search_global(params[:criteria][:search])
+      # otherwise apply use search alogrithm
+      @courses = Course.search_global(@search_input)
+
     end
+    # FILTERS:
+
+    # knowledge level
+    if params[:criteria].has_key?(:knowledge_level)
+      selected_options = params[:criteria][:knowledge_level].map { |n| n if n != ""}
+      @courses = @courses.where(knowledge_level: [selected_options])
+    end
+    # price
+    # knowledge level
+    # plattform
+
+
+
+
+
   end
 
   def show
