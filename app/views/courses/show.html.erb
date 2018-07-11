@@ -1,7 +1,5 @@
 <div class="container">
   <h1><%= @course.title %> </h1>
-
-
   <!-- solid bookmark if bookmarked by user, otherwise regular bookmark icon -->
   <% if @bookmarked == false %>
     <i><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
