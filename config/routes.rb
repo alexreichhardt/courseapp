@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :bookmarks, only: [ :new, :create, :destroy ]
   end
 
+  resources :courses, only: [ :index, :show ]
+  resources :users, only: [:show]
 
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do

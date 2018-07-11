@@ -47,6 +47,7 @@ class EdxImporter
 
     input["results"].each do |course|
       instance_attributes = {}
+      #instance_attributes[:plattform] = "edx"
       instance_attributes[:title] = course["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = get_description(course)
@@ -63,7 +64,6 @@ class EdxImporter
       instance_attributes[:knowledge_level] = get_knowledge_level(course)
 
       if validator(instance_attributes)
-        puts "done with creation"
         new_course = Course.new(instance_attributes)
         new_course.save!
       end
