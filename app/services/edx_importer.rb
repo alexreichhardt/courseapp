@@ -40,7 +40,7 @@ class EdxImporter
     # URL FOR TESTING (20 results)
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
-    number_of_courses = 1319
+    number_of_courses = 100 # 1319
     # STARTING POINT IN CATALOGUE
     starting_point = 0
     # URL FOR DEV AND PROD (ARBITRARY NUMBER OF COURSES)
@@ -77,14 +77,30 @@ class EdxImporter
   # HELPER METHODS
 
   def validator(course_attributes)
+    if !category_validation(course_attributes[:category])
+      return false
     # course language has to be English
-    if course_attributes[:language] != "English"
+    elsif course_attributes[:language] != "English"
       return false
     elsif course_attributes[:active] == nil
       return false
     else
       return true
     end
+  end
+
+  def category_validation(json)
+    input_hash = JSON.parse(json)
+    course_categories = input_hash["categories"]
+    valid_categories = ["Computer Science", "Science"]
+
+    valid_categories.each do |category|
+      if course_categories.include?(category)
+        return true
+      end
+    end
+    # valid_categories.each { |category| course_categories.include?(category) ? true : next}
+    return false
   end
 
   def get_description(course)
