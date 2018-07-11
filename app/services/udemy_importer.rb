@@ -41,8 +41,6 @@ class UdemyImporter
         puts response
         return ids
         break
-      when page_num == 8
-        break
       else
         response["results"].each do |course|
           ids << course["id"]
