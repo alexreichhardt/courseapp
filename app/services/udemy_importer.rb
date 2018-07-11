@@ -23,35 +23,34 @@ class UdemyImporter
     @auth = { username:ENV['YOUR_CLIENT_ID'] , password: ENV['YOUR_CLIENT_SECRET'] }
     @options = {basic_auth: @auth}
     ids = []
-
-    b = (1..10).to_a
-    b.each do |i|
-
-      number = i.to_i
-      #url = "/?page=#{number}&page_size=1&language=et&instructional_level=beginner&duration=short"
-      url = "/?page=#{number}&page_size=10&category=Development"
-
+    page_num = 1
+    loop do
+      url = "/?page=#{page_num}&page_size=100&category=Development"
       response = self.class.get(url, @options)
-
-      if response.code == 400
-        break
-      elsif response.code == 429
-        #binding.pry
-        puts "count: #{number}"
-
-        break
-      elsif response.code == 404
+      p "Error Code #{response.code}"
+      case response.code
+      when 404
+        puts response
         return ids
-
+        break
+      when 429
+        puts response
+        return ids
+        break
+      when 400
+        puts response
+        return ids
+        break
       else
         response["results"].each do |course|
-        ids << course["id"]
+          ids << course["id"]
         end
-      end
-      p "#{number}"
-      if number % 10 == 0
-        puts "sleeping for 1 minute.."
-        sleep(61)
+        p "id_count: #{page_num}"
+        if page_num % 10 == 0
+          puts "sleeping for 1 minute.."
+          sleep(61)
+        end
+        page_num += 1
       end
     end
     return ids
@@ -80,9 +79,9 @@ class UdemyImporter
       instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
       #i = Course.new(instance_attributes)
       #i.save!
-      p instance_attributes
+      #p instance_attributes
     end
-    return instance_attributes
+    #return instance_attributes
   end
 
   def categories(cat_primary, cat_sub)
@@ -142,10 +141,3 @@ class UdemyImporter
     end
   end
 end
-
-
-
-
-
-
-
