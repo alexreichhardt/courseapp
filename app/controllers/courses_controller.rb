@@ -15,18 +15,19 @@ class CoursesController < ApplicationController
     end
     # FILTERS:
 
-    # knowledge level
+    knowledge level
     if params[:criteria].has_key?(:knowledge_level)
-      selected_options = params[:criteria][:knowledge_level].map { |n| n if n != ""}
+      selected_options = params[:criteria][:knwowledge_level].map { |n| n if n != ""}
       @courses = @courses.where(knowledge_level: [selected_options])
     end
-    # price
-    # knowledge level
+
     # plattform
-    if params[:criteria].has_key?(:plattform)
-      selected_options = params[:criteria][:plattform].map { |n| n }
-      @courses = @courses.where(knowledge_level: [selected_options])
-    end
+    # if params[:criteria].has_key?(:plattform)
+    #   selected_options = params[:criteria][:plattform].map { |n| n }
+    #   @courses = @courses.where(knowledge_level: [selected_options])
+    # end
+
+    # price
 
 
 
