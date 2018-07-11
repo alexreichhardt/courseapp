@@ -24,47 +24,46 @@ class UdemyImporter
     @options = {basic_auth: @auth}
     ids = []
 
-    b = (1..500).to_a
+    b = (1..10).to_a
     b.each do |i|
 
       number = i.to_i
-      url = "/?page=#{number}&page_size=100&category=Development"
+      #url = "/?page=#{number}&page_size=1&language=et&instructional_level=beginner&duration=short"
+      url = "/?page=#{number}&page_size=10&category=Development"
 
       response = self.class.get(url, @options)
+
       if response.code == 400
         break
       elsif response.code == 429
-        binding.pry
+        #binding.pry
         puts "count: #{number}"
 
         break
+      elsif response.code == 404
+        return ids
 
       else
         response["results"].each do |course|
         ids << course["id"]
         end
       end
-      p "id count: #{ids.size}"
+      p "#{number}"
       if number % 10 == 0
         puts "sleeping for 1 minute.."
         sleep(61)
       end
     end
-
     return ids
-
   end
 
   def get_results
-    instance_attributes = {}
-    #instance_attributes[:category] = {}
-    hi = []
     ids = get_ids
     ids.each do |id|
-
+      instance_attributes = {}
       url = "/#{id}?fields[course]=@all"
       response = self.class.get(url, @options)
-
+      instance_attributes[:provider] = "Udemy"
       instance_attributes[:title] = response["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = response["description"]
@@ -79,6 +78,9 @@ class UdemyImporter
       instance_attributes[:duration] = (response["estimated_content_length"].to_i) / 60
       instance_attributes[:duration_unit] = "hours"
       instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
+      #i = Course.new(instance_attributes)
+      #i.save!
+      p instance_attributes
     end
     return instance_attributes
   end
@@ -141,7 +143,7 @@ class UdemyImporter
   end
 end
 
-# curl --user G61VPVDJ4dsoO84P9tN8hdOfEjmau1KruprjC4q7:ENu4svctGtFONsqAZRM1b6HSMkE6jI1GBvNRPaeIoVKTL6u72jkR6mbUDTh4UpEFuAqzTiDT6BYTqBhxybzr8o0Sn9syEerCALnsdn64QZmPH4bvrvslOxVsG20khn1a https://www.udemy.com/api-2.0/courses
+
 
 
 
