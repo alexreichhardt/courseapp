@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_153052) do
+ActiveRecord::Schema.define(version: 2018_07_10_154126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_153052) do
     t.string "subtitle"
     t.text "description"
     t.integer "knowledge_level"
-    t.string "category"
     t.string "price"
     t.string "image"
     t.jsonb "organization", default: "{}"
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_07_09_153052) do
     t.jsonb "instructor", default: "{}"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "categories"
   end
 
   create_table "users", force: :cascade do |t|

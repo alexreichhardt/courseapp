@@ -1,4 +1,4 @@
-class UdacityImporter
+class UdacityNanodegreeImporter
   include HTTParty
 
   def self.call
@@ -14,7 +14,7 @@ class UdacityImporter
     end
 
 
-    response["courses"].each do |course|
+    response["degrees"].each do |course|
 
       puts "creating a course.."
       Course.create(
@@ -25,13 +25,13 @@ class UdacityImporter
         categories: {subjects: course["tracks"]},
         price: "$0",
         image: course["image"],
-        organization: { organizers: course["affiliates"] == [] ? nil : UdacityImporter.format_organization(course["affiliates"]) },
+        organization: { organizers: course["affiliates"] == [] ? nil : UdacityNanodegreeImporter.format_organization(course["affiliates"]) },
         duration: course["expected_duration"] ,
         duration_unit: course["expected_duration_unit"],
         url: course["homepage"],
         active: true,
         language: "English",
-        instructor: { instructors: course["instructors"] == [] ? nil : UdacityImporter.format_instructor(course["instructors"]) }
+        instructor: { instructors: course["instructors"] == [] ? nil : UdacityNanodegreeImporter.format_instructor(course["instructors"]) }
         )
 
     end
