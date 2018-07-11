@@ -35,7 +35,7 @@ class EdxImporter
     # URL FOR TESTING (20 results)
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
-    number_of_courses = 100 # 1319
+    number_of_courses = 10 # 1319
     # STARTING POINT IN CATALOGUE
     starting_point = 0
     # URL FOR DEV AND PROD (ARBITRARY NUMBER OF COURSES)
@@ -47,6 +47,7 @@ class EdxImporter
 
     input["results"].each do |course|
       instance_attributes = {}
+      #instance_attributes[:plattform] = "edx"
       instance_attributes[:title] = course["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = get_description(course)
@@ -63,7 +64,6 @@ class EdxImporter
       instance_attributes[:knowledge_level] = get_knowledge_level(course)
 
       if validator(instance_attributes)
-        puts "done with creation"
         new_course = Course.new(instance_attributes)
         new_course.save!
       end
