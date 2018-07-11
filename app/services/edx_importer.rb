@@ -60,6 +60,7 @@ class EdxImporter
       instance_attributes[:knowledge_level] = get_knowledge_level(course)
 
       if validator(instance_attributes)
+        puts "done with creation"
         new_course = Course.new(instance_attributes)
         new_course.save!
       end
