@@ -9,7 +9,8 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.0'
 gem 'redis'
-
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 gem 'httparty'
 
 gem 'autoprefixer-rails'
