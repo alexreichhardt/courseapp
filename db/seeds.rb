@@ -10,6 +10,8 @@
 Course.delete_all
 User.delete_all
 
+plattforms = ["Udemy", "Edx", "Udacity"]
+
 
 User.create!(
   [
@@ -56,7 +58,8 @@ Course.create!(
       url: "https://www.openlearning.com/courses/titas-unimas",
       active: true,
       language: "English",
-      instructor: {}.to_json
+      instructor: {}.to_json,
+      plattform: plattforms.sample
     },
     {
       title: "Arts and Design",
@@ -72,7 +75,8 @@ Course.create!(
       url: "https://www.openlearning.com/zhamdesign/courses/Watercolorpaintingskill",
       active: true,
       language: "English",
-      instructor: {}.to_json
+      instructor: {}.to_json,
+      plattform: plattforms.sample
     },
     {
       title: "Computers and Technology",
@@ -88,7 +92,8 @@ Course.create!(
       url: "https://www.openlearning.com/courses/sec",
       active: true,
       language: "English",
-      instructor: {}.to_json
+      instructor: {}.to_json,
+      plattform: plattforms.sample
     },
     {
       title: "Business and Economics",
@@ -104,7 +109,8 @@ Course.create!(
       url: "https://www.openlearning.com/courses/principles-and-practice-of-marketing",
       active: true,
       language: "English",
-      instructor: {}.to_json
+      instructor: {}.to_json,
+      plattform: plattforms.sample
     }
   ]
 )
