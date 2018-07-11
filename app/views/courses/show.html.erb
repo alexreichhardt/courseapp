@@ -1,4 +1,30 @@
 <div class="container">
   <h1><%= @course.title %> </h1>
+
+
+  <!-- solid bookmark if bookmarked by user, otherwise regular bookmark icon -->
+  <% if @bookmarked == false %>
+    <i><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
+  <% else %>
+    <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
+  <% end %>
+  <!-- Course description -->
   <%= @course.description.html_safe %>
+
+  <!-- Print subtitle if existing -->
+  <% unless @course.subtitle.nil? %>
+    <%= @course.subtitle %>
+  <% end %>
 </div>
+
+
+<!--
+<i>link_to("", course_bookmarks_path(boat) , :class => "fas fa-edit icons") %></i>
+
+
+# solid:
+<i class="fas fa-bookmark"></i>
+# transparent:
+<i class="far fa-bookmark"></i>
+
+ -->
