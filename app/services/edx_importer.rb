@@ -2,13 +2,17 @@ class EdxImporter
   include HTTParty
   base_uri 'https://api.edx.org/'
 
+  def initialize
+    @token = nil
+  end
+
   def self.call
     new.get_data
   end
 
   def get_data
-    token = get_access_token
-    get_results(token["access_token"])
+    @token = get_access_token
+    get_results(@token["access_token"])
     # @data = data["results"]
   end
 
@@ -28,7 +32,6 @@ class EdxImporter
   end
 
   def get_results(token)
-
     # URL FOR TESTING (20 results)
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
@@ -47,7 +50,7 @@ class EdxImporter
       instance_attributes[:title] = course["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = get_description(course)
-      instance_attributes[:category] = get_category(course)
+      instance_attributes[:categories] = get_category(course)
       instance_attributes[:price] = get_price(course)
       instance_attributes[:image] = get_image(course)
       instance_attributes[:organization] = get_organization(course)
@@ -69,7 +72,7 @@ class EdxImporter
   # HELPER METHODS
 
   def validator(course_attributes)
-    if !category_validation(course_attributes[:category])
+    if !category_validation(course_attributes[:categories])
       return false
     # course language has to be English
     elsif course_attributes[:language] != "English"
@@ -82,17 +85,26 @@ class EdxImporter
   end
 
   def category_validation(json)
+    return false if json == "{}"
+
     input_hash = JSON.parse(json)
     course_categories = input_hash["categories"]
     valid_categories = ["Computer Science"]
 
     valid_categories.each do |category|
-      if course_categories.include?(category)
-        return true
-      end
+      return false unless course_categories.include?(category)
     end
     # valid_categories.each { |category| course_categories.include?(category) ? true : next}
-    return false
+  end
+
+    # as jsonb
+  def get_category(course)
+    # what if nil?
+      subjects_array = course["subjects"].map { |subject| subject["name"] }
+      return "{}" unless subjects_array.count > 1
+      subjects_hash = {}
+      subjects_hash["categories"] = subjects_array
+      subjects_hash.to_json
   end
 
   def get_description(course)
@@ -118,16 +130,6 @@ class EdxImporter
     end
   end
 
-  # as jsonb
-  def get_category(course)
-    # what if nil?
-    subjects_array = course["subjects"].map { |subject| subject["name"] }
-    subjects_hash = {}
-    subjects_hash["categories"] = subjects_array
-    subjects_hash.to_json
-  end
-
-
   # Add currency
   def get_price(course)
     all_prices = []
@@ -135,14 +137,13 @@ class EdxImporter
       prices = course_run["seats"].map { |seat| seat["price"].to_i }
       all_prices << prices.flatten
     end
-
     # returns the lowest price
     return "#{all_prices.flatten.min} USD"
   end
 
   def get_image(course)
     image = course["course_runs"][0]["image"]
-    image_url = (image.nil?) ? nil : image["src"]
+    (image.nil?) ? nil : image["src"]
   end
 
   # just retrieves first owner
@@ -206,8 +207,7 @@ class EdxImporter
 
   def get_instructor(course)
     course = course["course_runs"][0]
-    instructor = (!course["instructor"].nil?) ? course["instructors"] : course["staff"]
-    instructor_array = instructor
+    instructor_array = (!course["instructor"].nil?) ? course["instructors"] : course["staff"]
     instructors_array = []
     instructor_array.each do |instructor|
       instructor_hash = {}
