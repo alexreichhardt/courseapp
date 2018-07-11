@@ -40,7 +40,7 @@ Course.create!(
       subtitle: "Islamic Civilization and Civilization Course (TITAS)",
       description: "Islamic civilization and history about that and what can happen",
       knowledge_level: 'beginner',
-      category: "other",
+      categories: "other",
       price: "$0",
       image: "https://openlearning-cdn.s3.amazonaws.com/jirawadeekumyan-avatar-48-ts1515050476.jpg",
       organization: {}.to_json,
@@ -56,7 +56,7 @@ Course.create!(
       subtitle: "watercolor painting focusing on nature",
       description: "water colour which will help you to get all information",
       knowledge_level: 'advanced',
-      category: "Other",
+      categories: "Other",
       price: "$0",
       image: "https://openlearning-cdn.s3.amazonaws.com/course__zhamdesign_courses_Watercolorpaintingskill__course-landing-image-1466089966.42.jpg",
       organization: {}.to_json,
@@ -72,7 +72,7 @@ Course.create!(
       subtitle: "UNSW in proud partnership with the CBA are releasing a sequence of public courses in cyber security, under the banner of the SecEDU  'Security Engineering Capability' program.",
       description: "For new era it is important to have great result and structure in the computer ones",
       knowledge_level: 'intermediate',
-      category: "Other",
+      categories: "Other",
       price: "$0",
       image: "https://openlearning-cdn.s3.amazonaws.com/richard.buckland-avatar-48-ts1348830373.jpg",
       organization: {}.to_json,
@@ -88,7 +88,7 @@ Course.create!(
       subtitle: "principles and practice of marketing",
       description: "That what can help to understand whole structure for that",
       knowledge_level: 'beginner',
-      category: "other",
+      categories: "other",
       price: "$0",
       image: "https://openlearning-cdn.s3.amazonaws.com/nurulfarihinmhdnasir-avatar-48-ts1490615140.jpg",
       organization: {}.to_json,
@@ -130,7 +130,7 @@ CourseReview.create!(
     content: "Islamic Civilization and Civilization Course (TITAS) is a generic course that all students
               in the university need to take regardless of the background differences.
               In this context, the responsibility to deliver the contents of this course is very
-              large and heavy even though the course is generic."
+              large and heavy even though the course is generic.",
     rating: 5,
     user: User.first,
     course: Course.first
