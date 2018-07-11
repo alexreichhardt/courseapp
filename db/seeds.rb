@@ -1,3 +1,4 @@
+
 Bookmark.delete_all
 CourseReview.delete_all
 Course.delete_all
@@ -158,3 +159,5 @@ CourseReview.create!(
   }
    ]
 )
+
+
