@@ -1,16 +1,8 @@
 class EdxImporter
   include HTTParty
   base_uri 'https://api.edx.org/'
-  # fetch API
-  # transform each relevant key value pair to the form we need according to schema
-  # create instance of course
-  def initialize
-    @data = nil
-  end
 
   def self.call
-    # This method should "translate" the corresponding platform API
-    # And create an instance of each course
     new.get_data
   end
 
@@ -92,7 +84,7 @@ class EdxImporter
   def category_validation(json)
     input_hash = JSON.parse(json)
     course_categories = input_hash["categories"]
-    valid_categories = ["Computer Science", "Science"]
+    valid_categories = ["Computer Science"]
 
     valid_categories.each do |category|
       if course_categories.include?(category)
@@ -128,6 +120,7 @@ class EdxImporter
 
   # as jsonb
   def get_category(course)
+    # what if nil?
     subjects_array = course["subjects"].map { |subject| subject["name"] }
     subjects_hash = {}
     subjects_hash["categories"] = subjects_array
