@@ -21,8 +21,35 @@
           </a>
         </div>
         <%@courses.flatten.each do |course|%>
-        <h3><%= course.title %></h3>
-        <p> <%= course.description %> </p>
+          <div class="card-icons">
+            <div class="icons">
+              <i class="fas fa-graduation-cap"></i>
+              <p><%= course.knowledge_level %></p>
+            </div>
+            <div class="icons">
+              <i class="far fa-clock"></i>
+              <p><%= course.duration%></p>
+            </div>
+            <div class="icons">
+              <i class="fas fa-dollar-sign"></i>
+              <p><%= course.price %></p>
+            </div>
+          </div>
+          <h3><%= course.title %></h3>
+          <p><%= course.description %></p>
+          <%end%>
+        <%@reviews.each do |review|%>
+          <h3><%= review.title %></h3>
+          <p> <%= review.content %> </p>
+          <% num = review.rating.to_i %>
+          <div class="stars">
+            <% num.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5-num).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </div>
         <%end%>
       </div>
     </div>
