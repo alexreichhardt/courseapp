@@ -10,25 +10,25 @@ User.create!(
       email: "user1@test.com",
       password: "user1@test.com",
       name: "Robert",
-      birth_date: "1992-10-13"
+      birthdate: "1992-10-13"
     },
     {
       email: "user2@test.com",
       password: "user2@test.com",
       name: "Bora",
-      birth_date: "1997-12-12"
+      birthdate: "1997-12-12"
     },
     {
       email: "user3@test.com",
       password: "user3@test.com",
       name: "Jacob",
-      birth_date: "1997-04-29"
+      birthdate: "1997-04-29"
     },
     {
       email: "user4@test.com",
       password: "user4@test.com",
       name: "Alex",
-      birth_date: "1995-12-25"
+      birthdate: "1995-12-25"
     }
   ]
 )
