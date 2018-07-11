@@ -1,10 +1,11 @@
 
 
-    <div>
+
   <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
     <!-- knowledge level selector -->
     <%= f.input :knowledge_level, :as => :check_boxes, :collection => ["beginner","intermediate", "advanced"], :checked => params[:criteria][:knowledge_level] %>
-    </div>
+    <!-- plattform selector -->
+    <%= f.input :plattform, :as => :check_boxes, :collection => ["Udemy","Udacity", "Edx"], :checked => params[:criteria][:plattform] %>
 
     <%= f.hidden_field :search, :value => @search_input %>
     <%= f.button :submit, "Hunt"%>
@@ -17,6 +18,7 @@
     <div class="card">
      <h2><%= link_to course.title, course_path(course) %></h2>
       <h3><%= course.knowledge_level %> </h3>
+      <h3><%= course.plattform %> </h3>
       <% unless course.subtitle.nil? %>
        <h3><%= course.subtitle %> </h3>
 
@@ -25,5 +27,3 @@
     </div>
   <% end %>
 </div>
-
-
