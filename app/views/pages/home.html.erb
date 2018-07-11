@@ -1,2 +1,7 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+  <%= f.input :search, :id => "search", as: :string %>
+  <%= f.button :submit, "Hunt" %>
+<% end %>
