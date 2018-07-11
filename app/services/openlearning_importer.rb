@@ -6,5 +6,3 @@ class OpenlearningImporter
   end
 
 end
-
-
