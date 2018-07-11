@@ -1,0 +1,18 @@
+
+<div class="container">
+  <h1>All Courses</h1>
+
+
+  <% @courses.each do |course| %>
+
+
+  <div class="card">
+   <h2><%= course.title %></h2>
+    <%= truncate(course.description, :length => 100, :escape => false) %>
+  </div>
+
+  <% end %>
+
+</div>
+
+

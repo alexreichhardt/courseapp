@@ -158,6 +158,3 @@ CourseReview.create!(
   }
    ]
 )
-
-
-
