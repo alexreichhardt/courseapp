@@ -2,7 +2,6 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
-
     @search_input = params[:criteria][:search]
 
     if @search_input.nil? || @search_input == ""
@@ -43,10 +42,10 @@ class CoursesController < ApplicationController
         @bookmarked = true
       end
     end
+
+  @reviews = CourseReview.all.where(course_id: params[:id])
+
   end
-
-    @reviews = CourseReview.all.where(course_id: params[:id])
-
 
 
 end
