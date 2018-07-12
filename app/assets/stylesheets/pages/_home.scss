@@ -1,6 +1,6 @@
 .background {
   background-image: radial-gradient(ellipse farthest-side at 100% 100%,#dbf6c8 20%,#1cafc6 50%,#012690 110%);
-  height: 100vh;
+  height: calc(200vh - 80px - 188.5px);
 }// Specific CSS for your home-page
 
 #banner-typed-text {
@@ -14,6 +14,7 @@
 
 .search-content {
   margin-top: 100px;
+  height: calc(100vh - 180px);
 }
 
 .search-field {
@@ -56,5 +57,12 @@
 
 .more-info {
   margin-top: 80px;
+}
 
+.category-container {
+  margin-top: 0px;
+}
+
+.cards-home-all {
+  margin-top: 50px;
 }

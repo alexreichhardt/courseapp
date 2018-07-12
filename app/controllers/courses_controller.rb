@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
+    raise
     @search_input = params.dig(:criteria, :search)
 
     if @search_input.blank?
