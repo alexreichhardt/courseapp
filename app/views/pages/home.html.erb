@@ -90,33 +90,32 @@
           <div class="cards-home-all">
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card homecards">
-                <h3><%= link_to "Python", courses_path(search: "python") %></h3>
-
+                <h3><%= link_to "Python", courses_path(criteria: {search: "python"}) %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card homecards">
-                <h3>Ruby</h3>
+                <h3><%= link_to "Ruby", courses_path(criteria: {search: "ruby"}) %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card homecards">
-                <h3>Javascript</h3>
+                <h3><%= link_to "JavaScript", courses_path(criteria: {search: "javascript"}) %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card homecards">
-                <h3>Django</h3>
+                <h3><%= link_to "Django", courses_path(criteria: {search: "django"}) %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card homecards">
-                <h3>Rails</h3>
+                <h3><%= link_to "Rails", courses_path(criteria: {search: "rails"}) %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card homecards">
-                <h3>NodeJs</h3>
+                <h3><%= link_to "NodeJs", courses_path(criteria: {search: "nodejs"}) %></h3>
               </div>
             </div>
           </div>
