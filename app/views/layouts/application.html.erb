@@ -11,10 +11,13 @@
 </head>
 <body>
 
-  <main class="application-wrapper">
-    <%= render 'shared/navbar' %>
+
+    <main class="application-wrapper">
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <% if !current_page?(root_path) %>
+      <%= render 'shared/navbar'%>
+    <%end%>
+      <%= yield %>
     <!-- This div is not obosolete -->
     <div class="push"></div>
   </main>
@@ -22,10 +25,8 @@
   <footer> <%= render 'shared/footer' %> </footer>
 
 
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+  </body>
 
-
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_pack_tag 'application' %>
-
-</body>
 </html>
