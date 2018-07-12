@@ -1,6 +1,8 @@
-.background {
+body {
   background-image: radial-gradient(ellipse farthest-side at 100% 100%,#dbf6c8 20%,#1cafc6 50%,#012690 110%);
+
   height: calc(200vh - 80px - 188.5px);
+
 }// Specific CSS for your home-page
 
 #banner-typed-text {
@@ -14,8 +16,8 @@
 
 .search-content {
   margin-top: 100px;
+
   height: calc(100vh - 180px);
-}
 
 .search-field {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
