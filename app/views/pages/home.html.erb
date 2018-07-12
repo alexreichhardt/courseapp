@@ -1,15 +1,85 @@
-<% if @error != nil %>
-<div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <%=@error%>
-</div>
-<%end%>
-<div>
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="wrapper background">
+  <div class="navbar-wagon-home">
+    <!-- Logo -->
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png", height: 50, class:"white" %>
+    <% end %>
 
-<%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
-  <%= f.input :search, :id => "search", as: :string %>
-  <%= f.button :submit, "Hunt" %>
-<% end %>
+    <!-- Right Navigation -->
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <%if !user_signed_in?%>
+       <%= link_to 'Login', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link-home"%>
+      <%end%>
+    </div>
+
+    <!-- Avatar with dropdown menu -->
+    <%if user_signed_in?%>
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <%if current_user.avatar.file.nil?%>
+          <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-sm dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <%else%>
+          <img src='<%= current_user.avatar %>' class="avatar-sm dropdown-toggle" id="navbar-airnbboat-menu" data-toggle="dropdown">
+        <%end%>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><%= link_to "Profile", user_path(current_user.id) %></li>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"%></li>
+        </ul>
+      </div>
+    </div>
+    <%end%>
+
+
+
+    <!-- Dropdown list appearing on mobile only -->
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Some mobile link</a></li>
+          <li><a href="#">Other one</a></li>
+          <li><a href="#">Other one</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-2 search-content">
+        <div class="search-content">
+          <h2 style="color: white; font-size: 50px; font-weight: 600;">Learn how to code in..</h2>
+          <h2 style="color: white; font-size: 120px; font-weight: lighter;">
+            <div style="padding: 20px 0px;">
+              <span id="banner-typed-text"></span>
+            </div>
+          </h2>
+          <% if @error != nil %>
+          <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <%=@error%>
+          </div>
+          <%end%>
+          <div class="form-wrapper">
+            <%= simple_form_for :criteria, url: courses_path,
+                wrapper: :inline_form,
+                html: { class: "form-inline"},
+                wrapper_mappings: {
+                boolean: :inline_boolean}, :method => :get do |f| %>
+
+            <%= f.input :search, :id => "search", as: :string %>
+            <%= f.button :submit, "Hunt", class: "call2action"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="more-info-container">
+        <div class="more-info">
+          <p>Browse Categories</p>
+          <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+

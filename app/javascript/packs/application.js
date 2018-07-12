@@ -1,6 +1,10 @@
 import "bootstrap";
-import { pickTabs } from "../components/picktabs";
-// import { onlyDisplayActive } from "../components/picktabs";
+import { loadDynamicBannerText } from '../components/dynamictext';
+loadDynamicBannerText();
 
+import { pickTabs } from "../components/picktabs";
 pickTabs();
-// onlyDisplayActive();
+
+
+
+
