@@ -31,18 +31,35 @@
     <div class="container">
       <h1>All Courses</h1>
       <% @courses.each do |course| %>
-        <div class="card">
-         <h2><%= link_to course.title, course_path(course) %></h2>
-          <h3><%= course.knowledge_level %> </h3>
-          <h3><%= course.plattform %> </h3>
-          <% unless course.subtitle.nil? %>
-           <h3><%= course.subtitle %> </h3>
-
-          <% end %>
-          <%= truncate(course.description, length: 100, escape: false) %>
-        </div>
+        <div class="card-result card-course-preview">
+                <div class="card-header">
+                  <h3><%= link_to course.title, course_path(course) %></h3>
+                </div>
+                <div class="card-icons">
+                  <div class="icons">
+                    <i class="fas fa-graduation-cap"></i>
+                    <p><%= course.knowledge_level %></p>
+                  </div>
+                  <div class="icons">
+                    <i class="far fa-clock"></i>
+                    <p><%= course.duration%></p>
+                  </div>
+                  <div class="icons">
+                    <i class="fas fa-dollar-sign"></i>
+                    <p><%= course.price %></p>
+                  </div>
+                </div>
+                <div class="card-description">
+                  <p><%= truncate(course.description, length: 100, escape: false) %></p>
+                </div>
+              </div>
       <% end %>
     </div>
   <!-- right side -->
   </div>
 </div>
+
+
+<!--  -->
+
+

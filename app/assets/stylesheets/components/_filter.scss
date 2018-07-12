@@ -30,17 +30,29 @@
 
   .form-check-input {
   margin-right: 8px;
+
+
 }
 
 }
 
-
+.results-row {
+  .container {
+    padding-right: 160px;
+  }
+}
 
 .results-row > .col-xs-12.col-md-2 {
   padding-left: 0px;
+  padding-right: 0px;
 }
 
 .filters-card {
   border: 0.5px solid #cecece;
   padding-left: 24px;
+}
+
+.card-course-preview {
+  background-color: white;
+  padding-top: 0px;
 }
