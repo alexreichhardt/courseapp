@@ -5,9 +5,9 @@ class Course < ApplicationRecord
   include PgSearch
 
   pg_search_scope :search_global, against: { title: 'A', subtitle: 'B', description: 'C' },
-                  using: {
-                    tsearch: { prefix: true, any_word: true }
-                  }
+                                  using: {
+                                          tsearch: { prefix: true, any_word: true },
+                                          }
 
   # pg_search_scope :search_by_title, against: :title
   # pg_search_scope :search_by_description, against: :description
