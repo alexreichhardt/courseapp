@@ -1,18 +1,58 @@
 <div class="container">
-  <h1><%= @course.title %> </h1>
-  <!-- solid bookmark if bookmarked by user, otherwise regular bookmark icon -->
-  <% if @bookmarked == false %>
-    <i><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
-  <% else %>
-    <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
-  <% end %>
-  <!-- Course description -->
-  <%= @course.description.html_safe %>
 
-  <!-- Print subtitle if existing -->
-  <% unless @course.subtitle.nil? %>
-    <%= @course.subtitle %>
-  <% end %>
+  <div class="course-show-row">
+
+    <div class="col-xs-12 col-md-8">
+      <div class="course-info">
+        <h1><%= @course.title %> </h1>
+        <!-- solid bookmark if bookmarked by user, otherwise regular bookmark icon -->
+        <% if @bookmarked == false %>
+          <i><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
+        <% else %>
+          <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
+        <% end %>
+        <!-- Course description -->
+        <%= @course.description.html_safe %>
+        <!-- Print subtitle if existing -->
+        <% unless @course.subtitle.nil? %>
+          <%= @course.subtitle %>
+        <% end %>
+        <hr>
+        <div class="reviews">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- card on the right side -->
+    <div class="col-xs-12 col-md-4">
+      <div class="card course-details">
+        <div class= "course-image" style="background-image: url(<%= @course.image %>)"></div>
+        <hr>
+        <%= link_to "See course on #{@course.plattform}", @course.url, class: "btn btn-primary", target: "_blank" %>
+        <hr>
+        <ul>
+          <li>Price: <%= @course.price %></li>
+          <% unless @course.duration == "" || @course.duration == "0" %>
+            <li><%= "#{@course.duration} #{@course.duration_unit}" %></li>
+          <% end %>
+          <li><%= @course.knowledge_level.capitalize %></li>
+          <% if @course.active %>
+            <li>Status: Active</li>
+          <% else %>
+            <li>Status: Currently inactive</li>
+          <% end %>
+          <li>Offering platform: <%= @course.plattform %></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
