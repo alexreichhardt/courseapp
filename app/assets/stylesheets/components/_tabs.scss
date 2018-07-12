@@ -22,7 +22,7 @@
 }
 .tab {
   background: #756A66;
-  flex: 0 0 25%;
+  flex: 0 0 50%;
   text-align: center;
   padding: 20px 0;
 }
@@ -35,5 +35,13 @@
 .tab.active {
   background: white;
   color: black;
+}
+
+.show {
+  display: block
+}
+
+.hide {
+  display: none;
 }
 
