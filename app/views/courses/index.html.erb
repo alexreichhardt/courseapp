@@ -1,27 +1,48 @@
+<div class="results-row">
 
-  <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
-    <!-- knowledge level selector -->
-    <%= f.input :knowledge_level, as: :check_boxes, collection: ["beginner","intermediate", "advanced"], checked: params.dig(:criteria, :knowledge_level) %>
-    <!-- plattform selector -->
-    <%= f.input :plattform, as: :check_boxes, collection: ["Udemy","Udacity", "Edx"], checked: params.dig(:criteria, :plattform) %>
-
-    <%= f.hidden_field :search, value: @search_input %>
-    <%= f.button :submit, "Hunt"%>
-  <% end %>
-
-
-<div class="container">
-  <h1>All Courses</h1>
-  <% @courses.each do |course| %>
-    <div class="card">
-     <h2><%= link_to course.title, course_path(course) %></h2>
-      <h3><%= course.knowledge_level %> </h3>
-      <h3><%= course.plattform %> </h3>
-      <% unless course.subtitle.nil? %>
-       <h3><%= course.subtitle %> </h3>
-
+  <!-- left side -->
+  <div class="col-xs-12 col-md-2">
+    <div class="filter-container filters-card">
+      <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+      <!-- knowledge level selector -->
+        <div class="filter-selectors">
+          <div class="filter">
+          <%= f.input :knowledge_level, as: :check_boxes, collection: ["beginner","intermediate", "advanced"], checked: params.dig(:criteria, :knowledge_level) %>
+          </div>
+            <!-- plattform selector -->
+          <div class="filter">
+          <%= f.input :plattform, as: :check_boxes, collection: ["Udemy","Udacity", "Edx"], checked: params.dig(:criteria, :plattform) %>
+          </div>
+            <!-- hidden fields -->
+          <%= f.hidden_field :search, value: @search_input %>
+            <!-- submit button -->
+          <div>
+            <%= f.button :submit, "Specify search"%>
+          </div>
+        </div>
       <% end %>
-      <%= truncate(course.description, length: 100, escape: false) %>
+    <!-- filter-container -->
     </div>
-  <% end %>
+  <!-- left side -->
+  </div>
+
+  <!-- right side -->
+  <div class="col-xs-12 col-md-10">
+    <div class="container">
+      <h1>All Courses</h1>
+      <% @courses.each do |course| %>
+        <div class="card">
+         <h2><%= link_to course.title, course_path(course) %></h2>
+          <h3><%= course.knowledge_level %> </h3>
+          <h3><%= course.plattform %> </h3>
+          <% unless course.subtitle.nil? %>
+           <h3><%= course.subtitle %> </h3>
+
+          <% end %>
+          <%= truncate(course.description, length: 100, escape: false) %>
+        </div>
+      <% end %>
+    </div>
+  <!-- right side -->
+  </div>
 </div>

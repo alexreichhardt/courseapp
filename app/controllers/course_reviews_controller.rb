@@ -5,7 +5,7 @@ class CourseReviewsController < ApplicationController
 
   def new
     @course = Course.find(params[:course_id])
-    @review = CourseReview.new(user_id: current_user.id, course_id: params[:course_id])
+    @review = CourseReview.new()
 
 
 
@@ -43,6 +43,19 @@ class CourseReviewsController < ApplicationController
   # end
 
   def create
-    raise
+    new_course_review = CourseReview.new(title: params[:course_review][:title],
+                            content: params[:course_review][:content],
+                            rating: params[:course_review][:rating],
+                            user_id: current_user.id,
+                            course_id: params[:course_id])
+    new_course_review.save!
+    redirect_to course_path(params[:course_id], new_course_review.id)
+  end
+
+  def destroy
+    @review = CourseReview.all.find(params[:id])
+    @review.destroy
+
+    redirect_to user_path(current_user)
   end
 end

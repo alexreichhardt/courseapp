@@ -10,11 +10,10 @@ class CoursesController < ApplicationController
     else
       # otherwise apply use search alogrithm
       @courses = Course.search_global(@search_input)
-
     end
     # FILTERS:
 
-        # knowledge level
+    # knowledge level
     if params.dig(:criteria, :knowledge_level)
         selected_options = params[:criteria][:knowledge_level].reject(&:blank?)
       if selected_options.blank?
@@ -26,32 +25,25 @@ class CoursesController < ApplicationController
     # plattform
     if params.dig(:criteria, :plattform)
       selected_options = params[:criteria][:plattform].reject(&:blank?)
-      #raise
       if selected_options.blank?
         selected_options = ["Udemy", "Udacity", "Edx"]
       end
       @courses = @courses.where(plattform: selected_options)
     end
 
-    # price
 
   end
 
   def show
-
     @course = Course.find(params[:id])
     @bookmarked = false
     @reviews = CourseReview.where(course_id: params[:id])
-
     if user_signed_in?
       bookmark = Bookmark.where(user_id: current_user.id, course_id: params[:id])
       if !bookmark.empty?
         @bookmarked = true
       end
     end
-
-  @reviews = CourseReview.all.where(course_id: params[:id])
-
   end
 
 
