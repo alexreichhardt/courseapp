@@ -1,10 +1,3 @@
-.review-avatar {
-  height: 64px;
-  width: 64px;
-  border-radius: 50%;
-  padding-left: 0px;
-}
-
 .review-profile {
   padding-right: 18px;
   margin-bottom: auto;
@@ -27,4 +20,36 @@
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+
+.course-info {
+  h1 {
+    // allows h1 to have the icon in the same line
+    display: inline-block;
+  }
+
+  a {
+    margin-left: 8px;
+    font-size: 40px;
+  }
+}
+
+.course-details {
+  margin-top: 24px;
+
+  a {
+    display: block;
+    margin: auto;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+}
+
+.reviews {
+  border: 0.5px solid #eeeeee;
+  padding-left: 8px;
+  background-color: white;
 }
