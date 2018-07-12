@@ -1,13 +1,7 @@
 body {
   background-image: radial-gradient(ellipse farthest-side at 100% 100%,#dbf6c8 20%,#1cafc6 50%,#012690 110%);
-  background-attachment: fixed;
-}
 
-
-.background {
-
-  height: 100vh;
-  min-height: 100%;
+  height: calc(200vh - 80px - 188.5px);
 
 }// Specific CSS for your home-page
 
@@ -23,7 +17,7 @@ body {
 .search-content {
   margin-top: 100px;
 
-}
+  height: calc(100vh - 180px);
 
 .search-field {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
@@ -65,5 +59,12 @@ body {
 
 .more-info {
   margin-top: 80px;
+}
 
+.category-container {
+  margin-top: 0px;
+}
+
+.cards-home-all {
+  margin-top: 50px;
 }
