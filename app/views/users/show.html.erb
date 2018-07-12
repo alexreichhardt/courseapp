@@ -38,7 +38,7 @@
           <h3><%= course.title %></h3>
           <p><%= course.description %></p>
           <%end%>
-        <%@reviews.each do |review|%>
+        <% @reviews.each do |review|%>
           <h3><%= review.title %></h3>
           <p> <%= review.content %> </p>
           <% num = review.rating.to_i %>
@@ -55,7 +55,13 @@
     </div>
     <div class="contact-container col-xs-12 col-sm-4">
       <div class="card">
-        <%= @user.avatar_image %>
+        <% if current_user.avatar.file.nil?%>
+          <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-lg" %>
+        <% else %>
+          <%= cl_image_tag(@user.avatar, class: "avatar-lg") %>
+        <% end %>
+
+
         <h2>Hey <%= @user.name %>!</h2>
         <p>How are you today?</p>
       </div>

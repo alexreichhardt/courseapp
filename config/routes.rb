@@ -7,11 +7,13 @@ Rails.application.routes.draw do
     resources :bookmarks, only: [ :new, :create, :destroy ]
   end
 
+  get 'users/edit_avatar' => 'users#edit_avatar', :as => :edit_avatar
+  post 'users/edit_avatar' => 'users#new_avatar', :as => :new_avatar
+
+
   resources :courses, only: [ :index, :show ]
   resources :users, only: [:show]
 
-  get 'users/edit_avatar' => 'users#edit_avatar', :as => :edit_avatar
-  post 'users/edit_avatar' => 'users#new_avatar', :as => :new_avatar
 
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
