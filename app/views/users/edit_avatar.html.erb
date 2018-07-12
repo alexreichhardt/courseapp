@@ -1,0 +1,14 @@
+<div class="container" style="min-height: calc(100vh - 70px - 131px);">
+  <div class="form-box col-sm-offset-4 col-sm-4" style="margin-top: 50px;">
+    <%= simple_form_for(@user, :url => "/users/edit_avatar") do |f| %>
+      <div class="form-group">
+        <div class="form-group-new">
+        <%= f.input :avatar %>
+        <%= f.input :avatar_cache, as: :hidden %>
+      </div>
+      </div>
+      <%= f.button :submit, "Add new avatar picture" %>
+    <% end %>
+  </div>
+  </div>
+</div>
