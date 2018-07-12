@@ -1,0 +1,30 @@
+.review-avatar {
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+  padding-left: 0px;
+}
+
+.review-profile {
+  padding-right: 18px;
+  margin-bottom: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-profile p {
+   font-size: 10px;
+}
+
+.review-content {
+  flex: 1;
+}
+
+.single-review {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}

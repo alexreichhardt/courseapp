@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
+  get 'course_reviews/new'
+  get 'course_reviews/create'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :courses, only: [ :index, :show ] do
     resources :bookmarks, only: [ :new, :create, :destroy ]
+    resources :course_reviews, only: [ :index, :new, :create ]
+
   end
 
   get 'users/edit_avatar' => 'users#edit_avatar', :as => :edit_avatar
   post 'users/edit_avatar' => 'users#new_avatar', :as => :new_avatar
 
 
-  resources :courses, only: [ :index, :show ]
   resources :users, only: [:show]
 
 

@@ -1,5 +1,22 @@
 <div class="container">
 
+  <h1><%= @course.title %> </h1>
+  <!-- solid bookmark if bookmarked by user, otherwise regular bookmark icon -->
+  <% if @bookmarked == false %>
+    <i><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
+  <% else %>
+    <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
+  <% end %>
+  <!-- Course description -->
+  <%= @course.description.html_safe %>
+
+  <!-- Print subtitle if existing -->
+  <% unless @course.subtitle.nil? %>
+    <%= @course.subtitle %>
+  <% end %>
+
+
+
   <div class="course-show-row">
 
     <div class="col-xs-12 col-md-8">
@@ -23,7 +40,36 @@
 
         <hr>
         <div class="reviews">
-          <h2>Reviews</h2>
+          <h3>Reviews</h3>
+            <div class="panel panel-default">
+              <%@reviews.each do |review| %>
+                <div class="single-review">
+                  <div class="review-profile">
+                    <% author_id = review.user_id %>
+                    <% author = User.find(author_id) %>
+                    <% author_avatar = author.avatar_image %>
+                    <img src='<%= author_avatar %>' class="review-avatar">
+                    <p class="by-name"><%= author.name %></p>
+                  </div>
+                  <div class="review-content">
+                    <h4><%= review.title %> </h4>
+
+                    <p><%= review.content %> </p>
+                    <% t = review.rating.to_i %>
+                      <div class="stars">
+                        <% t.times do %>
+                          <i class="fas fa-star"></i>
+                        <% end %>
+                        <% (5-t).times do %>
+                          <i class="far fa-star"></i>
+                        <% end %>
+                      </div>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+          <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn-primary" %>
+<!--           <h2>Reviews</h2>
             <% @reviews.each do |review|%>
               <div class="card-result">
                 <div class="card-header">
@@ -47,7 +93,7 @@
               </div>
             <%end%>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- card on the right side -->
@@ -74,6 +120,7 @@
     </div>
 
   </div>
+
 </div>
 
 
