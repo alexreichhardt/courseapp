@@ -1,0 +1,91 @@
+.form-box {
+  background-color: rgba(250, 250, 250, 0.9);
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 4px;
+
+}
+
+.deviselabels {
+  padding:20px;
+  font-size: 30px;
+}
+
+.footer-form {
+  padding-top: 15px;
+}
+
+.form-font {
+  font-size: 15px;
+}
+
+.form-font .action-link {
+  color:#424141;
+  &:hover {
+    text-decoration: none;
+    color:#FD6E65;
+  }
+}
+
+.form-actions .btn {
+  background-color: red;
+  background: #03B4FF;
+  border-radius: 3px;
+  padding: 6px 10px;
+  color: white;
+
+  &:hover {
+    background: #007baf;
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.form-group-new {
+  padding-top:10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group-new .form-group .form-control {
+ color: #575757;
+}
+.form-group-new #criteria_location {
+    display: block;
+    height: 39px;
+    padding: 6px 12px;
+    font-size: 18px;
+    line-height: 1.428571429;
+    color: #a4b0c1;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.flexbox-form {
+
+  display: flex;
+  padding-left: 45px;
+}
+
+.form-content-right {
+  margin-left: 20px;
+}
+
+.form-content-left {
+  margin-right:30px;
+}
+
+#form-location {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.form-group-new .form-group .form-control-file {
+  display: flex;
+}
+
+

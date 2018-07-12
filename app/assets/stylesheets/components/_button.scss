@@ -7,3 +7,21 @@
   color: #da552f;
   text-decoration: none;
 }
+
+.button-category {
+  color: white;
+  height: 200px;
+  width: 300px;
+  margin: 20px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: lighter;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+.button-category:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
