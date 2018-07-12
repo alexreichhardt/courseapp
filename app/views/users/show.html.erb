@@ -1,101 +1,99 @@
 <div class="container">
   <div class="main-container">
-    <div class="info-container col-xs-12 col-sm-8">
-      <div class="card">
-        <div class="tabs">
-          <a class="tab active" href="#">
-            <h3>350</h3>
-            <p>Followers</p>
-          </a>
-          <a class="tab" href="#">
-            <h3>456</h3>
-            <p>Following</p>
-          </a>
-          <a class="tab" href="#">
-            <h3>189</h3>
-            <p>Upvoted</p>
-          </a>
-          <a class="tab" href="#">
-            <h3>13</h3>
-            <p>Submitted</p>
-          </a>
-        </div>
-        <%@courses.flatten.each do |course|%>
-          <div class="card-result">
-            <div class="card-header">
-              <h3><%= course.title %></h3>
-            </div>
-            <div class="card-icons">
-              <div class="icons">
-                <i class="fas fa-graduation-cap"></i>
-                <p><%= course.knowledge_level %></p>
-              </div>
-              <div class="icons">
-                <i class="far fa-clock"></i>
-                <p><%= course.duration%></p>
-              </div>
-              <div class="icons">
-                <i class="fas fa-dollar-sign"></i>
-                <p><%= course.price %></p>
-              </div>
-            </div>
-            <div class="card-description">
-              <p><%= course.description %></p>
-            </div>
+    <div class="row"></div>
+      <div class="info-container col-xs-12 col-sm-8">
+        <div class="card">
+          <div class="tabs">
+            <a class="tab active" id="tab1">
+              <h3>Bookmarks</h3>
+              <p><%=@courses.size%></p>
+            </a>
+            <a class="tab" id="tab2">
+              <h3>Reviews</h3>
+              <p><%=@reviews.size%></p>
+            </a>
           </div>
-          <%end%>
-        <% @reviews.each do |review|%>
-          <div class="card-result">
-            <div class="card-header">
-              <h3><%= review.title %></h3>
-            </div>
-            <% num = review.rating.to_i %>
-            <div class="card-icons">
-              <div class="stars">
-              <% num.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5-num).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
+          <div id="tab1-content">
+            <%@courses.flatten.each do |course|%>
+              <div class="card-result">
+                <div class="card-header">
+                  <h3><%= course.title %></h3>
+                </div>
+                <div class="card-icons">
+                  <div class="icons">
+                    <i class="fas fa-graduation-cap"></i>
+                    <p><%= course.knowledge_level %></p>
+                  </div>
+                  <div class="icons">
+                    <i class="far fa-clock"></i>
+                    <p><%= course.duration%></p>
+                  </div>
+                  <div class="icons">
+                    <i class="fas fa-dollar-sign"></i>
+                    <p><%= course.price %></p>
+                  </div>
+                </div>
+                <div class="card-description">
+                  <p><%= course.description %></p>
+                </div>
               </div>
-            </div>
-            <div class="card-description">
-              <p> <%= review.content %> </p>
-            </div>
+            <%end%>
           </div>
-        <%end%>
-      </div>
-    </div>
-    <div class="contact-container col-xs-12 col-sm-4">
-      <div class="card">
-        <div class="card-avatar">
-          <div class="card-avatar-content">
-            <% if current_user.avatar.file.nil?%>
-              <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-lg" %>
-            <% else %>
-              <%= cl_image_tag(@user.avatar, class: "avatar-lg") %>
-            <% end %>
-            <h2>Hey <%= @user.name %>!</h2>
-            <p>How are you today?</p>
+          <div id="tab2-content" class="hide">
+            <% @reviews.each do |review|%>
+              <div class="card-result">
+                <div class="card-header">
+                  <h3><%= review.title %></h3>
+                </div>
+                <% num = review.rating.to_i %>
+                <div class="card-icons">
+                  <div class="stars">
+                  <% num.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5-num).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  </div>
+                </div>
+                <div class="card-description">
+                  <p> <%= review.content %> </p>
+                </div>
+              </div>
+            <%end%>
           </div>
         </div>
       </div>
-      <div class="empty-box">
+      <div class="contact-container col-xs-12 col-sm-4">
+        <div class="card">
+          <div class="card-avatar">
+            <div class="card-avatar-content">
+              <% if current_user.avatar.file.nil?%>
+                <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-lg" %>
+              <% else %>
+                <%= cl_image_tag(@user.avatar, class: "avatar-lg") %>
+              <% end %>
+              <h2>Hey <%= @user.name %>!</h2>
+              <p>How are you today?</p>
+            </div>
+          </div>
+        </div>
+        <div class="empty-box">
 
-      </div>
-      <div class="card">
-        <div class="card-result">
-          <div class="card-edit-user">
-            <div class="card-header">
-              <h2>Edit your profile:</h2>
-              <div class="icons">
-                <i class="fas fa-unlock-alt"></i>
-                <p><%= link_to "Change your password", edit_user_registration_path, class: "edit-link" %></p>
-              </div>
-              <div class="icons">
-                <i class="fas fa-user-circle"></i>
-                <p><%= link_to "Change your avatar", edit_avatar_path, class: "edit-link" %></p>
+        </div>
+        <div class="card">
+          <div class="card-result">
+            <div class="card-edit-user">
+              <div class="card-header">
+                <h2>Edit your profile:</h2>
+                <div class="icons">
+                  <i class="fas fa-unlock-alt"></i>
+                  <p><%= link_to "Change your password", edit_user_registration_path, class: "edit-link" %></p>
+                </div>
+                <div class="icons">
+                  <i class="fas fa-user-circle"></i>
+                  <p><%= link_to "Change your avatar", edit_avatar_path, class: "edit-link" %></p>
+                </div>
               </div>
             </div>
           </div>
