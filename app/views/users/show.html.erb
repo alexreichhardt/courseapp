@@ -19,7 +19,7 @@
             <%@courses.flatten.each do |course|%>
               <div class="card-result">
                 <div class="card-header">
-                  <h3><%= course.title %></h3>
+                  <h3><%= link_to course.title, course_path(course) %></h3>
                 </div>
                 <div class="card-icons">
                   <div class="icons">
@@ -44,8 +44,13 @@
           <div id="tab2-content" class="hide">
             <% @reviews.each do |review|%>
               <div class="card-result">
-                <div class="card-header">
+                <div class="card-header review-header">
                   <h3><%= review.title %></h3>
+                  <i><%= link_to("", user_course_review_path(current_user, review), method: :delete, :class => "fas fa-trash-alt") %></i>
+                </div>
+                <div class="coursename">
+                  <% course = Course.all.find(review.course_id) %>
+                  <h4> <%= course.title %> </h3>
                 </div>
                 <% num = review.rating.to_i %>
                 <div class="card-icons">
@@ -60,6 +65,7 @@
                 </div>
                 <div class="card-description">
                   <p> <%= review.content %> </p>
+                  </h5> <%= link_to "Visit Course", course_path(course) %> </h5>
                 </div>
               </div>
             <%end%>

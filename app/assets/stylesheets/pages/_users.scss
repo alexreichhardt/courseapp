@@ -14,3 +14,20 @@
 .empty-box {
   height: 20px;
 }
+
+.review-header {
+  h3 {
+    // allows h1 to have the icon in the same line
+    display: inline-block;
+  }
+
+  a {
+    margin-left: 8px;
+    font-size: 24px;
+
+  }
+}
+
+.card-description {
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}

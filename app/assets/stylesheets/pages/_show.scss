@@ -30,7 +30,7 @@
 
   a {
     margin-left: 8px;
-    font-size: 40px;
+    font-size: 32px;
   }
 }
 
@@ -52,4 +52,7 @@
   border: 0.5px solid #eeeeee;
   padding-left: 8px;
   background-color: white;
+}
+a {
+  text-decoration: none !important
 }

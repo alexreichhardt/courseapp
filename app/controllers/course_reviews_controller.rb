@@ -51,4 +51,11 @@ class CourseReviewsController < ApplicationController
     new_course_review.save!
     redirect_to course_path(params[:course_id], new_course_review.id)
   end
+
+  def destroy
+    @review = CourseReview.all.find(params[:id])
+    @review.destroy
+
+    redirect_to user_path(current_user)
+  end
 end
