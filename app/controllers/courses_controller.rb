@@ -36,6 +36,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+
     @course = Course.find(params[:id])
     @bookmarked = false
 
@@ -46,6 +47,8 @@ class CoursesController < ApplicationController
         @bookmarked = true
       end
     end
+
+    @reviews = CourseReview.all.where(course_id: params[:id])
 
 
 

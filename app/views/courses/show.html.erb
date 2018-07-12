@@ -13,6 +13,40 @@
   <% unless @course.subtitle.nil? %>
     <%= @course.subtitle %>
   <% end %>
+
+
+    <!-- Print Reviews -->
+
+    <h3>Reviews</h3>
+
+    <div class="panel panel-default">
+      <%@reviews.each do |review| %>
+        <div class="single-review">
+          <div class="review-profile">
+            <% author_id = review.user_id %>
+            <% author = User.find(author_id) %>
+            <% author_avatar = author.avatar_image %>
+            <img src='<%= author_avatar %>' class="review-avatar">
+            <p class="by-name"><%= author.name %></p>
+          </div>
+          <div class="review-content">
+            <h4><%= review.title %> </h4>
+
+            <p><%= review.content %> </p>
+            <% t = review.rating.to_i %>
+              <div class="stars">
+                <% t.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5-t).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn-primary" %>
 </div>
 
 
