@@ -13,12 +13,13 @@
           <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
         <% end %>
         <!-- course description -->
-        <div>
-          <%= @course.description.html_safe %>
+        <div class="course-description">
+
           <!-- Print subtitle if existing -->
-          <% unless @course.subtitle.nil? %>
-            <%= @course.subtitle %>
+           <% unless @course.subtitle.nil? %>
+            <h3> <%= @course.subtitle %> </h3>
           <% end %>
+          <p> <%= @course.description.html_safe %> </p>
         </div>
         <hr>
         <!-- reviews -->
@@ -35,9 +36,8 @@
               </div>
               <div class="review-content">
                 <h4><%= review.title %> </h4>
-                  <p><%= review.content %> </p>
-                  <% t = review.rating.to_i %>
                   <div class="stars">
+                    <% t = review.rating.to_i %>
                     <% t.times do %>
                       <i class="fas fa-star"></i>
                     <% end %>
@@ -45,12 +45,14 @@
                       <i class="far fa-star"></i>
                     <% end %>
                   </div>
+                  <p><%= review.content %> </p>
+
               </div>
             </div>
           <%end%>
         <!-- reviews -->
         </div>
-        <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn-primary" %>
+        <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary" %>
       <!-- for css of the left side -->
       </div>
     <!-- left side -->
@@ -78,15 +80,5 @@
         </ul>
       </div>
     </div>
-
   </div>
 </div>
-
-
-<!--
-<i>link_to("", course_bookmarks_path(boat) , :class => "fas fa-edit icons") %></i>
-# solid:
-<i class="fas fa-bookmark"></i>
-# transparent:
-<i class="far fa-bookmark"></i>
- -->
