@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   post 'users/edit_avatar' => 'users#new_avatar', :as => :new_avatar
 
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :course_reviews, only: [ :destroy ]
+  end
 
 
   require "sidekiq/web"
