@@ -1,10 +1,15 @@
 .background-home {
   background-image: radial-gradient(ellipse farthest-side at 100% 100%,#dbf6c8 20%,#1cafc6 50%,#012690 110%);
-  height: calc(200vh - 80px - 188.5px);
+  height: calc(200vh - 70px - 164.5px);
 }// Specific CSS for your home-page
 
 .background {
   background-image: radial-gradient(ellipse farthest-side at 100% 100%,#dbf6c8 20%,#1cafc6 50%,#012690 110%);
-  min-height: calc(100vh - 80px - 188.5px);
+  min-height: calc(100vh - 70px - 164.5px);
   height: 100%;
+}
+
+.special {
+  padding: 0px;
+  margin: 0px;
 }
