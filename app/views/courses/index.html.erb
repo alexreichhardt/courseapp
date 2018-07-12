@@ -1,13 +1,11 @@
 
-
-
   <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
     <!-- knowledge level selector -->
-    <%= f.input :knowledge_level, :as => :check_boxes, :collection => ["beginner","intermediate", "advanced"], :checked => params[:criteria][:knowledge_level] %>
+    <%= f.input :knowledge_level, as: :check_boxes, collection: ["beginner","intermediate", "advanced"], checked: params.dig(:criteria, :knowledge_level) %>
     <!-- plattform selector -->
-    <%= f.input :plattform, :as => :check_boxes, :collection => ["Udemy","Udacity", "Edx"], :checked => params[:criteria][:plattform] %>
+    <%= f.input :plattform, as: :check_boxes, collection: ["Udemy","Udacity", "Edx"], checked: params.dig(:criteria, :plattform) %>
 
-    <%= f.hidden_field :search, :value => @search_input %>
+    <%= f.hidden_field :search, value: @search_input %>
     <%= f.button :submit, "Hunt"%>
   <% end %>
 
@@ -23,7 +21,7 @@
        <h3><%= course.subtitle %> </h3>
 
       <% end %>
-      <%= truncate(course.description, :length => 100, :escape => false) %>
+      <%= truncate(course.description, length: 100, escape: false) %>
     </div>
   <% end %>
 </div>
