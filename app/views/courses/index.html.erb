@@ -1,7 +1,8 @@
 <div class="results-row">
-
+  <div class="container special">
+    <div class="row">
   <!-- left side -->
-  <div class="col-xs-12 col-md-2">
+  <div class="col-xs-12 col-md-3">
     <div class="filter-container filters-card">
       <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
       <!-- knowledge level selector -->
@@ -27,8 +28,8 @@
   </div>
 
   <!-- right side -->
-  <div class="col-xs-12 col-md-10">
-    <div class="container">
+  <div class="col-xs-12 col-md-9">
+    <div class="container1">
       <h1>All Courses</h1>
       <% @courses.each do |course| %>
         <div class="card-result card-course-preview">
@@ -56,6 +57,8 @@
       <% end %>
     </div>
   <!-- right side -->
+  </div>
+  </div>
   </div>
 </div>
 
