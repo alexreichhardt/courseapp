@@ -13,3 +13,24 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+html, body {
+  height: 100%;
+  margin: 0;
+/* Trivial style make the text large */
+}
+.application-wrapper {
+  min-height: 100%;
+
+  /* This is the same as the height of the footer */
+  margin-bottom: -100px;
+}
+/* The height of the footer and push must be the same */
+.footer,
+.push {
+  height: 120px;
+}
+.footer {
+  /* Trivial style to differentiate the footer */
+  // background-color: #a12444;
+}
