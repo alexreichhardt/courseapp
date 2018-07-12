@@ -1,0 +1,46 @@
+.filter-selectors {
+
+}
+
+.filter-container {
+  margin-top: 88px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  h3 {
+    font-size: 24px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #cecece;
+  }
+
+  abbr {
+    display: none;
+  }
+
+  legend {
+    font-size: 20px;
+    font-weight: lighter;
+    margin-bottom: 4px;
+    border-bottom: none;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  .form-check-input {
+  margin-right: 8px;
+}
+
+}
+
+
+
+.results-row > .col-xs-12.col-md-2 {
+  padding-left: 0px;
+}
+
+.filters-card {
+  border: 0.5px solid #cecece;
+  padding-left: 24px;
+}
