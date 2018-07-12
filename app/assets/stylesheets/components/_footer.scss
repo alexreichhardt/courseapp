@@ -1,9 +1,11 @@
 .footer {
   margin-top: 40px;
   padding: 0px 40px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   font-weight: 300;
   color: #CCCCCC;
   background-color: white;
@@ -14,6 +16,7 @@
     font-size: 18px;
     margin-bottom: 5px;
     margin-top: 20px;
+    color: #333333;
   }
   a {
     color: #CCCCCC;
@@ -21,7 +24,7 @@
   }
   a:hover {
     text-decoration: none;
-    color:red;
+    color: #333333;
   }
   p {
     font-size: 16px;
@@ -29,6 +32,7 @@
 }
 
 .footer-section {
+
   width: 25%;
   padding: 0px 25px;
   text-align: justify;
@@ -51,6 +55,18 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+      flex: 0 0 50% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-section {
+      flex: 0 0 100% !important;
+    }
 }
 
 
