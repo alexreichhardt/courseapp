@@ -2,8 +2,14 @@
   background-color: rgba(250, 250, 250, 0.8);
   padding: 10px;
   border-radius: 4px;
-  box-shadow: 2px 2px 3px grey;
+  box-shadow: 1px 1px 10px grey;
 }
+.card-tab {
+  background-color: rgba(250, 250, 250, 0.8);
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px grey;
+}
+
 .card-header {
   h3 {
     margin-bottom: 0px;

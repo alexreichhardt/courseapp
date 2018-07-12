@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
-    @reviews = CourseReview.where(user_id: params[:id])
-    bookmark_ids = Bookmark.where(user_id: params[:id])
-    @courses = []
-    @reviews
-    bookmark_ids.each do |id|
-      @courses << Course.where(id: id.course_id)
+    if params[:id].to_i != current_user.id
+      redirect_to root_path(error: "Account does not belong to you")
+    else
+      @user = User.find(params[:id])
+      @reviews = CourseReview.where(user_id: params[:id])
+      bookmark_ids = Bookmark.where(user_id: params[:id])
+      @courses = []
+      @reviews
+      bookmark_ids.each do |id|
+        @courses << Course.where(id: id.course_id)
+      end
     end
-
-
   end
 
   def edit_avatar
