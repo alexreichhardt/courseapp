@@ -18,7 +18,7 @@
       <%if current_user.avatar.file.nil?%>
         <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-sm dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <%else%>
-        <img src='<%= current_user.avatar %>' class="avatar dropdown-toggle" id="navbar-airnbboat-menu" data-toggle="dropdown">
+        <img src='<%= current_user.avatar %>' class="avatar-sm dropdown-toggle" id="navbar-airnbboat-menu" data-toggle="dropdown">
       <%end%>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to "Profile", user_path(current_user.id) %></li>
