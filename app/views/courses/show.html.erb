@@ -4,6 +4,7 @@
 
     <div class="col-xs-12 col-md-8">
       <div class="course-info">
+
         <h1><%= @course.title %> </h1>
         <!-- solid bookmark if bookmarked by user, otherwise regular bookmark icon -->
         <% if @bookmarked == false %>
@@ -11,20 +12,40 @@
         <% else %>
           <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
         <% end %>
-        <!-- Course description -->
-        <%= @course.description.html_safe %>
-        <!-- Print subtitle if existing -->
-        <% unless @course.subtitle.nil? %>
-          <%= @course.subtitle %>
-        <% end %>
+        <div>
+          <!-- Course description -->
+          <%= @course.description.html_safe %>
+          <!-- Print subtitle if existing -->
+          <% unless @course.subtitle.nil? %>
+            <%= @course.subtitle %>
+          <% end %>
+        </div>
+
         <hr>
         <div class="reviews">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          <h2>Reviews</h2>
+            <% @reviews.each do |review|%>
+              <div class="card-result">
+                <div class="card-header">
+                  <h3><%= review.title %></h3>
+                </div>
+                <% num = review.rating.to_i %>
+                <div class="card-icons">
+                  <div class="stars">
+                  <% num.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5-num).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  </div>
+                </div>
+                <div class="card-description">
+                  <p> <%= review.content %> </p>
+                </div>
+                <hr>
+              </div>
+            <%end%>
         </div>
       </div>
     </div>
@@ -34,7 +55,7 @@
       <div class="card course-details">
         <div class= "course-image" style="background-image: url(<%= @course.image %>)"></div>
         <hr>
-        <%= link_to "See course on #{@course.plattform}", @course.url, class: "btn btn-primary", target: "_blank" %>
+        <%= link_to "Start course on #{@course.plattform}", @course.url, class: "btn btn-primary", target: "_blank" %>
         <hr>
         <ul>
           <li>Price: <%= @course.price %></li>

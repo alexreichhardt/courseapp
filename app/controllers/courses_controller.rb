@@ -29,16 +29,12 @@ class CoursesController < ApplicationController
 
     # price
 
-
-
-
-
   end
 
   def show
     @course = Course.find(params[:id])
     @bookmarked = false
-
+    @reviews = CourseReview.where(course_id: params[:id])
 
     if user_signed_in?
       bookmark = Bookmark.where(user_id: current_user.id, course_id: params[:id])
@@ -46,9 +42,8 @@ class CoursesController < ApplicationController
         @bookmarked = true
       end
     end
-
-
-
   end
+
+
 
 end
