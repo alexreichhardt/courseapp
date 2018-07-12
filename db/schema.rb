@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_080116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "birthdate"
+    t.string "avatar_image"
     t.boolean "admin", default: false, null: false
     t.string "name"
     t.string "avatar"
