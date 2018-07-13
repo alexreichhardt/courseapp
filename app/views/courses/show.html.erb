@@ -75,11 +75,11 @@
         <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "main-c2a" %>
         <hr>
         <ul>
-          <li>Price: <%= @course.price %></li>
+          <li><i class="fas fa-coins"></i>Price: <%= @course.price %></li>
           <% unless @course.duration == "" || @course.duration == "0" %>
             <li><%= "#{@course.duration} #{@course.duration_unit}" %></li>
           <% end %>
-          <li><%= @course.knowledge_level.capitalize %></li>
+          <li><i class="fas fa-graduation-cap"></i><%= @course.knowledge_level.capitalize %></li>
           <% if @course.active %>
             <li>Status: Active</li>
           <% else %>
@@ -91,3 +91,7 @@
     </div>
   </div>
 </div>
+
+___
+
+
