@@ -4,7 +4,12 @@ class CoursesController < ApplicationController
   def index
 
     @search_input = params.dig(:criteria, :search)
+
+    @levels = params.dig(:criteria, :knowledge_level)
+    @plattforms = params.dig(:criteria, :plattform)
+
     @error = ""
+
     if @search_input.blank?
       # display all courses if user makes no input
       @courses = Course.all

@@ -3,19 +3,20 @@
 }
 
 .filter-container {
-  margin-top: 88px;
+  margin-top: 0px;
   padding-top: 16px;
   padding-bottom: 16px;
-  background-color: white;
+  background-color: rgba(255, 255, 255,0.1);
   position: sticky !important;
   top: 0 !important;
-  height: 100%;
+  height: 80vh;
 
 
   h3 {
     font-size: 24px;
     padding-bottom: 4px;
     border-bottom: 1px solid #cecece;
+    color: white;
   }
 
   abbr {
@@ -31,12 +32,11 @@
 
   label {
     font-size: 16px;
+    color: white
   }
 
   .form-check-input {
   margin-right: 8px;
-
-
 }
 
 }
@@ -53,7 +53,7 @@
 }
 
 .filters-card {
-  border: 0.5px solid #cecece;
+  // border: 0.5px solid #cecece;
   padding-left: 24px;
 }
 
@@ -70,12 +70,11 @@
 }
 
 .category-choice {
-  background: white;
+  // background: white;
   padding: 20px;
   width: 100%;
-  border-radius: 2px;
-  border: 1px solid rgba(0,0,0,0.1);
-  opacity: .4;
+  border-radius: 0px;
+  border: 1px solid white;
   flex: 0 0 30%;
   text-align: center;
   padding: 4px 8px;
