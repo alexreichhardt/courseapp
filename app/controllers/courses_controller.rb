@@ -4,14 +4,18 @@ class CoursesController < ApplicationController
   def index
 
     @search_input = params.dig(:criteria, :search)
-
+    @error = ""
     if @search_input.blank?
       # display all courses if user makes no input
+      @courses = Course.all
+    elsif Course.search_global(@search_input).empty?
+      @error = "The exact course you searched for could not be found, but here are some other courses you may be interested in."
       @courses = Course.all
     else
       # otherwise apply use search alogrithm
       @courses = Course.search_global(@search_input)
     end
+
     # FILTERS:
 
     # knowledge level
