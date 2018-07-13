@@ -1,6 +1,6 @@
 .card {
   background-color: rgba(250, 250, 250, 1);
-  padding: 10px;
+  padding: 20px;
   border-radius: 2px;
 }
 .card-tab {
@@ -12,7 +12,7 @@
 .card-header {
   h3 {
     margin-top: 8px;
-    margin-bottom: 0px;
+    margin-bottom: 8px;
   }
 }
 
@@ -34,7 +34,9 @@
 }
 .card-icons {
   display: flex;
-  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
   color: black;
 }
 
@@ -62,4 +64,39 @@
     font-weight: 400;
     font-size: 24px;
   }
+}
+
+.card-description {
+  text-align: justify;
+  font-size: 16px;
+}
+
+.card-content {
+  margin-bottom: 15px;
+  display:flex;
+  border-radius: 2px;
+  background-color: rgba(250, 250, 250, 1);
+  min-height: 175px;
+
+}
+
+.card-content-left {
+  width: 80%;
+  padding: 15px;
+}
+
+.card-content-right {
+  padding: 15px;
+  padding-top: 23px;
+  padding-left: 20px;
+  width: 20%;
+  position: relative;
+  background-color: #EDECEC;
+  border-radius: 2px;
+}
+
+.card-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }

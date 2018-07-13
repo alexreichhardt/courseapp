@@ -63,31 +63,42 @@
     <div class="container1">
       <h1>All Courses</h1>
       <% @courses.each do |course| %>
-        <div class="card-result card-course-preview">
-                <div class="card-header">
-                  <h3><%= link_to course.title, course_path(course) %></h3>
-                </div>
-                <div class="card-icons">
-                  <div class="icons">
-                    <i class="fas fa-graduation-cap"></i>
-                    <p><%= course.knowledge_level %></p>
-                  </div>
-                  <div class="icons">
-                    <i class="far fa-clock"></i>
-                    <p><%= course.duration%></p>
-                  </div>
-                  <div class="icons">
-                    <i class="fas fa-coins"></i>
-                    <p><%= course.price %></p>
-                  </div>
-                </div>
-                <div class="card-description">
-                  <p><%= truncate(course.description, length: 100, escape: false) %></p>
-                </div>
-              </div>
+        <div class="card-content">
+          <div class="card-content-left">
+          <div class="card-header">
+            <h3><%=course.title%></h3>
+          </div>
+
+          <div class="card-description">
+            <p><%= truncate(course.description, length: 400, escape: false) %></p>
+          </div>
+        </div>
+        <div class="card-content-right">
+
+            <div class="icons">
+              <i class="fas fa-graduation-cap"></i>
+              <p><%= course.knowledge_level %></p>
+            </div>
+            <div class="icons">
+              <i class="far fa-clock"></i>
+              <p><%= course.duration%></p>
+            </div>
+            <div class="icons">
+              <i class="fas fa-coins"></i>
+              <p><%= course.price %></p>
+            </div>
+
+
+
+          <div class="card-button">
+
+           <%= link_to("See Details", course_path(course), class: "main-c2a") %>
+          </div>
+        </div>
+      </div>
       <% end %>
     </div>
-  <!-- right side -->
+
   </div>
   </div>
   </div>
