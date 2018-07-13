@@ -1,5 +1,4 @@
 .main-container {
-  margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
 }
@@ -9,6 +8,7 @@
   height:100%;
   position: sticky !important;
   top: 0 !important;
+
 }
 
 .empty-box {
@@ -28,7 +28,13 @@
   }
 }
 
-.card-description {
-  border-bottom: 1px solid rgba(220,224,244,0.4);
+.for-padding {
+  padding-top: 20px;
+
+
 }
+.info-container {
+  padding-top: 20px;
+}
+
 
