@@ -2,14 +2,19 @@
 
 }
 
+.affix {
+  top: 20px;
+  z-index: 9999;
+}
+
 .filter-container {
   margin-top: 0px;
-  padding-top: 16px;
+  padding-top: 64px;
   padding-bottom: 16px;
   background-color: rgba(255, 255, 255,0.1);
   position: sticky !important;
   top: 0 !important;
-  height: 75vh;
+  height: 100vh;
 
 
   h3 {
@@ -56,6 +61,7 @@
 .filters-card {
   // border: 0.5px solid #cecece;
   padding-left: 24px;
+  padding-right: 24px;
 }
 
 .card-course-preview {
