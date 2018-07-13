@@ -6,6 +6,9 @@ loadDynamicBannerText();
 import { pickTabs } from "../components/picktabs";
 pickTabs();
 
+import { categoryChoice } from "../components/categorychoice";
+categoryChoice();
+
 
 
 
