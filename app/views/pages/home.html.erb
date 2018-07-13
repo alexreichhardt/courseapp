@@ -9,7 +9,10 @@
 
     <!-- Logo -->
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <%= image_tag "logo.png", height: 50, class:"white" %>
+      <div class="item-flex">
+        <%= image_tag "logo.png", height: 50, class:"white" %>
+        <h2>Coursehunt.io</h2>
+      </div>
     <% end %>
 
     <!-- Right Navigation -->
@@ -55,7 +58,7 @@
     <div class="row">
       <div class="search-content">
         <div class="col-sm-offset-2">
-          <h2 style="color: white; font-size: 50px; font-weight: 600;">Learn how to code in..</h2>
+          <h2 style="color: white; font-size: 50px; font-weight: 600;">Find courses to learn..</h2>
           <h2 style="color: white; font-size: 120px; font-weight: lighter;">
             <div style="padding: 20px 0px;">
               <span id="banner-typed-text"></span>
