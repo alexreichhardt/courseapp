@@ -27,7 +27,7 @@
           <% if @reviews.empty? %>
             <h2>No Reviews</h2>
             <h4>Be the first!</h4>
-            <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary" %>
+            <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary", style: "margin-bottom: 16px;" %>
           <% else %>
             <h2>Reviews (<%= @reviews.count %>)</h2>
           <% end %>
