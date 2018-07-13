@@ -8,6 +8,27 @@
   text-decoration: none;
 }
 
+.main-c2a {
+  color: #ffffff;
+  background-color: rgba(11, 63, 150,0.8);
+  :hover {
+    color: rgba(11, 63, 150,0.8);
+    background-color: white;
+    border-color: rgba(11, 63, 150,0.8);
+  }
+}
+
+
+.main-c2a-inverse {
+  color: rgba(11, 63, 150,0.8);
+  background-color: white;
+  border-color: rgba(11, 63, 150,0.8);
+  :hover {
+    color: #ffffff;
+    background-color: rgba(11, 63, 150,0.8);
+  }
+}
+
 .button-category {
   color: white;
   height: 200px;
