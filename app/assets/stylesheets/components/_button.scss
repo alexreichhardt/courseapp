@@ -12,18 +12,21 @@
   color: #ffffff;
   background-color: rgba(11, 63, 150,0.8);
   border-radius: 0px;
-  :hover {
+  padding:10px;
+  &:hover {
     color: rgba(11, 63, 150,0.8);
     background-color: white;
-    border-color: rgba(11, 63, 150,0.8);
+    border: 2px solid rgba(11, 63, 150,0.8);
   }
 }
 
 .main-c2a-inverse {
   color: rgba(11, 63, 150,0.8);
   background-color: white;
-  border-color: rgba(11, 63, 150,0.8);
-  :hover {
+  border: 2px solid rgba(11, 63, 150,0.8);
+  padding:10px;
+
+  &:hover {
     color: #ffffff;
     background-color: rgba(11, 63, 150,0.8);
   }
