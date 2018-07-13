@@ -36,7 +36,7 @@
               <div class="review-profile">
                 <% author_id = review.user_id %>
                 <% author = User.find(author_id) %>
-                <% author_avatar = author.avatar %>
+                <% author_avatar = author.avatar.identifier %>
                 <img src='<%= author_avatar %>' class="avatar-md">
                 <p class="by-name"><%= author.name %></p>
               </div>
