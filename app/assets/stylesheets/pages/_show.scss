@@ -50,8 +50,17 @@
 
 }
 
+.make-it-stick {
+  position: sticky !important;
+  top: 0 !important;
+}
+.sticky-parts {
+  display: flex;
+}
+
 .course-details {
   margin-top: 24px;
+  margin-bottom: 24px;
 
   a {
     display: block;
