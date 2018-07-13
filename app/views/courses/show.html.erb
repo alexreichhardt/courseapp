@@ -68,9 +68,11 @@
       <div class="card course-details">
         <div class= "course-image" style="background-image: url(<%= @course.image %>)"></div>
         <hr>
-        <%= link_to "Start now on #{@course.plattform}", @course.url, class: "btn btn-primary", target: "_blank" %>
-        <h6>Already took it?</h6>
-        <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary" %>
+        <%= link_to "Start now on #{@course.plattform}", @course.url, class: "main-c2a", target: "_blank" %>
+
+          <h6>Already took it?</h6>
+
+        <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "main-c2a" %>
         <hr>
         <ul>
           <li>Price: <%= @course.price %></li>
