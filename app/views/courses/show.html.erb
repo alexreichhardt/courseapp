@@ -13,7 +13,7 @@
           <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
         <% end %>
         <!-- course description -->
-        <div class="course-description">
+        <div class="course-description" style="color: white;">
 
           <!-- Print subtitle if existing -->
            <% unless @course.subtitle.nil? %>
