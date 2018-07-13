@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_080116) do
     t.date "birthdate"
     t.boolean "admin", default: false, null: false
     t.string "name"
-    t.string "avatar", default: "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg"
+    t.string "avatar", default: "http://marclimoservices.com/wp-content/uploads/2017/05/facebook-default.png"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
