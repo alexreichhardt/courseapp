@@ -12,10 +12,13 @@
   color: #ffffff;
   background-color: rgba(11, 63, 150,0.8);
   border-radius: 0px;
-  :hover {
-    color: rgba(11, 63, 150,0.8);
+
+
+  &:hover {
+
+    color: rgba(11, 63, 150,0.8) !important;
     background-color: white;
-    border-color: rgba(11, 63, 150,0.8);
+
   }
 }
 
@@ -23,10 +26,24 @@
   color: rgba(11, 63, 150,0.8);
   background-color: white;
   border-color: rgba(11, 63, 150,0.8);
-  :hover {
-    color: #ffffff;
+  &:hover {
+    color: white;
     background-color: rgba(11, 63, 150,0.8);
   }
+}
+
+.apply-filter-btn {
+  text-transform: uppercase;
+  margin: 32px 0px;
+  border: 2px solid white;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    border-color: rgba(11, 63, 150,0.0);
+    color: rgba(11, 63, 150,0.8);
+
+  }
+
 }
 
 .button-category {
