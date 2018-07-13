@@ -25,8 +25,14 @@ class UdemyImporter
     ids = []
     page_num = 1
     loop do
+      if page_num == 3
+        p ids
+        return ids
+        break
+      end
       url = "/?page=#{page_num}&page_size=9&category=Development"
       response = self.class.get(url, @options)
+
       p "Error Code #{response.code}"
       case response.code
       when 404
@@ -43,9 +49,9 @@ class UdemyImporter
         break
       else
         response["results"].each do |course|
-          ids << course["id"]
+           ids << course["id"]
         end
-        p "id_count: #{page_num}"
+        p "id_count: #{page_num}00"
         if page_num % 10 == 0
           puts "sleeping for 1 minute.."
           sleep(61)
@@ -59,6 +65,7 @@ class UdemyImporter
   def get_results
     ids = get_ids
     ids.each do |id|
+      p "fetch data"
       instance_attributes = {}
       url = "/#{id}?fields[course]=@all"
       response = self.class.get(url, @options)
@@ -77,8 +84,9 @@ class UdemyImporter
       instance_attributes[:duration] = (response["estimated_content_length"].to_i) / 60
       instance_attributes[:duration_unit] = "hours"
       instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
-      #i = Course.new(instance_attributes)
-      #i.save!
+      i = Course.new(instance_attributes)
+      i.save!
+      p "finished with #{i}"
       #p instance_attributes
     end
     #return instance_attributes
