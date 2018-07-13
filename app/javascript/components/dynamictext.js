@@ -6,7 +6,7 @@ function loadDynamicBannerText() {
   if (bannerExists) {
     new Typed('#banner-typed-text', {
       strings: ["Python", "Ruby", "Javascript"],
-      typeSpeed: 150,
+      typeSpeed: 200,
       loop: true
     });
   }
