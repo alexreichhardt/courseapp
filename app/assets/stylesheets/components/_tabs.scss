@@ -1,5 +1,5 @@
 .tabs {
-  background: #F2F2F2;
+
   display: flex;
   padding: 10px 10px 0 10px
 }
@@ -21,20 +21,26 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #756A66;
+  background: lightgrey;
   flex: 0 0 50%;
   text-align: center;
   padding: 20px 0;
+  border-bottom: 2px solid black;
 }
 .tab:first-child {
-  border-radius: 10px 0 0 0;
+  border-radius: 0px 0 0 0;
+
 }
 .tab:last-child {
-  border-radius: 0 10px 0 0;
+  border-radius: 0 0px 0 0;
 }
 .tab.active {
   background: white;
   color: black;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 0px solid black;
+  border-left: 2px solid black;
 }
 
 .show {
@@ -47,4 +53,5 @@
 
 .tab-content {
   padding: 10px;
+  padding-top: 0px;
 }
