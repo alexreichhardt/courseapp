@@ -7,12 +7,43 @@
       <!-- knowledge level selector -->
         <div class="filter-selectors">
           <div class="filter">
-          <%= f.input :knowledge_level, as: :check_boxes, collection: ["beginner","intermediate", "advanced"], checked: params.dig(:criteria, :knowledge_level) %>
-          </div>
-            <!-- plattform selector -->
+              <!-- select box beginner -->
+              <h3>Knowledge level</h3>
+              <div class="form-check category-choices">
+                  <input class="form-check-input hidden required" type="checkbox" value="beginner" name="criteria[knowledge_level][]" id="criteria_knowledge_level_beginner">
+                  <label class="collection_check_boxes category-choice" for="criteria_knowledge_level_beginner">Beginner</label>
+              </div>
+              <!-- select box intermediate -->
+              <div class="form-check category-choices">
+                  <input class="form-check-input hidden required" type="checkbox" value="intermediate" name="criteria[knowledge_level][]" id="criteria_knowledge_level_intermediate">
+                  <label class="collection_check_boxes category-choice" for="criteria_knowledge_level_intermediate">Intermediate</label>
+              </div>
+              <!-- select box intermediate -->
+              <div class="form-check category-choices">
+                  <input class="form-check-input hidden required" type="checkbox" value="advanced" name="criteria[knowledge_level][]" id="criteria_knowledge_level_advanced">
+                  <label class="collection_check_boxes category-choice" for="criteria_knowledge_level_advanced">Advanced</label>
+              </div>
           <div class="filter">
-          <%= f.input :plattform, as: :check_boxes, collection: ["Udemy","Udacity", "Edx"], checked: params.dig(:criteria, :plattform) %>
+              <h3>Platform</h3>
+              <div class="form-check category-choices">
+                  <input class="form-check-input hidden required" type="checkbox" value="Udemy" name="criteria[plattform][]" id="criteria_knowledge_level_udemy">
+                  <label class="collection_check_boxes category-choice" for="criteria_knowledge_level_udemy">Udemy</label>
+              </div>
+              <div class="form-check category-choices">
+                  <input class="form-check-input hidden required" type="checkbox" value="Udacity" name="criteria[plattform][]" id="criteria_knowledge_level_udacity">
+                  <label class="collection_check_boxes category-choice" for="criteria_knowledge_level_udacity">Udacity</label>
+              </div>
+              <div class="form-check category-choices">
+                  <input class="form-check-input hidden required" type="checkbox" value="Edx" name="criteria[plattform][]" id="criteria_knowledge_level_edx">
+                  <label class="collection_check_boxes category-choice" for="criteria_knowledge_level_edx">Edx</label>
+              </div>
           </div>
+      <!-- filter-selectors -->
+      </div>
+            <!-- plattform selector -->
+
+
+
             <!-- hidden fields -->
           <%= f.hidden_field :search, value: @search_input %>
             <!-- submit button -->

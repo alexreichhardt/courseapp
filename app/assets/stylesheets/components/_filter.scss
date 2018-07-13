@@ -22,7 +22,7 @@
     display: none;
   }
 
-  legend {
+  legend, h3 {
     font-size: 20px;
     font-weight: lighter;
     margin-bottom: 4px;
@@ -60,4 +60,34 @@
 .card-course-preview {
   background-color: white;
   padding-top: 0px;
+}
+
+.category-choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+
+.category-choice {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  padding: 4px 8px;
+  transition: 0.3s ease;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    color: #469AE0
+  }
+  &.active {
+  background: white;
+  color: #469AE0;
+  opacity: 1;
+  }
 }
