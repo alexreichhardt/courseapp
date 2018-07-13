@@ -14,12 +14,12 @@
             </a>
           </div>
           <div class="tab-content">
-          <div id="tab1-content">
 
+          <div id="tab1-content">
             <%@courses.flatten.each do |course|%>
               <div class="card-result">
                 <div class="card-header">
-                  <h3><%= link_to course.title, course_path(course) %></h3>
+                  <h3><%=course.title%></h3>
                 </div>
                 <div class="card-icons">
                   <div class="icons">
@@ -35,9 +35,11 @@
                     <p><%= course.price %></p>
                   </div>
                 </div>
-                <div class="card-description">
-                  <p><%= course.description %></p>
+                <div class="card-description" >
+                  <p style= "margin-bottom: 20px;"><%= truncate(course.description, length: 400, escape: false) %></p>
+                  <%= link_to("See Details", course_path(course), class: "main-c2a") %>
                 </div>
+                <hr>
               </div>
             <%end%>
           </div>
