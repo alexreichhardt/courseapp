@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container sticky-parts">
   <div class="course-show-row">
 
     <!-- left side -->
@@ -24,7 +24,13 @@
         <hr>
         <!-- reviews -->
         <div class="reviews">
-          <h2>Reviews (<%= @reviews.count %>)</h2>
+          <% if @reviews.empty? %>
+            <h2>No Reviews</h2>
+            <h4>Be the first!</h4>
+            <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary" %>
+          <% else %>
+            <h2>Reviews (<%= @reviews.count %>)</h2>
+          <% end %>
           <% @reviews.each do |review|%>
             <div class="single-review">
               <div class="review-profile">
@@ -52,18 +58,19 @@
           <%end%>
         <!-- reviews -->
         </div>
-        <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary" %>
       <!-- for css of the left side -->
       </div>
     <!-- left side -->
     </div>
 
     <!-- card on the right side -->
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-4 make-it-stick">
       <div class="card course-details">
         <div class= "course-image" style="background-image: url(<%= @course.image %>)"></div>
         <hr>
-        <%= link_to "Start course on #{@course.plattform}", @course.url, class: "btn btn-primary", target: "_blank" %>
+        <%= link_to "Start now on #{@course.plattform}", @course.url, class: "btn btn-primary", target: "_blank" %>
+        <h6>Already took it?</h6>
+        <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary" %>
         <hr>
         <ul>
           <li>Price: <%= @course.price %></li>
