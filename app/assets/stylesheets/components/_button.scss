@@ -26,11 +26,31 @@
   color: white;
 }
 
+// .call2action {
+//   background: #03B4FF;
+//   border-radius: 3px;
+//   padding: 6px 10px;
+//   color: white;
+//   transition: 0.3s;
+//   height: 50px;
+//   width: 15%;
+//   padding-bottom: 5px;
+//   &:hover {
+//     background: #007baf;
+//     text-decoration: none;
+//     color: white;
+//   }
+// }
+
+
+
 .call2action {
-  background: #03B4FF;
-  border-radius: 3px;
+  background: none;
+  border-radius: 0px;
   padding: 6px 10px;
   color: white;
+  border: 2px solid white;
+  font-weight:bold;
   transition: 0.3s;
   height: 50px;
   width: 15%;
@@ -41,3 +61,4 @@
     color: white;
   }
 }
+
