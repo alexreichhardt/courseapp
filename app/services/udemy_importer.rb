@@ -79,7 +79,7 @@ class UdemyImporter
       instance_attributes[:organization] = nil
       instance_attributes[:url] = create_url(response["url"])
       instance_attributes[:active] = active_status(response["status_label"])
-      instance_attributes[:language] = "english"
+      instance_attributes[:language] = "English"
       instance_attributes[:instructor] = instructors(response["visible_instructors"])
       instance_attributes[:duration] = (response["estimated_content_length"].to_i) / 60
       instance_attributes[:duration_unit] = "hours"
