@@ -1,7 +1,9 @@
 class Course < ApplicationRecord
-  enum knowledge_level: [:beginner, :intermediate, :advanced]
+  enum knowledge_level: [:beginner, :intermediate, :advanced, :undetermined]
   has_many :bookmarks, dependent: :destroy
   has_many :course_reviews, dependent: :destroy
+
+  # paginates_per 100
 
   include PgSearch
 
