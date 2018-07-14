@@ -14,13 +14,16 @@ class UdacityImporter
     end
 
 
-    response["courses"].each do |course|
+    response["courses"].each_with_index do |course, i|
+
+       if i < 5
+      full_description = course["summary"] + " " + course["expected_learning"]
 
       puts "creating a course.."
       Course.create(
         title: course["title"],
         subtitle: course["subtitle"],
-        description: course["summary"],
+        description: full_description,
         knowledge_level: course["level"],
         categories: {subjects: course["tracks"]},
         price: "$0",
@@ -33,6 +36,10 @@ class UdacityImporter
         language: "English",
         instructor: { instructors: course["instructors"] == [] ? nil : UdacityImporter.format_instructor(course["instructors"]) }
         )
+
+       else
+       break
+       end
 
     end
 
