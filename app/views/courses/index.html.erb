@@ -28,6 +28,7 @@
                 <!-- select box advanced -->
                 <div class="form-check category-choices">
                   <%= label_select(@levels, "advanced") %>
+
                 </div>
               </div>
               <div class="small-placeholder">
@@ -36,20 +37,20 @@
                 <h3>Platform</h3>
                 <!-- Udemy -->
                 <div class="form-check category-choices">
-                  <%= label_select_p(@plattforms, "Udemy") %>
+                  <%= label_select_p(@platforms, "Udemy") %>
                 </div>
                 <!-- Udacity -->
                 <div class="form-check category-choices">
-                  <%= label_select_p(@plattforms, "Udacity") %>
+                  <%= label_select_p(@platforms, "Udacity") %>
                 </div>
                 <!-- EdX -->
                 <div class="form-check category-choices">
-                  <%= label_select_p(@plattforms, "Edx") %>
+                  <%= label_select_p(@platforms, "Edx") %>
                 </div>
               </div>
             </div>
             <!-- filter-selectors -->
-            <!-- plattform selector -->
+            <!-- platform selector -->
             <div>
               <!-- hidden fields -->
               <%= f.hidden_field :search, value: @search_input %>

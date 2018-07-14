@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_080116) do
+ActiveRecord::Schema.define(version: 2018_07_14_163634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2018_07_12_080116) do
     t.string "subtitle"
     t.text "description"
     t.integer "knowledge_level"
-    t.string "price"
     t.string "image"
     t.jsonb "organization", default: "{}"
     t.string "duration_unit"
@@ -52,8 +51,11 @@ ActiveRecord::Schema.define(version: 2018_07_12_080116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "categories"
-    t.string "plattform"
+    t.string "platform"
     t.string "duration"
+    t.string "price_unit"
+    t.integer "price"
+    t.string "completion_time"
   end
 
   create_table "users", force: :cascade do |t|

@@ -47,7 +47,7 @@ class EdxImporter
 
     input["results"].each do |course|
       instance_attributes = {}
-      #instance_attributes[:plattform] = "edx"
+      instance_attributes[:platform] = "Edx"
       instance_attributes[:title] = course["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = get_description(course)
@@ -62,6 +62,7 @@ class EdxImporter
       instance_attributes[:duration] = get_duration(course)
       instance_attributes[:duration_unit] = nil
       instance_attributes[:knowledge_level] = get_knowledge_level(course)
+      instance_attributes[:completion_time] = get_completion_time(course)
 
       if validator(instance_attributes)
         new_course = Course.new(instance_attributes)
@@ -170,12 +171,25 @@ class EdxImporter
     max = course["max_effort"]
     weeks = course["weeks_to_complete"]
 
-    if min.nil? && !max.nil?
-      return "#{max} hours for #{weeks}"
+    if min.nil? && max.nil?
+      return "For #{weeks} weeks"
+    elsif min.nil? && !max.nil?
+      return "#{max} hours for #{weeks} weeks"
     elsif max.nil? && !min.nil?
-      return "#{min} hours for #{weeks}"
+      return "#{min} hours for #{weeks} weeks"
     else
       return "#{min}-#{max} hours for #{weeks} weeks"
+    end
+  end
+
+  def get_completion_time(course)
+    course = course["course_runs"][0]
+    if course["max_effort"].present?
+      if course["max_effort"] > 1
+        return "long"
+      else
+        return "short"
+      end
     end
   end
 
