@@ -10,7 +10,7 @@
 Course.delete_all
 User.delete_all
 
-plattforms = ["Udemy", "Edx", "Udacity"]
+platforms = ["Udemy", "Edx", "Udacity"]
 
 
 User.create!(
@@ -59,7 +59,7 @@ Course.create!(
       active: true,
       language: "English",
       instructor: {}.to_json,
-      plattform: plattforms.sample
+      platform: platforms.sample
     },
     {
       title: "Arts and Design",
@@ -76,7 +76,7 @@ Course.create!(
       active: true,
       language: "English",
       instructor: {}.to_json,
-      plattform: plattforms.sample
+      platform: platforms.sample
     },
     {
       title: "Computers and Technology",
@@ -93,7 +93,7 @@ Course.create!(
       active: true,
       language: "English",
       instructor: {}.to_json,
-      plattform: plattforms.sample
+      platform: platforms.sample
     },
     {
       title: "Business and Economics",
@@ -110,7 +110,7 @@ Course.create!(
       active: true,
       language: "English",
       instructor: {}.to_json,
-      plattform: plattforms.sample
+      platform: platforms.sample
     }
   ]
 )

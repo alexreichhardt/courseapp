@@ -23,15 +23,15 @@ module CoursesHelper
     html = nil
     if filter&.include?(value)
       html = <<-HTML
-        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[plattform][]" id="criteria_plattform_#{value}" checked>
-        <label class="collection_check_boxes category-choice active" for="criteria_plattform_#{value}">
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[platform][]" id="criteria_platform_#{value}" checked>
+        <label class="collection_check_boxes category-choice active" for="criteria_platform_#{value}">
           #{value}
         </label>
       HTML
     else
       html = <<-HTML
-        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[plattform][]" id="criteria_plattform_#{value}">
-        <label class="collection_check_boxes category-choice" for="criteria_plattform_#{value}">
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[platform][]" id="criteria_platform_#{value}">
+        <label class="collection_check_boxes category-choice" for="criteria_platform_#{value}">
           #{value}
         </label>
       HTML

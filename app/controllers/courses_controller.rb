@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
     @search_input = params.dig(:criteria, :search)
     @error = ""
     @levels = params.dig(:criteria, :knowledge_level)
-    @plattforms = params.dig(:criteria, :plattform)
+    @platforms = params.dig(:criteria, :platform)
 
     if @search_input.blank?
       # display all courses if user makes no input
@@ -30,13 +30,13 @@ class CoursesController < ApplicationController
       @courses = @courses.where(knowledge_level: [selected_options])
     end
 
-    # plattform
-    if params.dig(:criteria, :plattform)
-      selected_options = params[:criteria][:plattform].reject(&:blank?)
+    # platform
+    if params.dig(:criteria, :platform)
+      selected_options = params[:criteria][:platform].reject(&:blank?)
       if selected_options.blank?
         selected_options = ["Udemy", "Udacity", "Edx"]
       end
-      @courses = @courses.where(plattform: selected_options)
+      @courses = @courses.where(platform: selected_options)
     end
 
 
