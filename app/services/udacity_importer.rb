@@ -16,7 +16,7 @@ class UdacityImporter
 
     response["courses"].each_with_index do |course, i|
 
-       if i < 5
+       if i < 50
       full_description = course["summary"] + " " + course["expected_learning"]
 
       puts "creating a course.."

@@ -30,7 +30,7 @@ class UdemyImporter
         return ids
         break
       end
-      url = "/?page=#{page_num}&page_size=1&category=Development"
+      url = "/?page=#{page_num}&page_size=30&category=Development"
       response = self.class.get(url, @options)
 
       p "Error Code #{response.code}"

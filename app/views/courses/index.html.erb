@@ -78,19 +78,19 @@
               <h3 class="heading"><%=course.title%></h3>
             </div>
           <div class="paragraph">
-            <p><%= truncate(course.description, length: 400, escape: false) %></p>
+            <p><%= truncate(course.description.html_safe, length: 400, escape: false) %></p>
           </div>
         </div>
         <div class="card-content-right">
-            <div class="icon">
+            <div class="icon-next">
               <i class="fas fa-graduation-cap"></i>
               <p><%= course.knowledge_level %></p>
             </div>
-            <div class="icon">
+            <div class="icon-next">
               <i class="far fa-clock"></i>
               <p><%= course.duration%></p>
             </div>
-            <div class="icon">
+            <div class="icon-next">
               <i class="fas fa-coins"></i>
               <p><%= course.price %></p>
             </div>

@@ -52,6 +52,7 @@ class CoursesController < ApplicationController
         @bookmarked = true
       end
     end
+
   end
 
 
