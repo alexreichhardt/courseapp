@@ -7,52 +7,18 @@
   flex-direction: column;
 }
 
-.center-text {
-  justify-content: center;
-
+.course-image {
+  height: 90%;
+  width: 100%;
 }
 
-.review-profile p {
-   font-size: 10px;
+.center-text {
+  justify-content: center;
 }
 
 .review-content {
-  flex: 1;
-}
-
-.single-review {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
-}
-
-.course-info {
-  h1 {
-    // allows h1 to have the icon in the same line
-    display: inline-block;
-  }
-  h3 {
-    font-weight: lighter;
-    color: white;
-    margin-top: 0px;
-  }
-
-  i {
-    margin-left: 8px;
-    font-size: 32px;
-  }
-
-}
-
-.course-description {
-
-  p {
-    color: white;
-    margin-top: 0px;
-    font-weight: regular;
-  }
-
+  padding-left: 20px;
+  text-align: justify;
 }
 
 .make-it-stick {
@@ -64,47 +30,48 @@
 }
 
 .course-details {
-  margin-top: 24px;
-  margin-bottom: 24px;
-
   a {
     display: block;
     margin: auto;
   }
-
   ul {
     list-style-type: none;
     padding-left: 0;
   }
-
-  i {
-    margin-right: 8px;
-
-  }
 }
 
-.reviews {
-  border: 0.5px solid #eeeeee;
-  padding-left: 8px;
-  background-color: white;
-
-  h4 {
-    margin-top: 0px;
-    margin-bottom: 8px;
-  }
-
-  .stars {
-    margin-bottom: 8px;
-  }
-}
-a {
-  text-decoration: none !important
+.align-horizontal {
+  justify-content: space-between;
+  padding-right: 2%;
 }
 
-  .by-name {
-    margin-top: 4px;
+.course-attributes  {
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.box-horizontal {
+  display: flex;
+  align-items:center;
+  background-color: $light-gray;
+  width: 100%;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  margin: 12px;
+  margin-bottom: 8px;
+}
+
+.center-align {
+  text-align: center;
+  flex: 0 0 33%;
+}
+
+.add-review {
+  margin-top: 40px;
+  p {
+    margin-bottom: 4px;
+    font-weight: 400;
   }
-
-
-
-
+}

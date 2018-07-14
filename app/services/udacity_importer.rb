@@ -20,8 +20,10 @@ class UdacityImporter
     else
 
 
+
     response["courses"].each do |course|
       full_description = course["summary"] + " " + course["expected_learning"] + " " + course["required_knowledge"]
+
 
       puts "creating a course.."
       Course.create!(

@@ -1,47 +1,73 @@
 <div class="container sticky-parts">
-  <div class="course-show-row">
+  <div class="course-show-row row">
 
     <!-- left side -->
     <div class="col-xs-12 col-md-8">
       <!-- for css of the left side -->
-      <div class="course-info">
-        <h1><%= @course.title %> </h1>
-        <!-- solid bookmark if bookmarked by user, otherwise regular bookmark icon -->
-        <% if @bookmarked == false %>
-          <i><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
-        <% else %>
-          <i><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
-        <% end %>
-        <!-- course description -->
-        <div class="course-description" style="color: white;">
-
-          <!-- Print subtitle if existing -->
-           <% unless @course.subtitle.nil? %>
-            <h3> <%= @course.subtitle %> </h3>
+      <div class="box">
+        <div class="flex align-horizontal">
+          <p><%= @course.platform %> online course<p>
+          <% if @bookmarked == false %>
+            <i class="single-icon"><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
+          <% else %>
+            <i class="single-icon"><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
           <% end %>
-          <p> <%= @course.description.html_safe %> </p>
+        </div>
+        <h1 class="title"><%= @course.title %></h1>
+        <!-- course description -->
+        <div class="course-description">
+          <!-- Print subtitle if existing -->
+          <% unless @course.subtitle.nil? %>
+            <h3 class="subtitle"><%= @course.subtitle %> </h3>
+          <% end %>
+          <div class="paragraph">
+            <p><%= truncate(@course.description.html_safe, length: 800, escape: false) %></p>
+          </div>
+        </div>
+        <div class="course-attributes">
+          <div class="box box-horizontal">
+            <div class="center-align">
+              <p style="margin-bottom: 4px;">Instructor<p>
+              <p style= "font-weight: 300;">Max Mustermann</p>
+            </div>
+            <div class="center-align">
+              <p style="margin-bottom: 4px;">Language<p>
+              <p style= "font-weight: 300;"><%= @course.language %></p>
+            </div>
+            <div class="center-align">
+              <p style="margin-bottom: 4px;">Available now<p>
+              <%if @course.active %>
+                <p style= "font-weight: 300;">Yes</p>
+              <%else%>
+                <p style= "font-weight: 300;">No</p>
+              <%end%>
+            </div>
+          </div>
         </div>
         <hr>
         <!-- reviews -->
-        <div class="reviews">
+        <div>
           <% if @reviews.empty? %>
-            <h2>No Reviews</h2>
-            <h4>Be the first!</h4>
-            <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "btn btn-primary", style: "margin-bottom: 16px;" %>
+            <h3 class="heading">No reviews yet</h3>
+            <h3 class="subtitle" style="font-size: 20px; margin-bottom: 24px;">Be the first!</h3>
+            <div>
+            <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "button-green-secondary" %>
+            </div>
           <% else %>
-            <h2>Reviews (<%= @reviews.count %>)</h2>
+            <h3 class="heading">Reviews (<%= @reviews.count %>)</h3>
           <% end %>
           <% @reviews.each do |review|%>
-            <div class="single-review">
-              <div class="review-profile">
+            <div class="flex">
+              <div class="author">
                 <% author_id = review.user_id %>
                 <% author = User.find(author_id) %>
                 <% author_avatar = author.avatar.identifier %>
                 <img src='<%= author_avatar %>' class="avatar-md">
-                <p class="by-name"><%= author.name %></p>
+                <p class="paragraph" style="text-align: center; margin-top: 8px;"><%= author.name %></p>
               </div>
               <div class="review-content">
-                <h4><%= review.title %> </h4>
+                <div class="flex">
+                  <h3 style= "font-size: 24px; margin-top: 11px"><%= review.title %></h3>
                   <div class="stars">
                     <% t = review.rating.to_i %>
                     <% t.times do %>
@@ -51,9 +77,12 @@
                       <i class="far fa-star"></i>
                     <% end %>
                   </div>
+                </div>
                   <p><%= review.content %> </p>
-
               </div>
+
+            </div>
+            <div class="medium-placeholder">
             </div>
           <%end%>
         <!-- reviews -->
@@ -66,32 +95,45 @@
     <!-- card on the right side -->
     <div class="col-xs-12 col-md-4 make-it-stick">
       <div class="box course-details">
-        <div class= "course-image" style="background-image: url(<%= @course.image %>)"></div>
+        <div class="course-image">
+          <% case @course.platform %>
+          <% when "Udemy" %>
+            <%= image_tag("udemy-logo", class: "course-image") %>
+          <% when "Udacity" %>
+            <%= image_tag("udacity-logo", class: "course-image") %>
+          <% when "Edx" %>
+            <%= image_tag("edx-logo", class: "course-image") %>
+          <% end %>
+        </div>
         <hr>
-        <%= link_to "Start now on #{@course.platform}", @course.url, class: "main-c2a", target: "_blank" %>
-
-          <h6>Already took it?</h6>
-
-        <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "main-c2a" %>
-        <hr>
-        <ul>
-          <li><i class="fas fa-coins"></i>Price: <%= @course.price %></li>
+        <ul style="margin-bottom: 15px;">
+          <li class= "list-style">
+            <i class="fas fa-coins icon"></i>
+            Price: <%= @course.price %>
+          </li>
           <% unless @course.duration == "" || @course.duration == "0" %>
-            <li><%= "#{@course.duration} #{@course.duration_unit}" %></li>
+            <li class= "list-style">
+              <i class="far fa-clock icon"></i>
+              <%= "#{@course.duration} #{@course.duration_unit}" %>
+            </li>
           <% end %>
-          <li><i class="fas fa-graduation-cap"></i><%= @course.knowledge_level.capitalize %></li>
-          <% if @course.active %>
-            <li>Status: Active</li>
-          <% else %>
-            <li>Status: Currently inactive</li>
-          <% end %>
-          <li>Offering platform: <%= @course.platform %></li>
+          <li class= "list-style">
+            <i class="fas fa-graduation-cap icon"></i>
+            <%= @course.knowledge_level.capitalize %>
+          </li>
+          <li class= "list-style">
+            <i class="fas fa-external-link-square-alt icon"></i>
+            Offering platform: <%= @course.platform %>
+          </li>
         </ul>
+        <%= link_to "Start now on #{@course.platform}", @course.url, class: "button-green-primary", target: "_blank" %>
+        <div class="add-review">
+          <p>Already took it?</p>
+          <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "button-green-secondary" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-___
 
 
