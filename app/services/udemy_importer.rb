@@ -25,12 +25,12 @@ class UdemyImporter
     ids = []
     page_num = 1
     loop do
-      if page_num == 3
+      if page_num == 2
         p ids
         return ids
         break
       end
-      url = "/?page=#{page_num}&page_size=9&category=Development"
+      url = "/?page=#{page_num}&page_size=1&category=Development"
       response = self.class.get(url, @options)
 
       p "Error Code #{response.code}"
@@ -84,6 +84,8 @@ class UdemyImporter
       instance_attributes[:duration] = (response["estimated_content_length"].to_i) / 60
       instance_attributes[:duration_unit] = "hours"
       instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
+      instance_attributes[:completion_time] = get_completion_time(response["estimated_content_length"])
+
       i = Course.new(instance_attributes)
       i.save!
       p "finished with #{i}"
@@ -97,6 +99,15 @@ class UdemyImporter
     subjects_hash = {}
     subjects_hash["subjects"] = subjects_array
     subjects_hash
+  end
+
+  def get_completion_time(content_length)
+    hours_of_content = content_length.to_i / 60
+    if hours_of_content > 17
+      return "long"
+    else
+      return "short"
+    end
   end
 
   def active_status(input)
