@@ -7,10 +7,16 @@
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
 $body-bg:                 $light-gray;
-$font-size-base: 18px;
+$font-size-base: 16px;
 
-// Colors
-$gray-base:       $gray;
+// Colors - Custom
+$gray-background: $light-gray;
+$blue-sidebar:    $light-blue;
+$green-primary:   $green;
+$red-primary:     $light-red;
+
+
+// Colors - Default
 $brand-primary:   $blue;
 $brand-success:   $green;
 $brand-info:      $yellow;
