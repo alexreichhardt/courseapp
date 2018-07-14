@@ -18,10 +18,10 @@
           <div id="tab1-content">
             <%@courses.flatten.each do |course|%>
               <div class="card-result">
-                <div class="card-header">
-                  <h3><%=course.title%></h3>
+                <div class="header">
+                  <h3 class="heading"><%=course.title%></h3>
                 </div>
-                <div class="card-icons">
+                <div class="horizontal-icons">
                   <div class="icons">
                     <i class="fas fa-graduation-cap"></i>
                     <p><%= course.knowledge_level %></p>
@@ -35,8 +35,8 @@
                     <p><%= course.price %></p>
                   </div>
                 </div>
-                <div class="card-description" >
-                  <p style= "margin-bottom: 20px;"><%= truncate(course.description, length: 400, escape: false) %></p>
+                <div class="content" >
+                  <p class="paragraph" style= "margin-bottom: 20px;"><%= truncate(course.description, length: 400, escape: false) %></p>
                   <%= link_to("See Details", course_path(course), class: "main-c2a") %>
                 </div>
                 <hr>
@@ -46,8 +46,8 @@
           <div id="tab2-content" class="hide">
             <% @reviews.each do |review|%>
               <div class="card-result">
-                <div class="card-header review-header">
-                  <h3><%= review.title %></h3>
+                <div class="review-header">
+                  <h3 class="heading"><%= review.title %></h3>
                   <i><%= link_to("", user_course_review_path(current_user, review), method: :delete, :class => "fas fa-trash-alt") %></i>
                 </div>
                 <div class="coursename">
@@ -55,7 +55,7 @@
                   <h4> <%= course.title %> </h3>
                 </div>
                 <% num = review.rating.to_i %>
-                <div class="card-icons">
+                <div class="horizontal-icons">
                   <div class="stars">
                   <% num.times do %>
                     <i class="fas fa-star"></i>
@@ -65,8 +65,8 @@
                   <% end %>
                   </div>
                 </div>
-                <div class="card-description">
-                  <p> <%= review.content %> </p>
+                <div class="content">
+                  <p class="paragraph"> <%= review.content %> </p>
                   </h5> <%= link_to "Visit Course", course_path(course) %> </h5>
                 </div>
               </div>
@@ -77,7 +77,7 @@
       </div>
       <div class="contact-container col-xs-12 col-sm-4">
         <div class="for-padding">
-          <div class="card">
+          <div class="box">
             <div class="card-avatar">
               <div class="card-avatar-content">
                 <% if current_user.avatar.file.nil?%>
@@ -93,11 +93,11 @@
           <div class="empty-box">
 
           </div>
-          <div class="card">
+          <div class="box">
             <div class="card-result">
               <div class="card-edit-user">
-                <div class="card-header">
-                  <h2>Edit your profile:</h2>
+                <div class="header">
+                  <h3 class="heading">Edit your profile:</h3>
                   <div class="icons">
                     <i class="fas fa-unlock-alt"></i>
                     <p><%= link_to "Change your password", edit_user_registration_path, class: "edit-link" %></p>

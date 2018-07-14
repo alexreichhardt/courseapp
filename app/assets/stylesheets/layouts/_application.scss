@@ -4,7 +4,7 @@
 }// Specific CSS for your home-page
 
 .background {
-  background-image: radial-gradient(ellipse farthest-side at 100% 100%,#dbf6c8 20%,#1cafc6 50%,#012690 110%);
+  background-color: $gray-background;
   min-height: calc(100vh - 70px - 164.5px);
   height: 100%;
 }
