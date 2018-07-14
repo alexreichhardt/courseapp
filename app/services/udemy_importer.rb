@@ -69,7 +69,7 @@ class UdemyImporter
       instance_attributes = {}
       url = "/#{id}?fields[course]=@all"
       response = self.class.get(url, @options)
-      instance_attributes[:plattform] = "Udemy"
+      instance_attributes[:platform] = "Udemy"
       instance_attributes[:title] = response["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = response["description"]
