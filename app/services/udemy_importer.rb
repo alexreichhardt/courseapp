@@ -69,12 +69,21 @@ class UdemyImporter
       instance_attributes = {}
       url = "/#{id}?fields[course]=@all"
       response = self.class.get(url, @options)
+      p "----"
+      p "----"
+      p "----"
+      p response["id"]
+            p "----"
+
+      p "----"
+
       instance_attributes[:platform] = "Udemy"
       instance_attributes[:title] = response["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = response["description"]
       instance_attributes[:categories] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
       instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
+      instance_attributes[:price_unit] = response["is_paid"] == false ? "€" : response["price_detail"]["currency_symbol"]
       instance_attributes[:image] = response["image_100x100"]
       instance_attributes[:organization] = nil
       instance_attributes[:url] = create_url(response["url"])
@@ -151,12 +160,12 @@ class UdemyImporter
 
   def edit_price(list, discount)
     if discount.nil? && list == "Free"
-      return "$0"
+      return 0
     elsif discount.nil? && list != "Free"
-      return input
-    elsif
-      i = discount["price_string"]
-      return i
+      return discount["amount"]
+    # elsif
+    #   i = discount["price_string"].to_i
+    # return i
     end
   end
 end

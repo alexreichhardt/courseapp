@@ -53,6 +53,7 @@ class EdxImporter
       instance_attributes[:description] = get_description(course)
       instance_attributes[:categories] = get_category(course)
       instance_attributes[:price] = get_price(course)
+      instance_attributes[:price_unit] = "€"
       instance_attributes[:image] = get_image(course)
       instance_attributes[:organization] = get_organization(course)
       instance_attributes[:url] = get_url(course)
@@ -63,6 +64,7 @@ class EdxImporter
       instance_attributes[:duration_unit] = nil
       instance_attributes[:knowledge_level] = get_knowledge_level(course)
       instance_attributes[:completion_time] = get_completion_time(course)
+      instance_attributes[:university_course] = true
 
       if validator(instance_attributes)
         new_course = Course.new(instance_attributes)
@@ -140,7 +142,7 @@ class EdxImporter
       all_prices << prices.flatten
     end
     # returns the lowest price
-    return "#{all_prices.flatten.min} USD"
+    return "#{all_prices.flatten.min.to_i}"
   end
 
   def get_image(course)
