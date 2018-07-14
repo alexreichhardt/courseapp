@@ -10,7 +10,9 @@ class CoursesController < ApplicationController
 
     if @search_input.blank?
       # display all courses if user makes no input
-      @courses = Course.all
+      @courses = Course.page(params[:page]).per(10)
+
+
     elsif Course.search_global(@search_input).empty?
       @error = "The exact course you searched for could not be found, but here are some other courses you may be interested in."
       @courses = Course.all
