@@ -9,6 +9,55 @@
   text-decoration: none;
 }
 
+.button-green-primary {
+  color: white;
+  background-color: $green-primary;
+  border-radius: 1px;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  border: 2px solid $green-primary;
+  &:hover {
+    color: $green-primary;
+    background-color: white;
+    border: 2px solid $green-primary;
+  }
+}
+
+.button-green-secondary {
+  color: $green-primary;
+  background-color: white;
+  border: 2px solid $green-primary;
+  border-radius: 1px;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    color: white;
+    background-color: $green-primary;
+  }
+}
+
+
+.button-white-sidebar {
+  color: $blue-sidebar;
+  background-color: white;
+  border-radius: 1px;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid white;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    color: white;
+    background-color: $blue-sidebar;
+    border: 2px solid white;
+  }
+}
+
+
 .main-c2a {
   color: #ffffff;
   background-color: rgba(11, 63, 150,0.8);

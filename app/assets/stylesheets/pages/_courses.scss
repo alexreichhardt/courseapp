@@ -1,23 +1,122 @@
-h1 {
-  color: white;
+.result-title {
+  margin: 24px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  font-style: italic;
+  font-weight: lighter;
+  color: grey;
 }
 
+.first-card {
+  margin-top: 12px;
+}
+
+.filter-selectors {
+
+}
+
+.affix {
+  top: 20px;
+  z-index: 9999;
+}
+
+.filter-container {
+  margin-top: 0px;
+  padding-top: 20px;
+  padding-bottom: 16px;
+  background-color: $blue-sidebar;
+  position: fixed !important;
+  top: 70 !important;
+  height: 100%;
+  h3 {
+    font-size: 24px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #cecece;
+  }
+
+  abbr {
+    display: none;
+  }
+
+  legend, h3 {
+    font-size: 20px;
+    font-weight: lighter;
+    margin-top: 0px;
+    margin-bottom: 4px;
+    border-bottom: none;
+    color: white;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  .form-check-input {
+  margin-right: 8px;
 
 
-// .category-choice {
-//   background: #b7b7b7;
-//   padding: 20px;
-//   border-radius: 5px;
-//   opacity: .4;
-//   flex: 0 0 30%;
-//   text-align: center;
-//   &:hover {
-//     opacity: 1;
-//     cursor: pointer;
-//   }
-//   &.active {
-//   background: $brand-primary;
-//   color: white;
-//   opacity: 1;
-//   }
-// }
+}
+
+}
+
+.results-row {
+  .container {
+    padding-right: 160px;
+  }
+}
+
+.results-row > .col-xs-12.col-md-2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.filters-card {
+  // border: 0.5px solid #cecece;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.card-course-preview {
+  background-color: white;
+  padding-top: 0px;
+}
+
+.category-choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+
+.category-choice {
+  font-weight: 350;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  border-radius: 0px;
+  border: 1px solid white;
+  flex: 0 0 30%;
+  text-align: center;
+  padding: 4px 8px;
+  transition: 0.3s ease;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    color: #469AE0;
+    background-color: white;
+    // to be tried
+    // color: $green-primary;
+    // background-color: white;
+    // border: 2px solid $green-primary;
+
+  }
+  &.active {
+  background: white;
+  color: #469AE0;
+  opacity: 1;
+  // to be tried
+  // color: $green-primary;
+  // background-color: white;
+  // border: 2px solid $green-primary;
+  }
+}
