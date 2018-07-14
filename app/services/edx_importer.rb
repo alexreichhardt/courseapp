@@ -35,7 +35,7 @@ class EdxImporter
     # URL FOR TESTING (20 results)
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
-    number_of_courses = 1 # 1319
+    number_of_courses = 100 # 1319
     # STARTING POINT IN CATALOGUE
     starting_point = 0
     # URL FOR DEV AND PROD (ARBITRARY NUMBER OF COURSES)
@@ -47,7 +47,7 @@ class EdxImporter
 
     input["results"].each do |course|
       instance_attributes = {}
-      #instance_attributes[:platform] = "edx"
+      instance_attributes[:platform] = "Edx"
       instance_attributes[:title] = course["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = get_description(course)
@@ -104,7 +104,7 @@ class EdxImporter
       subjects_array = course["subjects"].map { |subject| subject["name"] }
       return "{}" unless subjects_array.count > 1
       subjects_hash = {}
-      subjects_hash["subjects"] = subjects_array
+      subjects_hash["categories"] = subjects_array
       subjects_hash.to_json
   end
 
