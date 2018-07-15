@@ -5,6 +5,8 @@ gem 'kaminari'
 
 gem 'cloudinary'
 
+gem 'jquery-ui-rails'
+
 gem 'carrierwave', '~> 1.2'
 
 gem 'bootsnap', require: false

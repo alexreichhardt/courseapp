@@ -9,6 +9,7 @@ pickTabs();
 import { categoryChoice } from "../components/categorychoice";
 categoryChoice();
 
-
+import { dataSlider } from '../components/dataslider';
+dataSlider();
 
 
