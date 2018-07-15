@@ -1,7 +1,7 @@
 <div class="container">
   <div class="main-container">
     <div class="row"></div>
-      <div class="info-container col-xs-12 col-sm-8">
+      <div class="info-container col-xs-12 col-sm-8 box">
         <div class="card-tab">
           <div class="tabs">
             <a class="tab active" id="tab1">
@@ -15,97 +15,95 @@
           </div>
           <div class="tab-content">
 
-          <div id="tab1-content">
-            <%@courses.flatten.each do |course|%>
-              <div class="card-result">
-                <div class="header">
-                  <h3 class="heading"><%=course.title%></h3>
+            <div id="tab1-content">
+              <%@courses.flatten.each do |course|%>
+                <div class="card-result">
+                  <div class="header">
+                    <h3 class="heading"><%=course.title%></h3>
+                  </div>
+                  <div class="horizontal-icons">
+                    <div class="icon-next" style="margin-top: 0px;">
+                      <i class="fas fa-graduation-cap"></i>
+                      <p><%= course.knowledge_level %></p>
+                    </div>
+                    <div class="icon-next" style="margin-top: 0px;">
+                      <i class="far fa-clock"></i>
+                      <p><%= course.duration%></p>
+                    </div>
+                    <div class="icon-next" style="margin-top: 0px;">
+                      <i class="fas fa-coins"></i>
+                      <p><%= course.price %></p>
+                    </div>
+                  </div>
+                  <div class="content" >
+                    <p class="paragraph" style= "margin-bottom: 20px;"><%= truncate(course.description, length: 400, escape: false) %></p>
+                    <div class="small-placeholder"></div>
+                    <%= link_to("See Details", course_path(course), class: "button-green-secondary") %>
+                  </div>
+                  <hr>
                 </div>
-                <div class="horizontal-icons">
-                  <div class="icons">
-                    <i class="fas fa-graduation-cap"></i>
-                    <p><%= course.knowledge_level %></p>
+              <%end%>
+            </div>
+            <div id="tab2-content" class="hide">
+              <% @reviews.each do |review|%>
+                <div class="review-overview">
+
+                  <div class="coursename">
+                    <% course = Course.all.find(review.course_id) %>
+                    <h3 class="subtitle" style="font-style: italic; font-size: 18px;">Course: <%= course.title %> </h3>
                   </div>
-                  <div class="icons">
-                    <i class="far fa-clock"></i>
-                    <p><%= course.duration%></p>
+                  <div class="flex">
+                  <h3 class="heading"><%= review.title %></h3>
+                  <div class="stars">
+                    <% t = review.rating.to_i %>
+                    <% t.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <% (5-t).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
                   </div>
-                  <div class="icons">
-                    <i class="fas fa-coins"></i>
-                    <p><%= course.price %></p>
+                  <i class="delete-icon"><%= link_to("", user_course_review_path(current_user, review), method: :delete, :class => "fas fa-trash-alt") %></i>
                   </div>
+                  <p class="paragraph"><%= review.content %> </p>
+                  <div class="small-placeholder"></div>
+                  <%= link_to "Visit Course", course_path(course), class: "button-green-secondary" %>
                 </div>
-                <div class="content" >
-                  <p class="paragraph" style= "margin-bottom: 20px;"><%= truncate(course.description, length: 400, escape: false) %></p>
-                  <%= link_to("See Details", course_path(course), class: "main-c2a") %>
+                <div class="medium-placeholder">
                 </div>
                 <hr>
-              </div>
-            <%end%>
-          </div>
-          <div id="tab2-content" class="hide">
-            <% @reviews.each do |review|%>
-              <div class="card-result">
-                <div class="review-header">
-                  <h3 class="heading"><%= review.title %></h3>
-                  <i><%= link_to("", user_course_review_path(current_user, review), method: :delete, :class => "fas fa-trash-alt") %></i>
-                </div>
-                <div class="coursename">
-                  <% course = Course.all.find(review.course_id) %>
-                  <h4> <%= course.title %> </h3>
-                </div>
-                <% num = review.rating.to_i %>
-                <div class="horizontal-icons">
-                  <div class="stars">
-                  <% num.times do %>
-                    <i class="fas fa-star"></i>
-                  <% end %>
-                  <% (5-num).times do %>
-                    <i class="far fa-star"></i>
-                  <% end %>
-                  </div>
-                </div>
-                <div class="content">
-                  <p class="paragraph"> <%= review.content %> </p>
-                  </h5> <%= link_to "Visit Course", course_path(course) %> </h5>
-                </div>
-              </div>
-            <%end%>
+              <%end%>
             </div>
           </div>
         </div>
       </div>
+
+
       <div class="contact-container col-xs-12 col-sm-4">
-        <div class="for-padding">
-          <div class="box">
-            <div class="card-avatar">
-              <div class="card-avatar-content">
-                <% if current_user.avatar.file.nil?%>
-                  <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-lg" %>
-                <% else %>
-                  <%= cl_image_tag(@user.avatar, class: "avatar-lg") %>
-                <% end %>
-                <h2>Hey <%= @user.name %>!</h2>
-                <p>How are you today?</p>
-              </div>
+        <div class="box">
+          <div class="card-avatar">
+            <div class="card-avatar-content">
+              <% if current_user.avatar.file.nil?%>
+                <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-lg" %>
+              <% else %>
+                <%= cl_image_tag(current_user.avatar.filename, class: "avatar-lg") %>
+              <% end %>
+              <h2>Hey <%= @user.name %>!</h2>
+              <p>How are you today?</p>
             </div>
           </div>
-          <div class="empty-box">
-
-          </div>
-          <div class="box">
-            <div class="card-result">
-              <div class="card-edit-user">
-                <div class="header">
-                  <h3 class="heading">Edit your profile:</h3>
-                  <div class="icons">
-                    <i class="fas fa-unlock-alt"></i>
-                    <p><%= link_to "Change your password", edit_user_registration_path, class: "edit-link" %></p>
-                  </div>
-                  <div class="icons">
-                    <i class="fas fa-user-circle"></i>
-                    <p><%= link_to "Change your avatar", edit_avatar_path, class: "edit-link" %></p>
-                  </div>
+          <hr>
+          <div class="card-result">
+            <div class="card-edit-user">
+              <div class="header">
+                <h3 class="heading">Edit your profile:</h3>
+                <div class="flex">
+                  <i class="fas fa-unlock-alt icon"></i>
+                  <p><%= link_to "Change your password", edit_user_registration_path, class: "edit-link" %></p>
+                </div>
+                <div class="flex">
+                  <i class="fas fa-user-circle icon"></i>
+                  <p><%= link_to "Change your avatar", edit_avatar_path, class: "edit-link" %></p>
                 </div>
               </div>
             </div>

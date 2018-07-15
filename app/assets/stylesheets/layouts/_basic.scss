@@ -40,9 +40,17 @@
 .flex {
   display: flex;
   align-items: center;
+  p {
+    margin-bottom: 0px;
+  }
 }
 
 .list-style {
   padding-bottom: 8px;
+}
+
+.indent-next-buttons {
+  margin-left: 25px;
+  margin-bottom: 25px;
 }
 

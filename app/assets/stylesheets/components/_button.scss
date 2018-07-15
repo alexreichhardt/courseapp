@@ -26,6 +26,27 @@
   }
 }
 
+.button-green-primary-landing {
+  height: 50px;
+  width:  100px;
+  border-bottom-width: 0px;
+  border-top-width: 1px;
+  color: white;
+  background-color: $green-primary;
+  border-radius: 1px;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  border: 2px solid $green-primary;
+  &:hover {
+    color: $green-primary;
+    background-color: white;
+    border: 2px solid $green-primary;
+    text-decoration: none;
+  }
+}
+
 .button-green-secondary {
   color: $green-primary;
   background-color: white;
@@ -42,6 +63,21 @@
   }
 }
 
+.button-red-secondary {
+  color: $red-primary;
+  background-color: white;
+  border: 2px solid $red-primary;
+  border-radius: 1px;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    color: white;
+    background-color: $red-primary;
+    text-decoration: none;
+  }
+}
 
 .button-white-sidebar {
   color: $blue-sidebar;
