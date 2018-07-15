@@ -1,7 +1,7 @@
 <div class="container-form">
   <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-      <div class="form-box" style="margin-top: 45px">
+      <div class="box" style="margin-top: 45px">
 
 
         <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -21,16 +21,17 @@
             <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
           </div>
 
-          <div class="form-actions">
-            <%= f.button :submit, "Update" %>
+          <div class="form-actions flex">
+            <div style="padding-right: 10px;">
+              <%= f.button :submit, "Update", class: "button-green-primary" %>
+            </div>
+            <%= link_to "Back", :back, class: "button-red-secondary"%>
           </div>
         <% end %>
+        <div class="alternative deleteaccount">
+          <p class="paragraph">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), class: "link ", data: { confirm: "Are you sure?" }, method: :delete %></p>
+        </div>
 
-        <h3>Cancel my account</h3>
-
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-        <%= link_to "Back", :back %>
       </div>
     </div>
   </div>

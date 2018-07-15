@@ -1,7 +1,7 @@
 <div class="container">
   <div class="main-container">
     <div class="row"></div>
-      <div class="info-container col-xs-12 col-sm-8 box">
+      <div class="info-container col-xs-12 col-sm-8">
         <div class="card-tab">
           <div class="tabs">
             <a class="tab active" id="tab1">
@@ -13,9 +13,15 @@
               <p><%=@reviews.size%></p>
             </a>
           </div>
-          <div class="tab-content">
-
+          <div class="tab-content box" style="margin-top: 0px;">
             <div id="tab1-content">
+              <% if @courses.flatten.empty? %>
+                <h3 class="heading">No bookmarks yet?</h3>
+                <h3 class="subtitle" style="font-size: 20px; margin-bottom: 24px;">Begin adding some!</h3>
+                <div>
+                  <%= link_to "See all courses", courses_path, class: "button-green-secondary" %>
+                </div>
+              <% else %>
               <%@courses.flatten.each do |course|%>
                 <div class="card-result">
                   <div class="header">
@@ -42,9 +48,17 @@
                   </div>
                   <hr>
                 </div>
-              <%end%>
+              <% end %>
+            <% end %>
             </div>
             <div id="tab2-content" class="hide">
+              <% if @courses.flatten.empty? %>
+                <h3 class="heading">No reviews yet?</h3>
+                <h3 class="subtitle" style="font-size: 20px; margin-bottom: 24px;">Start completing some courses!</h3>
+                <div>
+                  <%= link_to "See all courses", courses_path, class: "button-green-secondary" %>
+                </div>
+              <% else %>
               <% @reviews.each do |review|%>
                 <div class="review-overview">
 
@@ -72,7 +86,8 @@
                 <div class="medium-placeholder">
                 </div>
                 <hr>
-              <%end%>
+              <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -99,11 +114,11 @@
                 <h3 class="heading">Edit your profile:</h3>
                 <div class="flex">
                   <i class="fas fa-unlock-alt icon"></i>
-                  <p><%= link_to "Change your password", edit_user_registration_path, class: "edit-link" %></p>
+                  <p><%= link_to "Change your password", edit_user_registration_path, class: "link-user" %></p>
                 </div>
                 <div class="flex">
                   <i class="fas fa-user-circle icon"></i>
-                  <p><%= link_to "Change your avatar", edit_avatar_path, class: "edit-link" %></p>
+                  <p><%= link_to "Change your avatar", edit_avatar_path, class: "link-user" %></p>
                 </div>
               </div>
             </div>

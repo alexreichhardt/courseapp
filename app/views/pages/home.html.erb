@@ -8,10 +8,10 @@
   <div class="navbar-wagon-home">
 
     <!-- Logo -->
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <div class="item-flex">
+    <%= link_to root_path, class: "navbar-wagon-brand link" do %>
+      <div class="flex">
         <%= image_tag "logo.png", height: 50, class:"white" %>
-        <h2>Coursehunt.io</h2>
+        <h3 style= "color: white; padding-left: 20px;">Coursehunt.io</h3>
       </div>
     <% end %>
 
@@ -38,8 +38,6 @@
       </div>
     </div>
     <%end%>
-
-
 
     <!-- Dropdown list appearing on mobile only -->
     <div class="navbar-wagon-item hidden-md hidden-lg">
@@ -77,10 +75,10 @@
             <% end %>
           </div>
         </div>
-        <a href="#categories">
+        <a href="#categories" class="link">
           <div class="more-info-container">
             <div class="more-info">
-              <p>Browse Categories</p>
+              <p >Browse Categories</p>
               <i class="fas fa-chevron-down fa-2x"></i>
             </div>
           </div>
@@ -94,32 +92,32 @@
           <div class="cards-home-all">
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="box homecards">
-                <h3><%= link_to "Python", courses_path(criteria: {search: "python"}) %></h3>
+                <h3><%= link_to "Python", courses_path(criteria: {search: "python"}), class: "icon link" %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="box homecards">
-                <h3><%= link_to "Ruby", courses_path(criteria: {search: "ruby"}) %></h3>
+                <h3><%= link_to "Ruby", courses_path(criteria: {search: "ruby"}), class: "icon link" %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="box homecards">
-                <h3><%= link_to "JavaScript", courses_path(criteria: {search: "javascript"}) %></h3>
+                <h3><%= link_to "JavaScript", courses_path(criteria: {search: "javascript"}), class: "link" %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="box homecards">
-                <h3><%= link_to "Django", courses_path(criteria: {search: "django"}) %></h3>
+                <h3><%= link_to "Django", courses_path(criteria: {search: "django"}), class: "link" %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="box homecards">
-                <h3><%= link_to "Rails", courses_path(criteria: {search: "rails"}) %></h3>
+                <h3><%= link_to "Rails", courses_path(criteria: {search: "rails"}), class: "link" %></h3>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="box homecards">
-                <h3><%= link_to "NodeJs", courses_path(criteria: {search: "nodejs"}) %></h3>
+                <h3><%= link_to "NodeJs", courses_path(criteria: {search: "nodejs"}), class: "link" %></h3>
               </div>
             </div>
           </div>
