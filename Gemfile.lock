@@ -92,6 +92,8 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -262,6 +264,7 @@ DEPENDENCIES
   font-awesome-sass (~> 5.0.9)
   httparty
   jbuilder (~> 2.0)
+  jquery-ui-rails
   kaminari
   listen (~> 3.0.5)
   pg (~> 0.21)
