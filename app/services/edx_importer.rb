@@ -107,7 +107,7 @@ class EdxImporter
   def get_category(course)
     # what if nil?
       subjects_array = course["subjects"].map { |subject| subject["name"] }
-      return "{}" unless subjects_array.count > 1
+      return "{}" unless subjects_array.count >= 1
       subjects_hash = {}
       subjects_hash["categories"] = subjects_array
       subjects_hash.to_json
