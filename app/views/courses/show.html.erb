@@ -119,7 +119,7 @@
           <% end %>
           <li class= "list-style">
             <i class="fas fa-graduation-cap icon"></i>
-            <%= @course.knowledge_level.capitalize %>
+            <%=  @course.knowledge_level.capitalize unless @course.knowledge_level.blank? %>
           </li>
           <li class= "list-style">
             <i class="fas fa-external-link-square-alt icon"></i>
