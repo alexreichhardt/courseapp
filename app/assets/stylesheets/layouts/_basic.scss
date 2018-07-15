@@ -54,3 +54,14 @@
   margin-bottom: 25px;
 }
 
+.link {
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.coursehunt-blue {
+  color: #204B97;
+}
+
+

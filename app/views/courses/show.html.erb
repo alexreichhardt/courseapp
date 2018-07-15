@@ -51,7 +51,7 @@
             <h3 class="heading">No reviews yet</h3>
             <h3 class="subtitle" style="font-size: 20px; margin-bottom: 24px;">Be the first!</h3>
             <div>
-            <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "button-green-secondary" %>
+              <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "button-green-secondary" %>
             </div>
           <% else %>
             <h3 class="heading">Reviews (<%= @reviews.count %>)</h3>
