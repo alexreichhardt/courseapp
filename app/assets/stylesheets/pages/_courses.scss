@@ -5,6 +5,9 @@
   font-style: italic;
   font-weight: lighter;
   color: grey;
+  p {
+    margin-bottom: 0px;
+  }
 }
 
 .first-card {
@@ -119,4 +122,8 @@
   // background-color: white;
   // border: 2px solid $green-primary;
   }
+}
+
+.container1 {
+  margin-bottom: 40px;
 }

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+
     if params[:id].to_i != current_user.id
       redirect_to root_path(error: "Account does not belong to you")
     else
