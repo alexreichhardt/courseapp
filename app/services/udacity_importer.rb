@@ -1,5 +1,3 @@
-
-
 class UdacityImporter
   include HTTParty
 

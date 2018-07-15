@@ -1,5 +1,6 @@
 .main-container {
   display: flex;
+
 }
 
 .info-container {
@@ -23,5 +24,18 @@
   &:hover {
     color: $green-primary;
     text-decoration: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-container {
+  flex: 0 0 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+  flex-wrap: wrap;
+  justify-content: space-around;
   }
 }
