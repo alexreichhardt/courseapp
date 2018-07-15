@@ -12,17 +12,17 @@ class CoursesController < ApplicationController
       # display all courses if user makes no input
       @courses = Course.page(params[:page]).per(10)
 
-
     elsif Course.search_global(@search_input).empty?
       @error = "The exact course you searched for could not be found, but here are some other courses you may be interested in."
       @courses = Course.all
+      @courses = Course.page(params[:page]).per(10)
     else
       # otherwise apply use search alogrithm
       @courses = Course.search_global(@search_input)
+      @courses = @courses.page(params[:page]).per(10)
     end
 
     # FILTERS:
-
     # knowledge level
     if params.dig(:criteria, :knowledge_level)
         selected_options = params[:criteria][:knowledge_level].reject(&:blank?)
