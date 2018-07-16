@@ -66,8 +66,8 @@ class CoursesController < ApplicationController
       # else if selected_options.blank? || selected_options.count == 2
       end
     end
-
   end
+
 
   def show
     @course = Course.find(params[:id])

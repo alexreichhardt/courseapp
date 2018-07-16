@@ -18,34 +18,33 @@
               <ul class="filter-attribute-list ul-reset">
                 <div class="filter-attribute-list-inner">
                   <li class="filter-attribute-item">
-                    <%= label_select_p(@platforms, "udemy") %>
+                    <%= label_select("knowledge_level", @levels, "beginner") %>
                   </li>
                   <li class="filter-attribute-item">
-                    <%= label_select_p(@platforms, "udacity") %>
+                    <%= label_select("knowledge_level", @levels, "intermediate") %>
                   </li>
                   <li class="filter-attribute-item">
-                    <%= label_select_p(@platforms, "edx") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_p(@platforms, "futureLearn") %>
+                    <%= label_select("knowledge_level", @levels, "advanced") %>
                   </li>
                 </div>
               </ul>
             </li>
-
             <li class="filter-item">
               <h3 class="filter-item-inner-heading minus"> Platform
               </h3>
               <ul class="filter-attribute-list ul-reset">
                 <div class="filter-attribute-list-inner">
                   <li class="filter-attribute-item">
-                    <%= label_select(@levels, "beginner") %>
+                    <%= label_select("platform", @platforms, "udemy") %>
                   </li>
                   <li class="filter-attribute-item">
-                    <%= label_select(@levels, "intermediate") %>
+                    <%= label_select("platform", @platforms, "udacity") %>
                   </li>
                   <li class="filter-attribute-item">
-                    <%= label_select(@levels, "advanced") %>
+                    <%= label_select("platform", @platforms, "edx") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select("platform", @platforms, "futureLearn") %>
                   </li>
                 </div>
               </ul>
@@ -57,10 +56,10 @@
               <ul class="filter-attribute-list ul-reset">
                 <div class="filter-attribute-list-inner">
                   <li class="filter-attribute-item">
-                    <%= label_select_price(@prices, "Free") %>
+                    <%= label_select("price", @prices, "futureLearn") %>
                   </li>
                   <li class="filter-attribute-item">
-                    <%= label_select_price(@prices, "Paid") %>
+                    <%= label_select("price",@prices, "Paid") %>
                   </li>
                 </div>
               </ul>
@@ -72,10 +71,10 @@
               <ul class="filter-attribute-list ul-reset">
                 <div class="filter-attribute-list-inner">
                   <li class="filter-attribute-item">
-                    <%= label_select_n("completion_time", @completion_times, "> 1 week") %>
+                    <%= label_select("completion_time", @completion_times, "> 1 week") %>
                   </li>
                   <li class="filter-attribute-item">
-                    <%= label_select_n("completion_time", @completion_times, "< 1 week") %>
+                    <%= label_select("completion_time", @completion_times, "< 1 week") %>
                   </li>
                 </div>
               </ul>
