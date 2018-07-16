@@ -15,7 +15,7 @@ class FuturelearnImporter
     url = "https://www.futurelearn.com/feeds/courses"
 
     # NUMBER OF COURSES TO RETRIEVE:
-    number_of_courses = 20
+    number_of_courses = 1000
 
     input = self.class.get(url)
 
@@ -53,7 +53,7 @@ class FuturelearnImporter
     if !category_validation(instance_attributes[:categories])
       return false
     # course language has to be English
-    elsif instance_attributes[:language] != "English"
+    elsif instance_attributes[:language] != "english"
       return false
     elsif instance_attributes[:active] == nil
       return false
@@ -90,6 +90,9 @@ class FuturelearnImporter
 
   def get_status(course)
     return false if course["runs"].last["start_date"].blank? && course["open_for_enrolment"].blank?
+    if course["runs"].last["start_date"].nil?
+      return nil  #####method needs to be validated ---> only quick fix
+    end
     last_start_date = course["runs"].last["start_date"].to_date
     today = Date.today
     if course["open_for_enrolment"] = true && today >= last_start_date

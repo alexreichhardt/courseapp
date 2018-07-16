@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.4'
 
 gem 'kaminari'
-
+gem 'words_counted'
 gem 'cloudinary'
 gem 'railties', '~> 5.2.0'
 
