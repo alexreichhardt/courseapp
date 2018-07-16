@@ -91,7 +91,7 @@ module CoursesHelper
         </div>
         <div class="center-align-3-elements">
           <p style="margin-bottom: 4px;">Language<p>
-          <p style= "font-weight: 300;">#{language}</p>
+          <p style= "font-weight: 300;">#{language.capitalize}</p>
         </div>
         <div class="center-align-3-elements">
           <p style="margin-bottom: 4px;">Available now<p>
@@ -107,7 +107,7 @@ module CoursesHelper
         </div>
         <div class="center-align-4-elements">
           <p style="margin-bottom: 4px;">Language<p>
-          <p style= "font-weight: 300;">#{language}</p>
+          <p style= "font-weight: 300;">#{language.capitalize}</p>
         </div>
         <div class="center-align-4-elements">
           <p style="margin-bottom: 4px;">Available now<p>
