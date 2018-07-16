@@ -10,6 +10,3 @@ pickTabs();
 
 import { categoryChoice } from "../components/categorychoice";
 categoryChoice();
-
-import { filterAccordion } from "../components/filterAccordion";
-filterAccordion();
