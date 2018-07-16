@@ -72,6 +72,9 @@
             <p> <%= page_entries_info @courses, entry_name: 'courses' %> </p>
           </div>
           <% @courses.each do |course| %>
+          <% course_id = course.id %>
+          <% bookmarks = Bookmark.where(course_id: course_id) %>
+          <% num_of_bookmarks = bookmarks.count %>
             <div class="box-flex card-medium first-card">
               <div class="card-content-left">
                 <div class="card-description">
@@ -79,6 +82,9 @@
                 </div>
                 <div class="paragraph">
                   <p><%= truncate(course.description, length: 400, escape: false) %></p>
+                </div>
+                <div class="bookmark-rating">
+                  <p class ="paragraph">This course has been bookmarked by <%= num_of_bookmarks %> users</p>
                 </div>
               </div>
               <div class="card-content-right">
