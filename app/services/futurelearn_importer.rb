@@ -15,13 +15,13 @@ class FuturelearnImporter
     url = "https://www.futurelearn.com/feeds/courses"
 
     # NUMBER OF COURSES TO RETRIEVE:
-    number_of_courses = 100
+    number_of_courses = 20
 
     input = self.class.get(url)
 
     input.take(number_of_courses).each do |course|
       instance_attributes = {}
-      instance_attributes[:platform] = "FutureLearn"
+      instance_attributes[:platform] = "futurelearn"
       instance_attributes[:title] = course["name"]
       instance_attributes[:subtitle] = course["introduction"]
       instance_attributes[:description] = edit_description(course["description"])
@@ -74,15 +74,18 @@ class FuturelearnImporter
 
   def get_organization(course)
     owner = course["organisation"]
-    organization_hash = {
-      img: owner["logo_url"],
-      name: owner["name"],
-      description: nil,
-      homepage: owner["url"]
-    }
-    organization = {}
-    organization["Organization"] = organization_hash
-    return organization.to_json
+    owners_array = []
+
+    organization_hash = {}
+    organization_hash["name"] = owner["name"]
+    organization_hash["description"] = ""
+    organization_hash["img"] = owner["logo_url"]
+    organization_hash["url"] = owner["url"]
+    owners_array << organization_hash
+
+    organization_hash = {}
+    organization_hash["organizers"] = owners_array
+    organization_hash
   end
 
   def get_status(course)
@@ -98,20 +101,22 @@ class FuturelearnImporter
 
   def get_language(course)
     language = course["language"]
-    return language == "en" ? "English" : nil
+    return language == "en" ? "english" : nil
   end
 
   def get_instructor(course)
     instructor = course["educator"]
-    instructor_hash = {}
     instructors_array = []
+
+    instructor_hash = {}
     instructor_hash["name"] = instructor
     instructor_hash["image"] = nil
     instructor_hash["bio"] = nil
     instructors_array << instructor_hash
+
     instructors_hash = {}
     instructors_hash["instructors"] = instructors_array
-    instructors_hash.to_json
+    instructors_hash
   end
 
   def get_duration(course)

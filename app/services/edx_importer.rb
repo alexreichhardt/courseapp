@@ -36,7 +36,7 @@ class EdxImporter
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
 
-    number_of_courses = 1300 # 1319
+    number_of_courses = 50 # 1319
 
     # STARTING POINT IN CATALOGUE
     starting_point = 0
@@ -49,7 +49,7 @@ class EdxImporter
 
     input["results"].each do |course|
       instance_attributes = {}
-      instance_attributes[:platform] = "Edx"
+      instance_attributes[:platform] = "edx"
       instance_attributes[:title] = course["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = get_description(course)
@@ -154,19 +154,21 @@ class EdxImporter
 
   # just retrieves first owner
   def get_organization(course)
+    owners = course["owners"]
+    owners_array = []
 
-    owner = course["owners"][0]
-    owner["homepage_url"].nil? ? url = owner["marketing_url"] : url = owner["homepage_url"]
-    organization_hash = {
-      img: owner["logo_image_url"],
-      name: owner["name"],
-      description: owner["description"],
-      homepage: url
-    }
-    organization = {}
-    organization["Organization"] = organization_hash
-
-    return organization.to_json
+    owners.each do |owner|
+      owner["homepage_url"].nil? ? url = owner["marketing_url"] : url = owner["homepage_url"]
+      organization_hash = {}
+      organization_hash["name"] = owner["name"]
+      organization_hash["description"] = owner["description"]
+      organization_hash["img"] = owner["logo_image_url"]
+      organization_hash["url"] = url
+      owners_array << organization_hash
+    end
+    organization_hash = {}
+    organization_hash["organizers"] = owners_array
+    organization_hash
   end
 
   def get_duration(course)
@@ -221,7 +223,7 @@ class EdxImporter
   def get_language(course)
     course = course["course_runs"][0]
     language = course["content_language"]
-    return language == "en-us" ? "English" : nil
+    return language == "en-us" ? "english" : nil
   end
 
   def get_instructor(course)
@@ -238,6 +240,6 @@ class EdxImporter
     end
     instructors_hash = {}
     instructors_hash["instructors"] = instructors_array
-    instructors_hash.to_json
+    instructors_hash
   end
 end
