@@ -1,7 +1,3 @@
-.main-container {
-  display: flex;
-
-}
 
 .info-container {
   margin-top: 24px;
@@ -38,4 +34,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
   }
+}
+
+.tab-content {
+  margin-left: 0px;
+  margin-right: 0px;
 }
