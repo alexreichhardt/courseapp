@@ -55,14 +55,17 @@
   <div class="container">
     <div class="row">
       <div class="search-content">
-        <div class="col-sm-offset-2">
+        <div class="col-xs-12">
           <h2 style="color: white; font-size: 50px; font-weight: 600;">Find courses to learn..</h2>
+        </div>
+        <div class="col-xs-12">
           <h2 style="color: white; font-size: 120px; font-weight: lighter;">
             <div style="padding: 20px 0px;">
               <span id="banner-typed-text"></span>
             </div>
           </h2>
-
+        </div>
+        <div class="col-xs-12">
           <div class="form-wrapper">
             <%= simple_form_for :criteria, url: courses_path,
                 wrapper: :inline_form,
@@ -75,57 +78,61 @@
             <% end %>
           </div>
         </div>
-        <a href="#categories" class="link">
-          <div class="more-info-container">
-            <div class="more-info">
-              <p >Browse Categories</p>
-              <i class="fas fa-chevron-down fa-2x"></i>
+        <div class="col-xs-12">
+          <a href="#categories" class="link">
+            <div class="more-info-container">
+              <div class="more-info">
+                <p >Browse Categories</p>
+                <i class="fas fa-chevron-down fa-2x"></i>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
+
     <div id="categories">
       <div class="row">
-        <div class="category-container">
-        <h2 style="color: white; font-size: 50px; font-weight: 600;">Pick your favourite category:</h2>
-          <div class="cards-home-all">
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="box homecards">
-                <h3><%= link_to "Python", courses_path(criteria: {search: "python"}), class: "icon link" %></h3>
-              </div>
+        <div class="col-xs-12">
+          <div class="category-container">
+            <h2 style="color: white; font-size: 50px; font-weight: 600;">Pick your favourite category:</h2>
+          </div>
+        </div>
+        <div class="cards-home-all">
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box homecards">
+              <h3><%= link_to "Python", courses_path(criteria: {search: "python"}), class: "icon link" %></h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="box homecards">
-                <h3><%= link_to "Ruby", courses_path(criteria: {search: "ruby"}), class: "icon link" %></h3>
-              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box homecards">
+              <h3><%= link_to "Ruby", courses_path(criteria: {search: "ruby"}), class: "icon link" %></h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="box homecards">
-                <h3><%= link_to "JavaScript", courses_path(criteria: {search: "javascript"}), class: "link" %></h3>
-              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box homecards">
+              <h3><%= link_to "JavaScript", courses_path(criteria: {search: "javascript"}), class: "link" %></h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="box homecards">
-                <h3><%= link_to "Django", courses_path(criteria: {search: "django"}), class: "link" %></h3>
-              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box homecards">
+              <h3><%= link_to "Django", courses_path(criteria: {search: "django"}), class: "link" %></h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="box homecards">
-                <h3><%= link_to "Rails", courses_path(criteria: {search: "rails"}), class: "link" %></h3>
-              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box homecards">
+              <h3><%= link_to "Rails", courses_path(criteria: {search: "rails"}), class: "link" %></h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="box homecards">
-                <h3><%= link_to "NodeJs", courses_path(criteria: {search: "nodejs"}), class: "link" %></h3>
-              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box homecards">
+              <h3><%= link_to "NodeJs", courses_path(criteria: {search: "nodejs"}), class: "link" %></h3>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
 

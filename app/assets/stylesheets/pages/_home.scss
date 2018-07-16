@@ -9,10 +9,17 @@
   text-transform: uppercase;
 }
 
+.flexhome {
+  display: flex;
+  justify-content: spaced-around;
+}
+
 .search-content {
   margin-top: 100px;
   height: calc(100vh - 180px);
+
 }
+
 .search-field {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   height: 50px;
@@ -47,7 +54,6 @@
     i {
       color: white;
     }
-
   }
 }
 
@@ -56,7 +62,7 @@
 }
 
 .category-container {
-  margin-top: 0px;
+  margin: 24px;
 }
 
 .cards-home-all {
