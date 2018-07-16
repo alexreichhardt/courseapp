@@ -1,8 +1,8 @@
 <% unless @error.empty? %>
-  <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <%=@error%>
-  </div>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%=@error%>
+</div>
 <%end%>
 <div class="results-row">
   <div class="container special">
@@ -11,90 +11,88 @@
       <div class="col-xs-12 col-md-3">
         <div class="filter-container filters-card">
           <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+          <ul class="filter ul-reset">
+            <li class="filter-item">
+              <h3 class="filter-item-inner-heading minus"> Knowledge level
+              </h3>
+              <ul class="filter-attribute-list ul-reset">
+                <div class="filter-attribute-list-inner">
+                  <li class="filter-attribute-item">
+                    <%= label_select_p(@platforms, "Udemy") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select_p(@platforms, "Udacity") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select_p(@platforms, "Edx") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select_p(@platforms, "FutureLearn") %>
+                  </li>
+                </div>
+              </ul>
+            </li>
 
-            <div class="filter-selectors">
-              <!-- knowledge level selector -->
-              <div class="filter">
-                  <!-- select box beginner -->
-                <h3>Knowledge level</h3>
-                <div class="form-check category-choices">
-                  <%= label_select(@levels, "beginner") %>
+            <li class="filter-item">
+              <h3 class="filter-item-inner-heading minus"> Platform
+              </h3>
+              <ul class="filter-attribute-list ul-reset">
+                <div class="filter-attribute-list-inner">
+                  <li class="filter-attribute-item">
+                    <%= label_select(@levels, "beginner") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select(@levels, "intermediate") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select(@levels, "advanced") %>
+                  </li>
                 </div>
-                <!-- select box intermediate -->
-                <div class="form-check category-choices">
-                  <%= label_select(@levels, "intermediate") %>
-                </div>
-                <!-- select box intermediate -->
-                <!-- select box advanced -->
-                <div class="form-check category-choices">
-                  <%= label_select(@levels, "advanced") %>
-                </div>
-              </div>
-              <div class="small-placeholder">
-              </div>
-              <!-- platform selector -->
-              <div class="filter">
-                <h3>Platform</h3>
-                <!-- Udemy -->
-                <div class="form-check category-choices">
-                  <%= label_select_p(@platforms, "Udemy") %>
-                </div>
-                <!-- Udacity -->
-                <div class="form-check category-choices">
-                  <%= label_select_p(@platforms, "Udacity") %>
-                </div>
-                <!-- EdX -->
-                <div class="form-check category-choices">
-                  <%= label_select_p(@platforms, "Edx") %>
-                </div>
-                <!-- FutureLearn -->
-                <div class="form-check category-choices">
-                  <%= label_select_p(@platforms, "FutureLearn") %>
-                </div>
-              </div>
-              <!-- Price selector -->
-              <div class="filter">
-                <h3>Price</h3>
-                <!-- Free -->
-                <div class="form-check category-choices">
-                  <%= label_select_price(@prices, "Free") %>
-                </div>
-                <!-- Paid -->
-                <div class="form-check category-choices">
-                  <%= label_select_price(@prices, "Paid") %>
-                </div>
-              </div>
+              </ul>
+            </li>
 
-              <div class="filter">
-                <h3>Completion time</h3>
-                <!-- Free -->
-                <div class="form-check category-choices">
-                  <%= label_select_n("completion_time", @completion_times, "> 1 week") %>
+            <li class="filter-item">
+              <h3 class="filter-item-inner-heading minus"> Price
+              </h3>
+              <ul class="filter-attribute-list ul-reset">
+                <div class="filter-attribute-list-inner">
+                  <li class="filter-attribute-item">
+                    <%= label_select_price(@prices, "Free") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select_price(@prices, "Paid") %>
+                  </li>
                 </div>
-                <!-- Paid -->
-                <div class="form-check category-choices">
-                  <%= label_select_n("completion_time", @completion_times, "< 1 week") %>
-                </div>
-              </div>
+              </ul>
+            </li>
 
-            </div>
-            <!-- filter-selectors -->
-            <!-- platform selector -->
-            <div>
-              <!-- hidden fields -->
-              <%= f.hidden_field :search, value: @search_input %>
-              <div class="small-placeholder">
-              </div>
-              <!-- submit button -->
-              <%= f.button :submit, "Specify Search", class: "button-white-sidebar"%>
-            </div>
+            <li class="filter-item">
+              <h3 class="filter-item-inner-heading minus"> Completion time
+              </h3>
+              <ul class="filter-attribute-list ul-reset">
+                <div class="filter-attribute-list-inner">
+                  <li class="filter-attribute-item">
+                    <%= label_select_n("completion_time", @completion_times, "> 1 week") %>
+                  </li>
+                  <li class="filter-attribute-item">
+                    <%= label_select_n("completion_time", @completion_times, "< 1 week") %>
+                  </li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+          <div>
+            <%= f.hidden_field :search, value: @search_input %>
+            <!-- submit button -->
+            <%= f.button :submit, "Specify Search", class: "button-white-sidebar"%>
+          </div>
           <% end %>
-        <!-- filter-container -->
+          <!-- filter-container -->
         </div>
-      <!-- left side -->
+        <!-- COL LEFT SIDE -->
       </div>
 
-  <!-- right side -->
+      <!-- right side -->
       <div class="col-xs-12 col-md-9">
         <div class="container1">
           <div class="result-title flex" style="justify-content: space-between;">
@@ -105,49 +103,50 @@
           <% course_id = course.id %>
           <% bookmarks = Bookmark.where(course_id: course_id) %>
           <% num_of_bookmarks = bookmarks.count %>
-            <div class="box-flex card-medium first-card">
-              <div class="card-content-left">
-                <div class="card-description">
-                  <h3 class="heading"><%=course.title%></h3>
-                </div>
-                <div class="paragraph">
-                  <p><%= truncate(course.description, length: 400, escape: false) %></p>
-                </div>
-                <div class="bookmark-rating">
-                  <p class ="paragraph">This course has been bookmarked by <%= num_of_bookmarks %> users</p>
-                </div>
+          <div class="box-flex card-medium first-card">
+            <div class="card-content-left">
+              <div class="card-description">
+                <h3 class="heading"><%=course.title%></h3>
               </div>
-              <div class="card-content-right">
-                <div class="icon-next">
-                  <i class="fas fa-graduation-cap"></i>
-                  <p><%= course.knowledge_level %></p>
-                </div>
-                <div class="icon-next">
-                  <i class="far fa-clock"></i>
-                  <p><%= course.duration%></p>
-                </div>
-                <div class="icon-next">
-                  <i class="fas fa-coins"></i>
-                  <p><%= course.price %></p>
-                </div>
-                <div class="card-button">
-                 <%= link_to("See Details", course_path(course), class: "button-green-primary") %>
-                </div>
+              <div class="paragraph">
+                <p><%= truncate(course.description, length: 400, escape: false) %></p>
+              </div>
+              <div class="bookmark-rating">
+                <p class ="paragraph">This course has been bookmarked by <%= num_of_bookmarks %> users</p>
               </div>
             </div>
-          <% end %>
-        <!-- container1 -->
-          <div class="indent-next-buttons">
-            <%= link_to_previous_page @courses, 'Previous Page', class: "button-red-secondary" %>
-            <%= link_to_next_page @courses, 'Next Page', class: "button-green-secondary" %>
-          </div>
+            <div class="card-content-right">
+              <div class="icon-next">
+                <i class="fas fa-graduation-cap"></i>
+                <p><%= course.knowledge_level %></p>
+              </div>
+              <div class="icon-next">
+                <i class="far fa-clock"></i>
+                <p><%= course.duration%></p>
+              </div>
+              <div class="icon-next">
+                <i class="fas fa-coins"></i>
+                <p><%= course.price %></p>
+              </div>
+              <div class="card-button">
+               <%= link_to("See Details", course_path(course), class: "button-green-primary") %>
+             </div>
+           </div>
+         </div>
+         <% end %>
+         <!-- container1 -->
+         <div class="indent-next-buttons">
+          <%= link_to_previous_page @courses, 'Previous Page', class: "button-red-secondary" %>
+          <%= link_to_next_page @courses, 'Next Page', class: "button-green-secondary" %>
         </div>
-      <!-- col -->
+        <!-- CONTAINER -->
       </div>
-  <!-- row -->
+      <!-- col -->
     </div>
-  <!-- container special -->
+    <!-- row -->
   </div>
+  <!-- container special -->
+</div>
 <!-- results row -->
 </div>
 
