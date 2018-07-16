@@ -1,5 +1,6 @@
 namespace :api_data do
   desc "Fetching data from all API & storing to DB"
+
   task fetch_edx: :environment do
     EdxJob.perform_later
   end
@@ -12,4 +13,7 @@ namespace :api_data do
     UdemyJob.perform_later
   end
 
+  task fetch_futurelearn: :environment do
+    FuturelearnJob.perform_later
+  end
 end
