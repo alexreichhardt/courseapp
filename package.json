@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
+    "expanding-textareas": "^1.0.2",
     "jquery": "^3.3.1",
     "typed.js": "^2.0.8"
   },

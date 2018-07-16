@@ -64,4 +64,18 @@
   color: #204B97;
 }
 
+.emphasized-text {
+  color: $green-primary;
+  transition: 0.5s ease;
+
+  &:hover {
+    color: $green-primary;
+  }
+
+  &:focus {
+    color: $green-primary;
+  }
+
+}
+
 

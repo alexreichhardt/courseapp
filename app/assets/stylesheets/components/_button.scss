@@ -36,6 +36,10 @@
     border-top: 2px solid $green-primary;
     text-decoration: none;
   }
+
+  &:active {
+    text-decoration: none;
+  }
 }
 
 
