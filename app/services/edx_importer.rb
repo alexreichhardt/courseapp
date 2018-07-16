@@ -36,7 +36,7 @@ class EdxImporter
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
 
-    number_of_courses = 100 # 1319
+    number_of_courses = 1300 # 1319
 
     # STARTING POINT IN CATALOGUE
     starting_point = 0
