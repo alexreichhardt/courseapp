@@ -25,22 +25,7 @@
         </div>
         <div class="course-attributes">
           <div class="box box-horizontal">
-            <div class="center-align">
-              <p style="margin-bottom: 4px;">Instructor<p>
-              <p style= "font-weight: 300;">Max Mustermann</p>
-            </div>
-            <div class="center-align">
-              <p style="margin-bottom: 4px;">Language<p>
-              <p style= "font-weight: 300;"><%= @course.language %></p>
-            </div>
-            <div class="center-align">
-              <p style="margin-bottom: 4px;">Available now<p>
-              <%if @course.active %>
-                <p style= "font-weight: 300;">Yes</p>
-              <%else%>
-                <p style= "font-weight: 300;">No</p>
-              <%end%>
-            </div>
+            <%= course_attributes(@course.sum_ratings, @course.avg_rating, @course.language, @course.active) %>
           </div>
         </div>
         <hr>
