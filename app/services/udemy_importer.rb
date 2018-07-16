@@ -69,15 +69,8 @@ class UdemyImporter
       instance_attributes = {}
       url = "/#{id}?fields[course]=@all"
       response = self.class.get(url, @options)
-      p "----"
-      p "----"
-      p "----"
-      p response["id"]
-            p "----"
 
-      p "----"
-
-      instance_attributes[:platform] = "Udemy"
+      instance_attributes[:platform] = "udemy"
       instance_attributes[:title] = response["title"]
       instance_attributes[:subtitle] = nil
       instance_attributes[:description] = response["description"]
@@ -88,9 +81,9 @@ class UdemyImporter
       instance_attributes[:organization] = nil
       instance_attributes[:url] = create_url(response["url"])
       instance_attributes[:active] = active_status(response["status_label"])
-      instance_attributes[:language] = "English"
+      instance_attributes[:language] = "english"
       instance_attributes[:instructor] = instructors(response["visible_instructors"])
-      instance_attributes[:duration] = (response["estimated_content_length"].to_i) / 60
+      instance_attributes[:duration] = get_duration(response["estimated_content_length"])
       instance_attributes[:duration_unit] = "hours"
       instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
       instance_attributes[:completion_time] = get_completion_time(response["estimated_content_length"])
@@ -101,6 +94,10 @@ class UdemyImporter
       #p instance_attributes
     end
     #return instance_attributes
+  end
+
+  def get_duration(duration)
+    a = (duration.to_i / 60).to_s + " " + "hours"
   end
 
   def categories(cat_primary, cat_sub)
