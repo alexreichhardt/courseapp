@@ -1,7 +1,6 @@
 import Typed from 'typed.js';
 
 function loadDynamicBannerText() {
-  console.log("hello")
   let bannerExists = document.getElementById('banner-typed-text');
   if (bannerExists) {
     new Typed('#banner-typed-text', {

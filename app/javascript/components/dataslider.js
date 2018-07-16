@@ -1,4 +1,5 @@
 
+
 function dataSlider() {
   $(document).ready(function() {
       var slider = $("#the_slider").slider({

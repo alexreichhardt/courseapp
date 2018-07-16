@@ -19,8 +19,8 @@
           <% unless @course.subtitle.nil? %>
             <h3 class="subtitle"><%= @course.subtitle %> </h3>
           <% end %>
-          <div class="paragraph">
-            <p><%= truncate(@course.description.html_safe, length: 800, escape: false) %></p>
+          <div class="paragraph truncate">
+            <p><%= @course.description.html_safe %></p>
           </div>
         </div>
         <div class="course-attributes">
