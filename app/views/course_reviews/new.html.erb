@@ -1,3 +1,12 @@
+<% if params[:error] != nil %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            <%= params[:error] %>
+      </div>
+  <% end %>
+
 <div class="container-form" style="min-height: calc(100vh - 70px - 131px);">
   <div class="row">
     <div class="col-sm-offset-4 col-sm-4">

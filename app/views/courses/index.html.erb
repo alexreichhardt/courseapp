@@ -1,9 +1,3 @@
-<% unless @error.empty? %>
-<div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <%=@error%>
-</div>
-<%end%>
 <div class="results-row">
   <div class="container special">
     <div class="row">
@@ -97,8 +91,7 @@
       <!-- right side -->
       <div class="col-xs-12 col-md-9">
         <div class="container1">
-          <div class="result-title flex" style="justify-content: space-between;">
-            <p class ="paragraph">We found <%= @courses.size %> courses for you</p>
+          <div class="result-title" style="text-align: right;">
             <p> <%= page_entries_info @courses, entry_name: 'courses' %> </p>
           </div>
           <% @courses.each do |course| %>
