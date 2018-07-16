@@ -17,13 +17,16 @@
 .search-content {
   margin-top: 100px;
   height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+
 
 }
 
 .search-field {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   height: 50px;
-  width: 50%;
+  width: 100%;
   color: darkgray;
 }
 
@@ -76,5 +79,31 @@
     font-weight: 400;
     font-size: 24px;
   }
+}
+
+.margin42 {
+  padding-left: 42px;
+
+}
+.growingform {
+display: flex;
+flex-direction: row;
+
+}
+
+.form-inline {
+  width: 100%;
+}
+
+.test {
+  display: inline-flex;
+}
+
+.form-control {
+  width: 100% !important;
+}
+
+.criteria_search {
+  width: 45vw;
 }
 
