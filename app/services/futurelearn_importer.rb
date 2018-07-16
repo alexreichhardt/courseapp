@@ -20,7 +20,7 @@ class FuturelearnImporter
     input = self.class.get(url)
 
     input.take(number_of_courses).each do |course|
-      if Course.where(platform_id: course["uuid"]).size != 0
+      if Course.where(platform: "futurelearn", platform_id: course["uuid"]).size != 0
         p "already exists in db"
         next
       else

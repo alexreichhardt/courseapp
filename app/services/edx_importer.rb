@@ -36,7 +36,7 @@ class EdxImporter
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
 
-    number_of_courses = 300 # 1319
+    number_of_courses = 100 # 1319
 
     # STARTING POINT IN CATALOGUE
     starting_point = 0
@@ -47,7 +47,7 @@ class EdxImporter
     input = self.class.get(url, options)
 
     input["results"].each do |course|
-      if Course.where(platform_id: course["uuid"]).size != 0
+      if Course.where(platform: "edx", platform_id: course["uuid"]).size != 0
         next
       else
         instance_attributes = {}
