@@ -36,7 +36,7 @@ class EdxImporter
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
 
-    number_of_courses = 50 # 1319
+    number_of_courses = 1319 # 1319
 
     # STARTING POINT IN CATALOGUE
     starting_point = 0
@@ -44,9 +44,7 @@ class EdxImporter
     url = "https://prod-edx-discovery.edx.org/api/v1/catalogs/284/courses/?limit=#{number_of_courses}&offset=#{starting_point}"
     # header
     options = {:headers => {'Authorization' => 'JWT ' + token }}
-
     input = self.class.get(url, options)
-
     input["results"].each do |course|
       instance_attributes = {}
       instance_attributes[:platform] = "edx"
@@ -78,10 +76,11 @@ class EdxImporter
   # HELPER METHODS
 
   def validator(course_attributes)
+
     if !category_validation(course_attributes[:categories])
       return false
     # course language has to be English
-    elsif course_attributes[:language] != "English"
+    elsif course_attributes[:language] != "english"
       return false
     elsif course_attributes[:active] == nil
       return false
