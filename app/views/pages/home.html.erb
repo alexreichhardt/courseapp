@@ -55,27 +55,29 @@
   <div class="container">
     <div class="row">
       <div class="search-content">
-        <div class="col-xs-12">
+        <div class="col-xs-12 margin42">
           <h2 style="color: white; font-size: 50px; font-weight: 600;">Find courses to learn..</h2>
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12 margin42">
           <h2 style="color: white; font-size: 120px; font-weight: lighter;">
             <div style="padding: 20px 0px;">
               <span id="banner-typed-text"></span>
             </div>
           </h2>
         </div>
-        <div class="col-xs-12">
+        <div class="margin42">
           <div class="form-wrapper">
-            <%= simple_form_for :criteria, url: courses_path,
-                wrapper: :inline_form,
-                html: { class: "form-inline"},
-                wrapper_mappings: {
-                boolean: :inline_boolean}, :method => :get do |f| %>
+            <div class="growingform">
+              <%= simple_form_for :criteria, url: courses_path,
+                  wrapper: :inline_form,
+                  html: { class: "form-inline test"},
+                  wrapper_mappings: {
+                  boolean: :inline_boolean}, :method => :get do |f| %>
 
-            <%= f.input :search, :id => "search", as: :string %>
-            <%= f.button :submit, "Hunt", class: "button-green-primary-landing"%>
-            <% end %>
+              <%= f.input :search, :id => "search", as: :string %>
+              <%= f.button :submit, "Hunt", class: "button-green-primary-landing"%>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="col-xs-12">
