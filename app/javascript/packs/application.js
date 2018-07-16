@@ -12,3 +12,5 @@ import { categoryChoice } from "../components/categorychoice";
 categoryChoice();
 
 import { filteraccordion } from "../components/filteraccordion";
+
+import { uncheckallfilter } from "../components/uncheckallfilter"

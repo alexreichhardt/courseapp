@@ -90,5 +90,22 @@
   }
 }
 
+.button-white-sidebar-inv {
+  color: white;
+  background-color: $blue-sidebar;
+  border-radius: 1px;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid white;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    color: $blue-sidebar;
+    background-color: white;
+    text-decoration: none;
+  }
+
+}
+
 
 
