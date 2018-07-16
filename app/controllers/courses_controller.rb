@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
     if params.dig(:criteria, :platform)
       selected_options = params[:criteria][:platform].reject(&:blank?)
       if selected_options.blank?
-        selected_options = ["Udemy", "Udacity", "Edx"]
+        selected_options = ["udemy", "udacity", "edx"]
       end
       @courses = @courses.where(platform: selected_options)
     end
