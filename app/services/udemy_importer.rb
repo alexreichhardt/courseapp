@@ -25,12 +25,12 @@ class UdemyImporter
     ids = []
     page_num = 1
     loop do
-      if page_num == 15
+      if page_num == 3
         p ids
         return ids
         break
       end
-      url = "/?page=#{page_num}&page_size=100&category=Development"
+      url = "/?page=#{page_num}&page_size=8&category=Development&language=en"
       response = self.class.get(url, @options)
 
       p "Error Code #{response.code}"
@@ -71,6 +71,10 @@ class UdemyImporter
       p "fetch data"
       instance_attributes = {}
       url = "/#{id}?fields[course]=@all"
+      # if !Course.where(platform_id: id)
+      #   p "#{id} already exists"
+      #   next
+      # else
 
       response = self.class.get(url, @options)
       case response.code
@@ -86,43 +90,71 @@ class UdemyImporter
         break
       when 443
         puts "#{id}"
-        binding.pry
         puts response
         break
       else
-        instance_attributes[:platform] = "udemy"
-        instance_attributes[:title] = response["title"]
-        instance_attributes[:subtitle] = nil
-        instance_attributes[:description] = response["description"]
-        instance_attributes[:categories] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
-        instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
-        instance_attributes[:price_unit] = response["is_paid"] == false ? "€" : response["price_detail"]["currency_symbol"]
-        instance_attributes[:image] = response["image_100x100"]
-        instance_attributes[:organization] = nil
-        instance_attributes[:url] = create_url(response["url"])
-        instance_attributes[:active] = active_status(response["status_label"])
-        instance_attributes[:language] = "english"
-        instance_attributes[:instructor] = instructors(response["visible_instructors"])
-        instance_attributes[:duration] = get_duration(response["estimated_content_length"])
-        instance_attributes[:duration_unit] = "hours"
-        instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
-        instance_attributes[:completion_time] = get_completion_time(response["estimated_content_length"])
+        if Course.where(platform_id: response["id"]).size != 0
+          p "already exists in db"
+          next
+        else
+          instance_attributes[:platform_id] = response["id"]
+          instance_attributes[:platform] = "udemy"
+          instance_attributes[:title] = response["title"]
+          instance_attributes[:subtitle] = nil
+          instance_attributes[:description] = response["description"]
+          instance_attributes[:categories] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
+          instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
+          instance_attributes[:price_unit] = price_unit(response)
+          instance_attributes[:image] = response["image_100x100"]
+          instance_attributes[:organization] = nil
+          instance_attributes[:url] = create_url(response["url"])
+          instance_attributes[:active] = active_status(response["status_label"])
+          instance_attributes[:language] = "english"
+          instance_attributes[:instructor] = instructors(response["visible_instructors"])
+          instance_attributes[:duration] = get_duration(response["estimated_content_length"])
+          instance_attributes[:duration_unit] = "hours"
+          instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
+          instance_attributes[:completion_time] = get_completion_time(response["estimated_content_length"])
 
-        i = Course.new(instance_attributes)
-        i.save!
-        p "finished with #{i}"
+          i = Course.new(instance_attributes)
+          i.save!
+          p "finished with #{i}"
+        end
       end
       #p instance_attributes
     end
     #return instance_attributes
   end
 
+  def price_unit(input)
+    if input["is_paid"] == false || input["is_paid"].nil?
+      "€"
+    elsif !input["price_detail"]["currency_symbol"].nil?
+      input["price_detail"]["currency_symbol"]
+    else
+      nil
+    end
+  end
+
   def get_duration(duration)
-    a = (duration.to_i / 60).to_s + " " + "hours"
+    if !duration.nil?
+      a = (duration.to_i / 60).to_s + " " + "hours"
+    else
+      nil
+    end
   end
 
   def categories(cat_primary, cat_sub)
-    subjects_array = [cat_primary, cat_sub]
+    if !cat_primary.nil? && !cat_sub.nil?
+      subjects_array = [cat_primary, cat_sub]
+    elsif !cat_primary.nil? && cat_sub.nil?
+      subjects_array = [cat_primary]
+    elsif cat_primary.nil? && !cat_sub.nil?
+      subjects_array = [cat_sub]
+    else
+      return nil
+    end
+
     subjects_hash = {}
     subjects_hash["subjects"] = subjects_array
     subjects_hash
@@ -138,7 +170,7 @@ class UdemyImporter
   end
 
   def active_status(input)
-    if input == "Live"
+    if input == "Live" && !input.nil?
       true
     else
       false
@@ -146,18 +178,22 @@ class UdemyImporter
   end
 
   def instructors(input)
-    instructor_array = input
-    instructors_array = []
-    instructor_array.each do |instructor|
-      instructor_hash = {}
-      instructor_hash["name"] = instructor["title"]
-      instructor_hash["image"] = instructor["image_100x100"]
-      instructor_hash["bio"] = instructor["job_title"]
-      instructors_array << instructor_hash
+    if !input.nil?
+      instructor_array = input
+      instructors_array = []
+      instructor_array.each do |instructor|
+        instructor_hash = {}
+        instructor_hash["name"] = instructor["title"]
+        instructor_hash["image"] = instructor["image_100x100"]
+        instructor_hash["bio"] = instructor["job_title"]
+        instructors_array << instructor_hash
+      end
+      instructors_hash = {}
+      instructors_hash["instructors"] = instructors_array
+      instructors_hash
+    else
+      nil
     end
-    instructors_hash = {}
-    instructors_hash["instructors"] = instructors_array
-    instructors_hash
   end
 
   def skill_level(input)
@@ -169,6 +205,8 @@ class UdemyImporter
       return 1
     elsif input == "Expert Level"
       return 2
+    else
+      nil
     end
   end
 

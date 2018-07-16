@@ -3,6 +3,8 @@ class Course < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :course_reviews, dependent: :destroy
 
+  #validates :platform_id, uniqueness: true
+
   # paginates_per 100
 
   include PgSearch

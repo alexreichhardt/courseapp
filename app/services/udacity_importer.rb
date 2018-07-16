@@ -10,27 +10,34 @@ class UdacityImporter
       puts "nothing"
     else
       response["courses"].each do |course|
-        full_description = course["summary"] + " " + course["expected_learning"] + " " + course["required_knowledge"]
-        puts "creating a course.."
-        Course.create!(
-          title: course["title"],
-          subtitle: course["subtitle"],
-          description: full_description,
-          knowledge_level: course["level"] == "" ? "undetermined" : course["level"] ,
-          categories: {subjects: course["tracks"]},
-          price: 0,
-          price_unit: "€",
-          image: course["image"],
-          organization: { organizers: course["affiliates"] == [] ? nil : UdacityImporter.format_organization(course["affiliates"]) },
-          duration: UdacityImporter.get_duration(course["expected_duration"], course["expected_duration_unit"]),
-          duration_unit: course["expected_duration_unit"],
-          url: course["homepage"],
-          active: true,
-          completion_time: UdacityImporter.get_completion_time(course["expected_duration_unit"]),
-          language: "english",
-          platform: "udacity",
-          instructor: { instructors: course["instructors"] == [] ? nil : UdacityImporter.format_instructor(course["instructors"]) }
-          )
+        if Course.where(platform_id: course["key"]).size != 0
+          p "already exists in db"
+          next
+        else
+          p "#{course["uuid"]} already in db"
+          full_description = course["summary"] + " " + course["expected_learning"] + " " + course["required_knowledge"]
+          puts "creating a course.."
+          Course.create!(
+            platform_id: course["key"],
+            title: course["title"],
+            subtitle: course["subtitle"],
+            description: full_description,
+            knowledge_level: course["level"] == "" ? "undetermined" : course["level"] ,
+            categories: {subjects: course["tracks"]},
+            price: 0,
+            price_unit: "€",
+            image: course["image"],
+            organization: { organizers: course["affiliates"] == [] ? nil : UdacityImporter.format_organization(course["affiliates"]) },
+            duration: UdacityImporter.get_duration(course["expected_duration"], course["expected_duration_unit"]),
+            duration_unit: course["expected_duration_unit"],
+            url: course["homepage"],
+            active: true,
+            completion_time: UdacityImporter.get_completion_time(course["expected_duration_unit"]),
+            language: "english",
+            platform: "udacity",
+            instructor: { instructors: course["instructors"] == [] ? nil : UdacityImporter.format_instructor(course["instructors"]) }
+            )
+        end
       end
     end
   end
@@ -46,7 +53,8 @@ class UdacityImporter
   #   else
   #     indicated_level
   #   end
-  # end
+  # endq
+
   def self.get_duration(duration, unit)
     a = duration.to_s + " " + unit
     return a

@@ -15,34 +15,40 @@ class FuturelearnImporter
     url = "https://www.futurelearn.com/feeds/courses"
 
     # NUMBER OF COURSES TO RETRIEVE:
-    number_of_courses = 1000
+    number_of_courses = 100
 
     input = self.class.get(url)
 
     input.take(number_of_courses).each do |course|
-      instance_attributes = {}
-      instance_attributes[:platform] = "futurelearn"
-      instance_attributes[:title] = course["name"]
-      instance_attributes[:subtitle] = course["introduction"]
-      instance_attributes[:description] = edit_description(course["description"])
-      instance_attributes[:price] = 0
-      instance_attributes[:price_unit] = "€"
-      instance_attributes[:image] = course["image_url"]
-      instance_attributes[:organization] = get_organization(course)
-      instance_attributes[:url] = course["url"]
-      instance_attributes[:active] = get_status(course)
-      instance_attributes[:language] = get_language(course)
-      instance_attributes[:instructor] = get_instructor(course)
-      instance_attributes[:duration] = get_duration(course)
-      instance_attributes[:duration_unit] = nil
-      instance_attributes[:knowledge_level] = get_knowledge_level(course)
-      instance_attributes[:completion_time] = get_completion_time(course)
-      instance_attributes[:university_course] = get_university_course(course)
-      instance_attributes[:categories] = get_categories(course)
+      if Course.where(platform_id: course["uuid"]).size != 0
+        p "already exists in db"
+        next
+      else
+        instance_attributes = {}
+        instance_attributes[:platform_id] = course["uuid"]
+        instance_attributes[:platform] = "futurelearn"
+        instance_attributes[:title] = course["name"]
+        instance_attributes[:subtitle] = course["introduction"]
+        instance_attributes[:description] = edit_description(course["description"])
+        instance_attributes[:price] = 0
+        instance_attributes[:price_unit] = "€"
+        instance_attributes[:image] = course["image_url"]
+        instance_attributes[:organization] = get_organization(course)
+        instance_attributes[:url] = course["url"]
+        instance_attributes[:active] = get_status(course)
+        instance_attributes[:language] = get_language(course)
+        instance_attributes[:instructor] = get_instructor(course)
+        instance_attributes[:duration] = get_duration(course)
+        instance_attributes[:duration_unit] = nil
+        instance_attributes[:knowledge_level] = get_knowledge_level(course)
+        instance_attributes[:completion_time] = get_completion_time(course)
+        instance_attributes[:university_course] = get_university_course(course)
+        instance_attributes[:categories] = get_categories(course)
 
-      if validator(instance_attributes)
-        new_course = Course.new(instance_attributes)
-        new_course.save!
+        if validator(instance_attributes)
+          new_course = Course.new(instance_attributes)
+          new_course.save!
+        end
       end
     end
   end
