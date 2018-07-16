@@ -59,13 +59,18 @@
   justify-content: space-between;
   padding-top: 8px;
   padding-bottom: 4px;
-  margin: 12px;
-  margin-bottom: 8px;
+  margin: 16px 0px 8px;
+  // margin-bottom: 8px;
 }
 
-.center-align {
+.center-align-3-elements {
   text-align: center;
   flex: 0 0 33%;
+}
+
+.center-align-4-elements {
+  text-align: center;
+  flex: 0 0 25%;
 }
 
 .add-review {
