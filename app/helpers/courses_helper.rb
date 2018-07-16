@@ -38,4 +38,46 @@ module CoursesHelper
     end
     html.html_safe
   end
+
+  # price filter
+  def label_select_price(filter, value)
+    html = nil
+    if filter&.include?(value)
+      html = <<-HTML
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[price][]" id="criteria_price_#{value}" checked>
+        <label class="collection_check_boxes category-choice active" for="criteria_price_#{value}">
+          #{value}
+        </label>
+      HTML
+    else
+      html = <<-HTML
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[price][]" id="criteria_price_#{value}">
+        <label class="collection_check_boxes category-choice" for="criteria_price_#{value}">
+          #{value}
+        </label>
+      HTML
+    end
+    html.html_safe
+  end
+
+  def label_select_n(key, filter, value)
+    html = nil
+    if filter&.include?(value)
+      html = <<-HTML
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[#{key}][]" id="criteria_#{key}_#{value}" checked>
+        <label class="collection_check_boxes category-choice active" for="criteria_#{key}_#{value}">
+          #{value}
+        </label>
+      HTML
+    else
+      html = <<-HTML
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[#{key}][]" id="criteria_#{key}_#{value}">
+        <label class="collection_check_boxes category-choice" for="criteria_#{key}_#{value}">
+          #{value}
+        </label>
+      HTML
+    end
+    html.html_safe
+  end
+
 end

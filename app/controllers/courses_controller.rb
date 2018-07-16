@@ -3,10 +3,13 @@ class CoursesController < ApplicationController
 
   def index
 
+
     @search_input = params.dig(:criteria, :search)
     @error = ""
     @levels = params.dig(:criteria, :knowledge_level)
     @platforms = params.dig(:criteria, :platform)
+    @prices = params.dig(:criteria, :price)
+    @completion_times = params.dig(:criteria, :completion_time)
 
     if @search_input.blank?
       # display all courses if user makes no input
@@ -41,6 +44,28 @@ class CoursesController < ApplicationController
       @courses = @courses.where(platform: selected_options)
     end
 
+    # price
+    if @prices
+      selected_options = params[:criteria][:price].reject(&:blank?)
+      if selected_options.blank? || selected_options.count == 2
+        @courses = @courses.where("price >= 0")
+      elsif selected_options[0] == "Free"
+        @courses = @courses.where("price = 0")
+      elsif selected_options[0] == "Paid"
+        @courses = @courses.where("price > 0")
+      end
+    end
+
+    # completion time
+    if @completion_times
+      selected_options = params[:criteria][:completion_time].reject(&:blank?)
+      if selected_options[0] == "> 1 week"
+        @courses = @courses.where("completion_time = 'long'")
+      elsif selected_options[0] == "< 1 week"
+        @courses = @courses.where("completion_time = 'short'")
+      # else if selected_options.blank? || selected_options.count == 2
+      end
+    end
 
   end
 

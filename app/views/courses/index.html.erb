@@ -11,8 +11,9 @@
       <div class="col-xs-12 col-md-3">
         <div class="filter-container filters-card">
           <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
-          <!-- knowledge level selector -->
+
             <div class="filter-selectors">
+              <!-- knowledge level selector -->
               <div class="filter">
                   <!-- select box beginner -->
                 <h3>Knowledge level</h3>
@@ -27,11 +28,11 @@
                 <!-- select box advanced -->
                 <div class="form-check category-choices">
                   <%= label_select(@levels, "advanced") %>
-
                 </div>
               </div>
               <div class="small-placeholder">
               </div>
+              <!-- platform selector -->
               <div class="filter">
                 <h3>Platform</h3>
                 <!-- Udemy -->
@@ -46,7 +47,36 @@
                 <div class="form-check category-choices">
                   <%= label_select_p(@platforms, "Edx") %>
                 </div>
+                <!-- FutureLearn -->
+                <div class="form-check category-choices">
+                  <%= label_select_p(@platforms, "FutureLearn") %>
+                </div>
               </div>
+              <!-- Price selector -->
+              <div class="filter">
+                <h3>Price</h3>
+                <!-- Free -->
+                <div class="form-check category-choices">
+                  <%= label_select_price(@prices, "Free") %>
+                </div>
+                <!-- Paid -->
+                <div class="form-check category-choices">
+                  <%= label_select_price(@prices, "Paid") %>
+                </div>
+              </div>
+
+              <div class="filter">
+                <h3>Completion time</h3>
+                <!-- Free -->
+                <div class="form-check category-choices">
+                  <%= label_select_n("completion_time", @completion_times, "> 1 week") %>
+                </div>
+                <!-- Paid -->
+                <div class="form-check category-choices">
+                  <%= label_select_n("completion_time", @completion_times, "< 1 week") %>
+                </div>
+              </div>
+
             </div>
             <!-- filter-selectors -->
             <!-- platform selector -->
