@@ -12,7 +12,6 @@ class BookmarksController < ApplicationController
       redirect_to course_path(params[:course_id])
 
     else
-      raise
       redirect_to new_user_session_path(redirect_to: course_path(params[:id]))
     end
   end
