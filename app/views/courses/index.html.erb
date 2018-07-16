@@ -85,6 +85,7 @@
             <%= f.hidden_field :search, value: @search_input %>
             <!-- submit button -->
             <%= f.button :submit, "Specify Search", class: "button-white-sidebar"%>
+            <%= link_to "Clear", "#", class: "uncheck-all btn button-white-sidebar-inv" %>
           </div>
           <% end %>
           <!-- filter-container -->
