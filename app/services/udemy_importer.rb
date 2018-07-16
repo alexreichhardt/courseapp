@@ -93,7 +93,7 @@ class UdemyImporter
         puts response
         break
       else
-        if Course.where(platform_id: response["id"]).size != 0
+        if Course.where(platform: "udemy", platform_id: response["id"]).size != 0
           p "already exists in db"
           next
         else

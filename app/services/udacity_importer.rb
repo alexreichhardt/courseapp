@@ -10,7 +10,7 @@ class UdacityImporter
       puts "nothing"
     else
       response["courses"].each do |course|
-        if Course.where(platform_id: course["key"]).size != 0
+        if Course.where(platform: "udacity", platform_id: course["key"]).size != 0
           p "already exists in db"
           next
         else
