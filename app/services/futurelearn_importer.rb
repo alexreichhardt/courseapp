@@ -15,7 +15,7 @@ class FuturelearnImporter
     url = "https://www.futurelearn.com/feeds/courses"
 
     # NUMBER OF COURSES TO RETRIEVE:
-    number_of_courses = 100
+    number_of_courses = 1000
 
     input = self.class.get(url)
 

@@ -107,3 +107,41 @@ flex-direction: row;
   width: 45vw;
 }
 
+.category-choice-home {
+  font-weight: 350;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  border-radius: 0px;
+
+  flex: 0 0 30%;
+  text-align: center;
+  padding: 4px 8px;
+  transition: 0.3s ease;
+  background-color: $blue-sidebar;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    color: $blue-sidebar;
+    background-color: white;
+
+    // to be tried
+    // color: $green-primary;
+    // background-color: white;
+    border: 2px solid $blue-sidebar;
+
+  }
+  &.active {
+  background-color: black;
+  color: #469AE0;
+  opacity: 1;
+  // to be tried
+  // color: $green-primary;
+  // background-color: white;
+  // border: 2px solid $green-primary;
+  }
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
