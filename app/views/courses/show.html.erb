@@ -124,6 +124,12 @@
             <i class="fas fa-external-link-square-alt icon"></i>
             Offering platform: <%= @course.platform %>
           </li>
+          <% course_id = @course.id %>
+          <% bookmarks = Bookmark.where(course_id: course_id) %>
+          <% num_of_bookmarks = bookmarks.count %>
+            <div class="bookmark-rating">
+              <p class ="paragraph">Previously bookmarked by <%= num_of_bookmarks %> users</p>
+            </div>
         </ul>
         <%= link_to "Start now on #{@course.platform}", @course.url, class: "button-green-primary", target: "_blank" %>
         <div class="add-review">
