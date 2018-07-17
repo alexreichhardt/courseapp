@@ -1,53 +1,64 @@
-$.fn.truncate = function(options) {
-  $(this).append('<span class="truncate_lh" style="display:none;">&nbsp;</span>')
+function enableReadMore() {
+  if (document.querySelector(".truncate")) {
+      $.fn.truncate = function(options) {
+      $(this).append('<span class="truncate_lh" style="display:none;">&nbsp;</span>')
 
-  var defaults = {
-    maxlines: 10,
-    moreText: 'Read full description',
-    lessText: 'Hide',
-    ellipsis: '...'
-  };
+      var defaults = {
+        maxlines: 10,
+        moreText: 'Read full description',
+        lessText: 'Hide',
+        ellipsis: '...'
+      };
 
-  $.extend(options, {
-    lineheight: ($('.truncate_lh').css('height').replace('px', ''))
-  });
-  $.extend(options, {
-    maxheight: (options.maxlines * options.lineheight)
-  });
-  options = $.extend(defaults, options);
+      if ($('.truncate_lh')) {
+        $.extend(options, {
+          lineheight: ($('.truncate_lh').css('height').replace('px', ''))
+        });
+        $.extend(options, {
+          maxheight: (options.maxlines * options.lineheight)
+        });
+      }
 
-  return this.each(function() {
-    var text = $(this);
+      options = $.extend(defaults, options);
 
-    if (text.height() > options.maxheight) {
+      return this.each(function() {
+        var text = $(this);
 
-      text.css({
-        'overflow': 'hidden',
-        'height': options.maxheight + 'px'
-      });
+        if (text.height() > options.maxheight) {
 
-      var link = $('<a href="#" class="showHide emphasized-text">' + options.moreText + '</a>');
-      var wrapDiv = $('<div class="truncate_wrap" />');
+          text.css({
+            'overflow': 'hidden',
+            'height': options.maxheight + 'px'
+          });
 
-      text.wrap(wrapDiv);
-      text.after(link);
+          var link = $('<a href="#" class="showHide emphasized-text">' + options.moreText + '</a>');
+          var wrapDiv = $('<div class="truncate_wrap" />');
 
-      link.click(function() {
-        if (link.text() == options.moreText) {
-          link.text(options.lessText);
-          text.css('height', 'auto');
-        } else {
-          link.text(options.moreText);
-          text.css('height', options.maxheight + 'px');
+          text.wrap(wrapDiv);
+          text.after(link);
+
+          link.click(function() {
+            if (link.text() == options.moreText) {
+              link.text(options.lessText);
+              text.css('height', 'auto');
+            } else {
+              link.text(options.moreText);
+              text.css('height', options.maxheight + 'px');
+            }
+            return false;
+          });
         }
-        return false;
       });
-    }
-  });
-};
+    };
 
-$().ready(function() {
-  $('.truncate').truncate( {
-    maxlines: 5
-  });
-});
+    $().ready(function() {
+      if ($('.truncate')) {
+        $('.truncate').truncate( {
+          maxlines: 5
+        });
+      }
+    });
+  }
+}
+
+export { enableReadMore }
