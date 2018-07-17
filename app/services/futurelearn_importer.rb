@@ -43,9 +43,10 @@ class FuturelearnImporter
         instance_attributes[:knowledge_level] = get_knowledge_level(course)
         instance_attributes[:completion_time] = get_completion_time(course)
         instance_attributes[:university_course] = get_university_course(course)
-        instance_attributes[:categories] = get_categories(course)
+        instance_attributes[:categories] = get_categories_main(course)
 
         if validator(instance_attributes)
+          instance_attributes[:categories] = get_categories(course)
           new_course = Course.new(instance_attributes)
           new_course.save!
         end
@@ -65,6 +66,14 @@ class FuturelearnImporter
       return false
     else
       return true
+    end
+  end
+
+  def check_for_nil(string)
+    if string.nil?
+      return ""
+    else
+      return string
     end
   end
 
@@ -153,12 +162,24 @@ class FuturelearnImporter
     ["university", "college"].any? { |word| organizer_name.downcase.include?(word) }
   end
 
-  def get_categories(course)
+  def get_categories_main(course)
     categories_array = course["categories"]
     return "{}" unless categories_array.count >= 1
     subjects_hash = {}
     subjects_hash["categories"] = categories_array
     subjects_hash.to_json
+  end
+
+  def get_categories(course)
+    title = check_for_nil(course["title"])
+    subtitle = check_for_nil(course["introduction"])
+    description = edit_description(course["description"])
+    description = check_for_nil(description)
+    joined_string = title + subtitle + description
+    categories = CategoryHelper.call(joined_string)
+    subjects_hash = {}
+    subjects_hash["categories"] = categories
+    subjects_hash
   end
 
   def get_knowledge_level(course)

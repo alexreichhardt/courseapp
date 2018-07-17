@@ -1,6 +1,7 @@
 import "bootstrap";
 import Turbolinks from "turbolinks";
-
+import "awesomplete";
+import "awesomplete/awesomplete.css";
 
 //= require turbolinks
 

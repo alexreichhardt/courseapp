@@ -1,4 +1,8 @@
 class Course < ApplicationRecord
+  CATEGORIES = ["Web Development", "Mobile Apps", "Programming Languages", "Game Development", "Databases",
+                "Software Testing", "Software Engineering", "Development Tools", "Front-end & Design", "DevOps",
+                "Security", "Data-Analysis"]
+
   enum knowledge_level: [:beginner, :intermediate, :advanced, :undetermined]
   has_many :bookmarks, dependent: :destroy
   has_many :course_reviews, dependent: :destroy
@@ -35,6 +39,10 @@ class Course < ApplicationRecord
     all_ratings = all_reviews.map { |course| course.rating}
 
     all_ratings.count
+  end
+
+  def display_categories
+    self.categories["subjects"].join(', ')
   end
 
 end

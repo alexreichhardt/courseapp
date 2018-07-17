@@ -36,10 +36,10 @@ class EdxImporter
     test_url = "/catalog/v1/catalogs/284/courses/"
     # NUMBER OF COURSES TO RETRIEVE:
 
-    number_of_courses = 1300 # 1319
+    number_of_courses = 100 # 1319
 
     # STARTING POINT IN CATALOGUE
-    starting_point = 0
+    starting_point = 901
     # URL FOR DEV AND PROD (ARBITRARY NUMBER OF COURSES)
     url = "https://prod-edx-discovery.edx.org/api/v1/catalogs/284/courses/?limit=#{number_of_courses}&offset=#{starting_point}"
     # header
@@ -56,7 +56,7 @@ class EdxImporter
         instance_attributes[:title] = course["title"]
         instance_attributes[:subtitle] = nil
         instance_attributes[:description] = get_description(course)
-        instance_attributes[:categories] = get_category(course)
+        instance_attributes[:categories] = get_category_main(course)
         instance_attributes[:price] = get_price(course)
         instance_attributes[:price_unit] = "€"
         instance_attributes[:image] = get_image(course)
@@ -72,6 +72,7 @@ class EdxImporter
         instance_attributes[:university_course] = true
 
         if validator(instance_attributes)
+          instance_attributes[:categories] = get_categories(course)
           new_course = Course.new(instance_attributes)
           new_course.save!
         end
@@ -109,13 +110,24 @@ class EdxImporter
   end
 
     # as jsonb
-  def get_category(course)
-    # what if nil?
-      subjects_array = course["subjects"].map { |subject| subject["name"] }
-      return "{}" unless subjects_array.count >= 1
-      subjects_hash = {}
-      subjects_hash["categories"] = subjects_array
-      subjects_hash.to_json
+  def get_categories(course)
+    title = course["title"]
+    description = get_description(course)
+    joined_string = title + description
+    categories = CategoryHelper.call(joined_string)
+    subjects_hash = {}
+    subjects_hash["categories"] = categories
+    subjects_hash
+  end
+
+  def get_category_main(course)
+
+    #what if nil?
+    subjects_array = course["subjects"].map { |subject| subject["name"] }
+    return "{}" unless subjects_array.count >= 1
+    subjects_hash = {}
+    subjects_hash["categories"] = subjects_array
+    subjects_hash.to_json
   end
 
   def get_description(course)

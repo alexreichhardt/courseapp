@@ -12,25 +12,27 @@
   <%= javascript_pack_tag 'application', defer: true %>
 
 
-
-
   <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
 </head>
-<body>
 
-
+  <body>
     <main class="application-wrapper">
-    <%= render 'shared/flashes' %>
-    <% if !current_page?(root_path) %>
+      <%= render 'shared/flashes' %>
+      <% if !current_page?(root_path) %>
       <%= render 'shared/navbar'%>
       <div class="background">
         <%= yield %>
       </div>
-    <%else%>
+      <%else%>
       <div class="background-home">
-      <%= yield %>
-    </div>
+        <%= yield %>
+      </div>
+      <%end%>
+    </main>
+    <% if !current_page?(courses_path) %>
+      <footer> <%= render 'shared/footer' %> </footer>
     <%end%>
+
 
     <!-- This div is not obosolete -->
 
@@ -40,6 +42,6 @@
     <footer> <%= render 'shared/footer' %> </footer>
   <%end%>
 
+   
   </body>
-
 </html>
