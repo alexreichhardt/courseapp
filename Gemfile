@@ -6,6 +6,7 @@ gem 'words_counted'
 gem 'cloudinary'
 gem 'railties', '~> 5.2.0'
 
+
 gem 'carrierwave', '~> 1.2'
 
 gem 'bootsnap', require: false
@@ -31,8 +32,10 @@ gem 'uglifier'
 gem 'webpacker'
 
 
+
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'bullet'
 end
 
 group :development, :test do
