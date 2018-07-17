@@ -1,9 +1,3 @@
-<% unless @error.empty? %>
-<div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <%=@error%>
-</div>
-<%end%>
 <div class="results-row">
   <div class="container special">
     <div class="row">
@@ -11,6 +5,12 @@
       <div class="col-xs-12 col-md-3">
         <div class="filter-container filters-card">
           <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+          <div>
+
+          </div>
+
+          <!-- <div class="small-placeholder"></div> -->
+
           <ul class="filter ul-reset">
             <li class="filter-item">
               <h3 class="filter-item-inner-heading minus"> Knowledge level
@@ -56,7 +56,7 @@
               <ul class="filter-attribute-list ul-reset">
                 <div class="filter-attribute-list-inner">
                   <li class="filter-attribute-item">
-                    <%= label_select("price", @prices, "futureLearn") %>
+                    <%= label_select("price", @prices, "Free") %>
                   </li>
                   <li class="filter-attribute-item">
                     <%= label_select("price",@prices, "Paid") %>
@@ -83,10 +83,8 @@
           <div>
             <%= f.hidden_field :search, value: @search_input %>
             <!-- submit button -->
-            <%= f.button :submit, "Specify Search", class: "button-white-sidebar"%>
+            <%= f.button :submit, "Search", class: "button-white-sidebar"%>
             <%= button_to "Clear", "#", class: "uncheck-all btn button-white-sidebar-inv" %>
-
-
           </div>
           <% end %>
           <!-- filter-container -->
@@ -97,9 +95,31 @@
       <!-- right side -->
       <div class="col-xs-12 col-md-9">
         <div class="container1">
+
+
+          <!-- search -->
+          <div class="box" id="index-search-box">
+            <%= simple_form_for :criteria, url: courses_path,
+                  wrapper: :inline_form,
+                  html: { class: "form-inline index-search-form"},
+                  wrapper_mappings: {
+                  boolean: :inline_boolean}, :method => :get do |f| %>
+
+              <%= f.input :search, id: "search", as: :string, input_html: {value: @search_input || ''} %>
+              <%= f.button :submit, "Hunt", class: "button-green-primary" %>
+              <% end %>
+            </div>
+
+
+
+            <!-- result information -->
           <div class="result-title">
             <p> <%= page_entries_info @courses, entry_name: 'courses' %> </p>
           </div>
+
+        </div>
+
+
           <% @courses.each do |course| %>
           <% course_id = course.id %>
           <% bookmarks = Bookmark.where(course_id: course_id) %>

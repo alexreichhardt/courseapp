@@ -10,6 +10,8 @@ class CourseReviewsController < ApplicationController
 
 
 
+
+
     #  if user_signed_in?
     #   boat = Boat.find(params[:boat_id])
     #   start_date = params[:start_date]
@@ -42,12 +44,18 @@ class CourseReviewsController < ApplicationController
   #   t.index ["user_id"], name: "index_course_reviews_on_user_id"
   # end
 
+
   def create
+
+
+
+
     new_course_review = CourseReview.new(title: params[:course_review][:title],
                             content: params[:course_review][:content],
                             rating: params[:course_review][:rating],
                             user_id: current_user.id,
                             course_id: params[:course_id])
+
     new_course_review.save!
     redirect_to course_path(params[:course_id], new_course_review.id)
   end

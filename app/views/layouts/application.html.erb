@@ -27,7 +27,17 @@
     <% if !current_page?(courses_path) %>
       <footer> <%= render 'shared/footer' %> </footer>
     <%end%>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
+
+
+    <!-- This div is not obosolete -->
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_pack_tag 'application' %>
+
+  </main>
+  <% if !current_page?(courses_path) %>
+    <footer> <%= render 'shared/footer' %> </footer>
+  <%end%>
+
+
   </body>
 </html>
