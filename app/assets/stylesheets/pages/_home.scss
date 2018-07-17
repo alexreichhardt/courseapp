@@ -19,8 +19,10 @@
   height: calc(100vh - 180px);
   display: flex;
   flex-direction: column;
+}
 
-
+.dividing-text {
+  margin: 24px;
 }
 
 .search-field {
@@ -82,7 +84,7 @@
 }
 
 .margin42 {
-  padding-left: 42px;
+  padding-left: 0px;
 
 }
 .growingform {
@@ -108,45 +110,50 @@ flex-direction: row;
 
 
 .criteria_search {
-  width: 45vw;
+  width: 37vw;
+}
+
+.searchbar {
+  width: 36vw;
 }
 
 .category-choice-home {
-  font-weight: 350;
-  color: white;
-  padding: 20px;
-  width: 100%;
-  border-radius: 0px;
-
+  margin-right: 20px;
   flex: 0 0 30%;
+  font-weight: 500;
+  color: white;
+  border-radius: 4px;
   text-align: center;
-  padding: 4px 8px;
   transition: 0.3s ease;
   background-color: $blue-sidebar;
+  min-height: 40px;
+  padding: 16px 10px;
+  border: 2px solid $blue-sidebar;
   &:hover {
     opacity: 1;
     cursor: pointer;
     color: $blue-sidebar;
     background-color: white;
-
-    // to be tried
-    // color: $green-primary;
-    // background-color: white;
     border: 2px solid $blue-sidebar;
-
   }
   &.active {
-  background-color: black;
-  color: #469AE0;
-  opacity: 1;
-  // to be tried
-  // color: $green-primary;
-  // background-color: white;
-  // border: 2px solid $green-primary;
+    background-color: white;
+    color: #469AE0;
+    opacity: 1;
+    border: 2px solid $blue-sidebar;
   }
 }
 
 input[type=submit] {
   cursor: pointer;
+}
+
+.centering {
+  display: flex;
+  justify-content: center;
+}
+
+.max_width {
+ max-width: 80%;
 }
 
