@@ -23,7 +23,7 @@ class UdacityImporter
             subtitle: course["subtitle"],
             description: full_description,
             knowledge_level: course["level"] == "" ? "undetermined" : course["level"] ,
-            categories: {subjects: course["tracks"]},
+            categories: get_categories(course, full_description),
             price: 0,
             price_unit: "€",
             image: course["image"],
@@ -42,18 +42,20 @@ class UdacityImporter
     end
   end
 
-  # def self.knowledge_level_correction(indicated_level)
-
-
-  #   if indicated_level == nil
-  #     # puts "222222222222"
-  #     # puts "222222222222"
-  #     # puts "222222222222"
-  #     "undetermined"
-  #   else
-  #     indicated_level
-  #   end
-  # endq
+  def self.get_categories(course, full_description)
+    title = course["title"]
+    subtitle = course["subtitle"]
+    description = full_description
+    if !subtitle.nil?
+      joined_string = title + subtitle + description
+    else
+      joined_string = title + description
+    end
+    categories = CategoryHelper.call(joined_string)
+    subjects_hash = {}
+    subjects_hash["categories"] = categories
+    subjects_hash
+  end
 
   def self.get_duration(duration, unit)
     a = duration.to_s + " " + unit

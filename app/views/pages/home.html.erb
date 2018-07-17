@@ -119,22 +119,26 @@
            <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
           <ul class="filter ul-reset">
             <li class="filter-item">
-              <h3 class="filter-item-inner-heading minus"> Platform
+              <h3 class="filter-item-inner-heading minus"> Please latform
               </h3>
               <ul class="filter-attribute-list ul-reset">
                 <div class="filter-attribute-list-inner">
-                  <li class="filter-attribute-item">
-                    <%= label_select_p_home(@platforms, "udemy") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_p_home(@platforms, "udacity") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_p_home(@platforms, "edx") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_p_home(@platforms, "futurelearn") %>
-                  </li>
+                  <div class="flex">
+                    <li class="filter-attribute-item">
+                      <%= label_select_p_home(@platforms, "udemy") %>
+                    </li>
+                    <li class="filter-attribute-item">
+                      <%= label_select_p_home(@platforms, "udacity") %>
+                    </li>
+                  </div>
+                  <div class="flex">
+                    <li class="filter-attribute-item">
+                      <%= label_select_p_home(@platforms, "edx") %>
+                    </li>
+                    <li class="filter-attribute-item">
+                      <%= label_select_p_home(@platforms, "futurelearn") %>
+                    </li>
+                  </div>
                 </div>
               </ul>
             </li>

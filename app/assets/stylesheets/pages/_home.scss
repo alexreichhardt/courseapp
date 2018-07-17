@@ -99,9 +99,13 @@ flex-direction: row;
   display: inline-flex;
 }
 
-.form-control {
+.growingform {
+  .form-control {
   width: 100% !important;
+  }
 }
+
+
 
 .criteria_search {
   width: 45vw;
