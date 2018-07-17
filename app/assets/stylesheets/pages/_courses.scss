@@ -192,12 +192,12 @@ input[type=submit] {
 
 .filter-item-inner-heading.minus:after {
   // content: "▲";
-  content: "+";
+  content: "-";
 }
 
 .filter-item-inner-heading.plus:after {
   // content: "▲";
-  content: "-";
+  content: "+";
 }
 
 .filter-attribute-item {
@@ -210,4 +210,8 @@ input[type=submit] {
 
 .filter-attribute-item:first-child {
   margin-top: 0;
+}
+
+.inherit-all {
+  all: inherit;
 }
