@@ -1,4 +1,4 @@
-class CategoryLabeling
+module CategoryLabeling
 
   def self.call
 

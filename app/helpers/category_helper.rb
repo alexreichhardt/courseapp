@@ -1,4 +1,4 @@
-class CategoryHelper
+module CategoryHelper
 
   @web_development = { name: "web_development",
                        keywords: ["web development", "react", "node.js", "css", "html", "redux", "firebase", "ajax", "flask", "github", "heroku", "deploy", "angular", "rails", "jquery", "jsf", "jsp", "kotlin", "animate", "animation", "payment processing", "web app", "api", "mvc", "node", "nodejs", "bootstrap", "django", "react", "browser", "responsive", "web develop", "chrome", "document object model"]
