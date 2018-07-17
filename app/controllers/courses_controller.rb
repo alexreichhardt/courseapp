@@ -3,13 +3,14 @@ class CoursesController < ApplicationController
 
   def index
 
-
     @search_input = params.dig(:criteria, :search)
     @error = ""
     @levels = params.dig(:criteria, :knowledge_level)
     @platforms = params.dig(:criteria, :platform)
     @prices = params.dig(:criteria, :price)
     @completion_times = params.dig(:criteria, :completion_time)
+
+
 
     if @search_input.blank?
       # display all courses if user makes no input
@@ -22,6 +23,7 @@ class CoursesController < ApplicationController
     else
       # otherwise apply use search alogrithm
       @courses = Course.search_global(@search_input)
+
       @courses = @courses.page(params[:page]).per(10)
     end
 
