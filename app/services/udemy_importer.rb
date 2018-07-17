@@ -23,9 +23,9 @@ class UdemyImporter
     @auth = { username:ENV['YOUR_CLIENT_ID'] , password: ENV['YOUR_CLIENT_SECRET'] }
     @options = {basic_auth: @auth}
     ids = []
-    page_num = 11
+    page_num = 24
     loop do
-      if page_num == 16
+      if page_num == 28
         p ids
         return ids
         break
