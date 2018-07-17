@@ -10,4 +10,8 @@ function accordion(section, heading, list) {
   });
 };
 
-accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list');
+export { accordion };
+
+// document.addEventListener("turbolinks:load", () => {
+//   accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list');
+// });

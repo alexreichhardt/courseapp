@@ -1,21 +1,30 @@
 import "bootstrap";
+import Turbolinks from "turbolinks";
 import "awesomplete";
 import "awesomplete/awesomplete.css";
 
-import { readmore } from '../components/readmore';;
+//= require turbolinks
 
+import { enableReadMore } from '../components/readmore';
 import { loadDynamicBannerText } from '../components/dynamictext';
-loadDynamicBannerText();
-
 import { pickTabs } from "../components/picktabs";
-pickTabs();
-
 import { categoryChoice } from "../components/categorychoice";
-categoryChoice();
-
 import { categoryChoiceHome } from "../components/categorychoicehome";
+import { accordion } from "../components/filteraccordion";
+import { uncheckallfilter } from "../components/uncheckallfilter"
+
+categoryChoice();
 categoryChoiceHome();
 
-import { filteraccordion } from "../components/filteraccordion";
+// import { listenToTurbolinks } from "../components/turbolinks"
 
-import { uncheckallfilter } from "../components/uncheckallfilter"
+Turbolinks.start();
+Turbolinks.setProgressBarDelay(1);
+// listenToTurbolinks();
+
+document.addEventListener("turbolinks:load", () => {
+  pickTabs();
+  accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list');
+  enableReadMore();
+  loadDynamicBannerText();
+});
