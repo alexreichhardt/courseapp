@@ -1,4 +1,6 @@
 import "bootstrap";
+import "awesomplete";
+import "awesomplete/awesomplete.css";
 
 import { readmore } from '../components/readmore';;
 

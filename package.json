@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "awesomplete": "^1.1.2",
     "bootstrap": "3",
     "expanding-textareas": "^1.0.2",
     "jquery": "^3.3.1",
