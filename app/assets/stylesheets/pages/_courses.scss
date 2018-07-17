@@ -185,17 +185,19 @@ input[type=submit] {
 .filter-item-inner-heading.minus:after,
 .filter-item-inner-heading.plus:after {
   position: absolute;
-  top: 20%;
+  top: 0;
   right: 7.5%;
-  font-size: .6em;
+  font-size: 16px;
 }
 
 .filter-item-inner-heading.minus:after {
-  content: "▲";
+  // content: "▲";
+  content: "+";
 }
 
 .filter-item-inner-heading.plus:after {
-  content: "▼";
+  // content: "▲";
+  content: "-";
 }
 
 .filter-attribute-item {

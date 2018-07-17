@@ -5,4 +5,3 @@ class PagesController < ApplicationController
     @error = params[:error]
   end
 end
-
