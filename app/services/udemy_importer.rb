@@ -23,14 +23,14 @@ class UdemyImporter
     @auth = { username:ENV['YOUR_CLIENT_ID'] , password: ENV['YOUR_CLIENT_SECRET'] }
     @options = {basic_auth: @auth}
     ids = []
-    page_num = 24
+    page_num = 2
     loop do
-      if page_num == 28
+      if page_num == 3
         p ids
         return ids
         break
       end
-      url = "/?page=#{page_num}&page_size=100&category=Development&language=en"
+      url = "/?page=#{page_num}&page_size=20&category=Development&language=en"
       response = self.class.get(url, @options)
 
       p "Error Code #{response.code}"
@@ -102,7 +102,7 @@ class UdemyImporter
           instance_attributes[:title] = response["title"]
           instance_attributes[:subtitle] = nil
           instance_attributes[:description] = response["description"]
-          instance_attributes[:categories] = categories(response["primary_category"]["title"], response["primary_subcategory"]["title"])
+          instance_attributes[:categories] = categories(response)
           instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
           instance_attributes[:price_unit] = price_unit(response)
           instance_attributes[:image] = response["image_100x100"]
@@ -144,20 +144,26 @@ class UdemyImporter
     end
   end
 
-  def categories(cat_primary, cat_sub)
-    if !cat_primary.nil? && !cat_sub.nil?
-      subjects_array = [cat_primary, cat_sub]
-    elsif !cat_primary.nil? && cat_sub.nil?
-      subjects_array = [cat_primary]
-    elsif cat_primary.nil? && !cat_sub.nil?
-      subjects_array = [cat_sub]
-    else
-      return nil
-    end
+  def categories(course)
 
+    title = course["title"]
+    description = course["description"]
+    joined_string = title + description
+    categories = CategoryHelper.call(joined_string)
     subjects_hash = {}
-    subjects_hash["subjects"] = subjects_array
+    subjects_hash["categories"] = categories
     subjects_hash
+    # if !cat_primary.nil? && !cat_sub.nil?
+    #   subjects_array = [cat_primary, cat_sub]
+    # elsif !cat_primary.nil? && cat_sub.nil?
+    #   subjects_array = [cat_primary]
+    # elsif cat_primary.nil? && !cat_sub.nil?
+    #   subjects_array = [cat_sub]
+    # else
+    #   return nil
+    # end
+
+
   end
 
   def get_completion_time(content_length)
