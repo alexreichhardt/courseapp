@@ -130,7 +130,9 @@
                 <h3 class="heading"><%=course.title%></h3>
               </div>
               <div class="paragraph">
-                <p><%= truncate(course.description, length: 400, escape: false) %></p>
+                <% desc_as_text = Truncato.truncate course.description, max_length: 400 %>
+                <%= desc_as_text.html_safe %>
+                <!-- desc_as_text.truncate(27, escape: false) -->
               </div>
               <div class="bookmark-rating">
                 <p class ="paragraph">This course has been bookmarked by <%= num_of_bookmarks %> users</p>
