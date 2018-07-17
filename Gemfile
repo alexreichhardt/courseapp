@@ -6,6 +6,7 @@ gem 'words_counted'
 gem 'cloudinary'
 gem 'railties', '~> 5.2.0'
 
+gem 'turbolinks', '~> 5.1.0'
 
 gem 'carrierwave', '~> 1.2'
 
