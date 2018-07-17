@@ -97,8 +97,7 @@
       <!-- right side -->
       <div class="col-xs-12 col-md-9">
         <div class="container1">
-          <div class="result-title flex" style="justify-content: space-between;">
-            <p class ="paragraph">We found <%= @courses.size %> courses for you</p>
+          <div class="result-title">
             <p> <%= page_entries_info @courses, entry_name: 'courses' %> </p>
           </div>
           <% @courses.each do |course| %>
