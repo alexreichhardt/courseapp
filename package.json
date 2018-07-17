@@ -6,8 +6,9 @@
     "bootstrap": "3",
     "expanding-textareas": "^1.0.2",
     "jquery": "^3.3.1",
+    "turbolinks": "^5.1.1",
     "typed.js": "^2.0.8"
-    },
+  },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
   }
