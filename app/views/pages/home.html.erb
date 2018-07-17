@@ -72,9 +72,16 @@
                   wrapper: :inline_form,
                   html: { class: "form-inline test"},
                   wrapper_mappings: {
-                  boolean: :inline_boolean}, :method => :get do |f| %>
+                  boolean: :inline_boolean}, method: :get do |f| %>
 
-              <%= f.input :search, :id => "search", as: :string %>
+              <%= f.input :search, id: "search", as: :string,
+                          input_html: {
+                            class: "awesomplete",
+                            data: {
+                              list: Course::CATEGORIES.join(", ")
+                            }
+                          }
+              %>
               <%= f.button :submit, "Hunt", class: "button-green-primary-landing"%>
               <% end %>
             </div>
