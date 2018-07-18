@@ -61,8 +61,6 @@
 .bookmark-background a {
     position: relative;
     top: 5px;
-
-
 }
 
 .single-icon-index {
@@ -75,11 +73,12 @@
 .bookmark-background {
   box-shadow: 0px 1px 1px lightgrey;
   height: 50px;
-  min-width: 36px;
+  width: 36px;
   background-color: rgba(230, 230, 230, 1);
   border-radius:0px 0px 1px 1px;
   padding-bottom: -10px;
   margin-right: 24px;
+  margin-top: -21px;
   text-align: center;
 
 }
