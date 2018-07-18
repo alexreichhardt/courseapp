@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :course_reviews, only: [ :destroy ]
   end
 
+  get "/categories" => "courses#categories"
+
+
 
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
