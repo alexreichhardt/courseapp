@@ -34,10 +34,11 @@
 /* Navbar link */
 .navbar-wagon-link {
   color: #616668;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: lighter;
 }
 .navbar-wagon-link:hover {
-  color: lightgrey;
+  color: #616668;
   text-decoration: none;
 }
 
@@ -91,11 +92,21 @@
   font-size: 18px;
 }
 .navbar-wagon-link-home:hover {
-  color: lightgrey;
+  // color: lightgrey;
   text-decoration: none;
 }
 
 .flex img {
   height: 70px;
+}
+
+.navbar-link-wrapper {
+  height: 70px;
+  padding-top: 25.5px;
+  padding-bottom: 25.5px;
+  transition: 0.1s;
+  &:hover {
+    border-bottom: 2px solid $green-primary;
+  }
 }
 
