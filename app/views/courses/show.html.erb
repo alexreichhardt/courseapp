@@ -10,7 +10,8 @@
           <% if @bookmarked == false %>
             <i class="single-icon"><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
           <% else %>
-            <i class="single-icon"><%= link_to("", course_bookmark_path(@course), method: :delete, :class => "fas fa-bookmark") %></i>
+          <% a = Bookmark.where(course_id: @course.id, user_id: current_user.id) %>
+            <i class="single-icon"><%= link_to("", course_bookmark_path(@course.id, a[0].id), method: :delete, :class => "fas fa-bookmark") %></i>
           <% end %>
         </div>
         <h1 class="title"><%= @course.title %></h1>
