@@ -118,5 +118,6 @@ module CoursesHelper
     end
     html.html_safe
   end
+
 end
 
