@@ -48,6 +48,41 @@
   color: #FDB32B;
 }
 
+.stars-index {
+  color: #FDB32B;
+
+}
+
 .icon {
   width: 30px;
 }
+
+
+.bookmark-background a {
+    position: relative;
+    top: 5px;
+
+
+}
+
+.single-icon-index {
+  font-size: 28px;
+  &:hover {
+    color: rgba(11, 63, 150, 0.8);
+  }
+}
+
+.bookmark-background {
+  box-shadow: 0px 1px 1px lightgrey;
+  height: 50px;
+  min-width: 36px;
+  background-color: rgba(230, 230, 230, 1);
+  border-radius:0px 0px 1px 1px;
+  padding-bottom: -10px;
+  margin-right: 24px;
+  text-align: center;
+
+}
+
+
+

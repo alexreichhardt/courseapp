@@ -121,21 +121,15 @@
 
 
           <% @courses.each do |course| %>
-          <% course_id = course.id %>
-          <% bookmarks = Bookmark.where(course_id: course_id) %>
-          <% num_of_bookmarks = bookmarks.count %>
-          <div class="box-flex card-medium first-card">
+          <div class="box-flex-index card-medium first-card">
             <div class="card-content-left">
-              <div class="card-description">
+              <div>
                 <h3 class="heading"><%=course.title%></h3>
               </div>
               <div class="paragraph">
                 <% desc_as_text = Truncato.truncate course.description, max_length: 400 %>
                 <%= desc_as_text.html_safe %>
                 <!-- desc_as_text.truncate(27, escape: false) -->
-              </div>
-              <div class="bookmark-rating">
-                <p class ="paragraph">This course has been bookmarked by <%= num_of_bookmarks %> users</p>
               </div>
             </div>
             <div class="card-content-right">
@@ -151,12 +145,26 @@
                 <i class="fas fa-coins"></i>
                 <p><%= course.price %></p>
               </div>
+              <% if !course.avg_rating.nil? %>
+              <div class="icon-next">
+                <i class="fas fa-star"></i>
+                <p><%= course.avg_rating %></p>
+              </div>
+              <% end %>
+
+
               <div class="card-button">
-
                <%= link_to("See Details", course_path(course, criteria: {search: @search_input, knowledge_level: @levels, platform: @platforms, price: @prices, completion_time: @completion_times}), class: "button-green-primary") %>
-
              </div>
            </div>
+              <div class="bookmark-background">
+              <% b = Bookmark.where(course_id: course.id, user_id: current_user.id) %>
+              <% if b.empty? %>
+                <i class="single-icon-index"><%= link_to("", course_bookmarks_path(course), method: :post, :class => "far fa-bookmark") %></i>
+              <% else %>
+                <i class="single-icon-index"><%= link_to("", course_bookmark_path(course, b[0].id), method: :delete, :class => "fas fa-bookmark") %></i>
+              <% end %>
+              </div>
          </div>
          <% end %>
          <!-- container1 -->

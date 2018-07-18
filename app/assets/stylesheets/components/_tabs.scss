@@ -13,13 +13,14 @@
   font-size: 17px;
   font-weight: bold;
   margin-top: 0;
+  padding-top: 1.2px;
 }
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
 }
 .tab {
-  background: lightgrey;
+  // background: lightgrey;
   flex: 0 0 50%;
   text-align: center;
   padding: 10px 0;
@@ -45,6 +46,13 @@
   // border-right: 2px solid black;
   // border-bottom: 0px solid black;
   // border-left: 2px solid black;
+}
+
+.active {
+
+  &:hover {
+
+  }
 }
 
 .show {
