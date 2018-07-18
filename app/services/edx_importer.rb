@@ -132,12 +132,17 @@ class EdxImporter
 
   def get_description(course)
     if !course["full_description"].nil?
-      return course["full_description"]
+      return remove_strong_tags(course["full_description"])
     elsif !course["short_description"].nil?
-      return course["short_description"]
+      return remove_strong_tags(course["short_description"])
     else
       return nil
     end
+  end
+
+  def remove_strong_tags(description)
+    description.gsub '<strong>', ''
+    description.gsub '</strong>', ''
   end
 
   # REFACTOR
