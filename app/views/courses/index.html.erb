@@ -159,7 +159,7 @@
                   <div class="content-right-attributes">
                     <div class="icon-next">
                       <i class="fas fa-graduation-cap"></i>
-                      <p><%= course.knowledge_level %></p>
+                      <p><%= course.knowledge_level.capitalize %></p>
                     </div>
                     <div class="icon-next">
                       <i class="far fa-clock"></i>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="icon-next">
                       <i class="fas fa-coins"></i>
-                      <p><%= course.price %></p>
+                      <p><%= "#{course.price.to_s} #{course.price_unit}" %></p>
                     </div>
                     <% if !course.avg_rating.nil? %>
                       <div class="icon-next">
@@ -190,7 +190,7 @@
 
           </div>
         <% end %>
-      
+
          <!-- container1 -->
          <div class="indent-next-buttons">
           <%= link_to_previous_page @courses, 'Previous Page', class: "button-red-secondary" %>

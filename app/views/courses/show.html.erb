@@ -6,7 +6,7 @@
       <!-- for css of the left side -->
       <div class="box">
         <div class="flex align-horizontal">
-          <p><%= @course.platform %> online course<p>
+          <p><%= @course.platform.capitalize %> online course<p>
           <% if @bookmarked == false %>
             <i class="single-icon"><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
           <% else %>
@@ -97,7 +97,7 @@
         <ul style="margin-bottom: 15px;">
           <li class= "list-style">
             <i class="fas fa-coins icon"></i>
-            Price: <%= @course.price %>
+            <%= "#{@course.price} #{@course.price_unit}" %>
           </li>
           <% unless @course.duration == "" || @course.duration == "0" %>
             <li class= "list-style">
@@ -111,14 +111,16 @@
           </li>
           <li class= "list-style">
             <i class="fas fa-external-link-square-alt icon"></i>
-            Offering platform: <%= @course.platform %>
+            Offering platform: <%= @course.platform.capitalize %>
           </li>
           <% course_id = @course.id %>
           <% bookmarks = Bookmark.where(course_id: course_id) %>
           <% num_of_bookmarks = bookmarks.count %>
-            <div class="bookmark-rating">
-              <p class ="paragraph">Previously bookmarked by <%= num_of_bookmarks %> users</p>
-            </div>
+
+          <li class= "list-style">
+            <i class="far fa-bookmark icon"></i>
+            Bookmarked by <%= num_of_bookmarks %> users
+          </li>
         </ul>
         <%= link_to "Start now on #{@course.platform}", @course.url, class: "button-green-primary", target: "_blank" %>
         <div class="add-review">
