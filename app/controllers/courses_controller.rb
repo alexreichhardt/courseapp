@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
 
   def index
 
+
     @search_input = params.dig(:criteria, :search)
     @error = ""
     @levels = params.dig(:criteria, :knowledge_level)
@@ -105,7 +106,7 @@ class CoursesController < ApplicationController
 
     # top four categories based on course count
     @top_categories_count = category_hash.sort_by { |a| -a[1][2] }[0..3]
-    
+
     @categories = (category_hash.to_a - @top_categories_count.to_a).to_h
   end
 
