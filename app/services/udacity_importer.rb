@@ -23,7 +23,7 @@ class UdacityImporter
             subtitle: course["subtitle"],
             description: full_description,
             knowledge_level: course["level"] == "" ? "undetermined" : course["level"] ,
-            categories: get_categories(course, full_descriptiony),
+            categories: get_categories(course, full_description),
             price: 0,
             price_unit: "€",
             image: course["image"],

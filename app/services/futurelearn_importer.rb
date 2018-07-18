@@ -198,13 +198,10 @@ class FuturelearnImporter
 
   # change h tags to p tags
   def edit_description(description)
-    description.gsub '<h2>', '<p>'
-    description.gsub '</h2>', '</p>'
-    description.gsub '<h2 ', '<p '
-    description.gsub '</h3>', '</p>'
-    description.gsub '<h3 ', '<p '
-    description.gsub '</h4>', '</p>'
-    description.gsub '<h4 ', '<p '
+    doc = Nokogiri::HTML("#{description}")
+    doc.xpath("//h1").each { |div|  div.name= "p"; }
+    doc.css('strong').each { |node| node.replace(node.children) }
+    doc.to_s
   end
 
 end
