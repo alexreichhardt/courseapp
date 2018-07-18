@@ -1,22 +1,21 @@
 .footer {
+  padding-right: 55px;
+  padding-left: 55px;
   position: static;
   bottom: 0;
-  padding: 0px 40px;
   display: -webkit-flex; /* Safari */
   -webkit-flex-wrap: wrap; /* Safari 6.1+ */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   font-weight: 300;
-  color: #CCCCCC;
+  color: #333333;
   background-color: white;
   height: auto;
-  padding-bottom: 20px;
-  z-index: 20;
   h3 {
     text-transform: uppercase;
     font-size: 18px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-top: 20px;
     color: #333333;
   }
@@ -29,39 +28,35 @@
     color: #333333;
   }
   p {
+    opacity: 0.5;
     font-size: 16px;
+    text-align: left;
   }
 }
 
 .footer-section {
-
-  width: 25%;
-  padding: 0px 25px;
+  width: 33%;
+  padding: 0px 40px;
   text-align: justify;
+  padding-bottom: 20px;
 }
 
 .footer-links {
   display: flex;
-  align-items: center;
-}
-
-.footer-links a {
-  color: black;
-  opacity: 0.15;
+  a {
+  color: #333333;
+  opacity: 0.5;
   text-decoration: none;
-  font-size: 24px;
-  padding: 0px 10px;
-}
-.footer-links a:hover {
-  opacity: 1;
-}
-.footer .fa-heart {
-  color: #D23333;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 @media (max-width: 768px) {
     .footer-section {
-      flex: 0 0 50% !important;
+      flex: 0 0 66% !important;
+      padding-bottom: 20px;
     }
 }
 

@@ -42,7 +42,7 @@
   border-radius: 0em !important;
   margin: .2em 0 0;
   background: hsla(0,0%,100%,.9);
-  background: linear-gradient(to bottom right, white, hsla(0,0%,100%,.8));
+  background: linear-gradient(to bottom right, white, hsla(0,0%,100%,1));
   border: 1px solid rgba(0,0,0,.3);
   box-shadow: 0em 0em 0em rgba(0,0,0,0) !important;
   text-shadow: none;
@@ -97,8 +97,11 @@
   }
 
     .awesomplete mark {
-      background: #01278f !important;
-      color: white;
+      background: none !important;
+      color: black;
+      font-weight: bold;
+      margin: 0px !important;
+      padding: 0px;
     }
 
     .awesomplete li:hover mark {

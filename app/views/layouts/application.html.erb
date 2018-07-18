@@ -24,14 +24,15 @@
         <%= yield %>
       </div>
       <%else%>
-      <div class="background-home">
+
         <%= yield %>
-      </div>
+
       <%end%>
     </main>
     <% if !current_page?(courses_path) %>
       <footer> <%= render 'shared/footer' %> </footer>
     <%end%>
     <!-- This div is not obosolete -->
+
   </body>
 </html>

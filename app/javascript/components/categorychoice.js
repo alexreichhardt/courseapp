@@ -1,8 +1,6 @@
 function categoryChoice() {
-  $(document).ready(function(){
-    $(".category-choice").click(function(){
-      $(this).toggleClass("active");
-    });
+  $(".category-choice").click(function(){
+    $(this).toggleClass("active");
   });
 }
 

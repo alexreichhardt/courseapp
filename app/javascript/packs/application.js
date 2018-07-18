@@ -1,9 +1,6 @@
 import "bootstrap";
 import Turbolinks from "turbolinks";
-import "awesomplete";
-import "awesomplete/awesomplete.css";
 
-//= require turbolinks
 
 import { enableReadMore } from '../components/readmore';
 import { loadDynamicBannerText } from '../components/dynamictext';
@@ -12,9 +9,7 @@ import { categoryChoice } from "../components/categorychoice";
 import { categoryChoiceHome } from "../components/categorychoicehome";
 import { accordion } from "../components/filteraccordion";
 import { uncheckallfilter } from "../components/uncheckallfilter"
-
-categoryChoice();
-categoryChoiceHome();
+import { initAwesomplete } from "../components/init_awesomplete"
 
 // import { listenToTurbolinks } from "../components/turbolinks"
 
@@ -27,4 +22,7 @@ document.addEventListener("turbolinks:load", () => {
   accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list');
   enableReadMore();
   loadDynamicBannerText();
+  categoryChoiceHome();
+  categoryChoice();
+  initAwesomplete();
 });
