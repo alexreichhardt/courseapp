@@ -54,12 +54,14 @@
 
   <div class="container">
     <div class="row">
+      <div class="centering">
+      <div class="max_width">
       <div class="search-content">
-        <div class="col-xs-12 margin42">
+        <div class="col-xs-12 margin42" >
           <h2 style="color: white; font-size: 50px; font-weight: 600;">Find courses to learn..</h2>
         </div>
         <div class="col-xs-12 margin42">
-          <h2 style="color: white; font-size: 120px; font-weight: lighter;">
+          <h2 style="color: white; font-size: 90px; font-weight: lighter;">
             <div style="padding: 20px 0px;">
               <span id="banner-typed-text"></span>
             </div>
@@ -74,140 +76,95 @@
                   wrapper_mappings: {
                   boolean: :inline_boolean}, method: :get do |f| %>
 
-              <%= f.input :search, id: "search", as: :string,
-                          input_html: {
-                            class: "awesomplete",
-                            data: {
-                              list: Course::CATEGORIES.join(", ")
+              <div class="flex">
+                <%= f.input :search, id: "search", as: :string,
+                            input_html: {
+                              class: "awesomplete",
+                              data: {
+                                list: Course::CATEGORIES.join(", ")
+                              }
                             }
-                          }
-              %>
-              <%= f.button :submit, "Hunt", class: "button-green-primary-landing"%>
+                %>
+                <%= f.button :submit, "Hunt", class: "button-green-primary-landing"%>
+             <!--    <div class="dividing-text">
+                  <p class="light-paragraph">or</p>
+                </div>
+                <button type="button" class="button-green-secondary" style="height: 50px;" data-toggle="modal" data-target="#exampleModalCenter">
+                  Specify
+                </button> -->
+              </div>
               <% end %>
             </div>
           </div>
         </div>
         <div class="col-xs-12">
-          <a href="#categories" class="link">
+
             <div class="more-info-container">
               <div class="more-info">
-                <p >Browse Categories</p>
-                <i class="fas fa-chevron-down fa-2x"></i>
+                <p class="light-paragraph">or</p>
+                <button type="button" class="button-advanced-search" data-toggle="modal" data-target="#exampleModalCenter">
+                  Specify Search
+                </button>
+                <!-- <p >Browse Categories</p> -->
               </div>
             </div>
-          </a>
+
         </div>
+      </div>
+      </div>
       </div>
     </div>
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-           <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
-          <ul class="filter ul-reset">
-            <li class="filter-item">
-              <h3 class="filter-item-inner-heading minus"> Please latform
-              </h3>
-              <ul class="filter-attribute-list ul-reset">
-                <div class="filter-attribute-list-inner">
-                  <div class="flex">
-                    <li class="filter-attribute-item">
-                      <%= label_select_p_home(@platforms, "udemy") %>
-                    </li>
-                    <li class="filter-attribute-item">
-                      <%= label_select_p_home(@platforms, "udacity") %>
-                    </li>
-                  </div>
-                  <div class="flex">
-                    <li class="filter-attribute-item">
-                      <%= label_select_p_home(@platforms, "edx") %>
-                    </li>
-                    <li class="filter-attribute-item">
-                      <%= label_select_p_home(@platforms, "futurelearn") %>
-                    </li>
-                  </div>
-                </div>
-              </ul>
-            </li>
-
-            <li class="filter-item">
-              <h3 class="filter-item-inner-heading minus"> Knowledge level
-              </h3>
-              <ul class="filter-attribute-list ul-reset">
-                <div class="filter-attribute-list-inner">
-                  <li class="filter-attribute-item">
-                    <%= label_select_home(@levels, "beginner") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_home(@levels, "intermediate") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_home(@levels, "advanced") %>
-                  </li>
-                </div>
-              </ul>
-            </li>
-
-            <li class="filter-item">
-              <h3 class="filter-item-inner-heading minus"> Price
-              </h3>
-              <ul class="filter-attribute-list ul-reset">
-                <div class="filter-attribute-list-inner">
-                  <li class="filter-attribute-item">
-                    <%= label_select_price_home(@prices, "Free") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_price_home(@prices, "Paid") %>
-                  </li>
-                </div>
-              </ul>
-            </li>
-
-            <li class="filter-item">
-              <h3 class="filter-item-inner-heading minus"> Completion time
-              </h3>
-              <ul class="filter-attribute-list ul-reset">
-                <div class="filter-attribute-list-inner">
-                  <li class="filter-attribute-item">
-                    <%= label_select_n_home("completion_time", @completion_times, "> 1 week") %>
-                  </li>
-                  <li class="filter-attribute-item">
-                    <%= label_select_n_home("completion_time", @completion_times, "< 1 week") %>
-                  </li>
-                </div>
-              </ul>
-            </li>
-          </ul>
-          <div>
-            <%= f.hidden_field :search, value: @search_input %>
-            <!-- submit button -->
-            <%= f.button :submit, "Specify Search", class: "button-white-sidebar"%>
-            <%= button_to "Clear", "#", class: "uncheck-all btn button-white-sidebar-inv" %>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content box">
+          <div class="modal-header">
+            <h3 class="heading" id="exampleModalLongTitle">Specify your search</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-body">
+             <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+                <div>
+                  <h3 class="subheading">Please enter your search</h3>
+                  <%= f.input :search, id: "search", as: :string,
+                            input_html: {
+                              class: "awesomplete searchbar",
+                              data: {
+                                list: Course::CATEGORIES.join(", ")
+                              }
+                            }
+                  %>
+                </div>
+                <div>
+                  <h3 class="subheading">Indicate your skill level here:</h3>
+                  <div class="flex" style="min-height: 100px;">
+                    <%= label_select_home(@levels, "beginner") %>
+                    <%= label_select_home(@levels, "intermediate") %>
+                    <%= label_select_home(@levels, "advanced") %>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="subheading">What's your budget?</h3>
+                  <div class="flex" style="min-height: 100px;">
+                    <%= label_select_price_home(@prices, "Free") %>
+                    <%= label_select_price_home(@prices, "Paid") %>
+                  </div>
+                </div>
+                <%= f.hidden_field :search, value: @search_input %>
+              <div class="modal-footer">
+              <%= f.button :submit, "Specify Search", class: "button-green-primary"%>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <div id="categories">
       <div class="row">

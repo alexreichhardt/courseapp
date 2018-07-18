@@ -73,6 +73,10 @@ module CoursesHelper
       html.html_safe
     end
   end
+
+
+
+
   ###### Helper for home page #########
   def label_select_home(filter, value)
     html = nil
@@ -88,26 +92,6 @@ module CoursesHelper
         <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[knowledge_level][]" id="criteria_knowledge_level_#{value}">
         <label class="collection_check_boxes category-choice-home" for="criteria_knowledge_level_#{value}">
           #{value.capitalize}
-        </label>
-      HTML
-    end
-    html.html_safe
-  end
-
-  def label_select_p_home(filter, value)
-    html = nil
-    if filter&.include?(value)
-      html = <<-HTML
-        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[platform][]" id="criteria_platform_#{value}" checked>
-        <label class="collection_check_boxes category-choice-home active" for="criteria_platform_#{value}">
-          #{value}
-        </label>
-      HTML
-    else
-      html = <<-HTML
-        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[platform][]" id="criteria_platform_#{value}">
-        <label class="collection_check_boxes category-choice-home" for="criteria_platform_#{value}">
-          #{value}
         </label>
       HTML
     end
@@ -132,60 +116,6 @@ module CoursesHelper
         </label>
       HTML
     end
-    html.html_safe
-  end
-
-  def label_select_n_home(key, filter, value)
-    html = nil
-    if filter&.include?(value)
-      html = <<-HTML
-        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[#{key}][]" id="criteria_#{key}_#{value}" checked>
-        <label class="collection_check_boxes category-choice-home active" for="criteria_#{key}_#{value}">
-          #{value}
-        </label>
-      HTML
-    else
-      html = <<-HTML
-        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[#{key}][]" id="criteria_#{key}_#{value}">
-        <label class="collection_check_boxes category-choice-home" for="criteria_#{key}_#{value}">
-          #{value}
-        </label>
-      HTML
-    end
-    html.html_safe
-  end
-
-  def category_card(category, category_count)
-    html = nil
-
-    html = <<-HTML
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <div class="box category-box">
-          <div class="category-card">
-            <div class="category-card-content">
-                <div class="category-card-image">
-                    <!-- background image -->
-<!--                     <div class="card-info">
-                        <h1>Mono st</h3>
-                        <div class="card-timestamp">4 hours ago</div>
-                    </div> -->
-                </div>
-                <div class="category-card-footer">
-                    <h3>  #{category} </h3>
-                    <p>#{category_count} courses</p>
-<!--                     <div>
-                        <p>includes 3000 courses</p>
-                        <p>bookmarked by 34000 users</p>
-                    </div> -->
-                </div>
-            <!-- category-card-content -->
-            </div>
-          </div>
-        <!-- Box -->
-        </div>
-      <!-- col -->
-      </div>
-    HTML
     html.html_safe
   end
 end
