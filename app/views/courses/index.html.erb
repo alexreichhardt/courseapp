@@ -120,53 +120,76 @@
         </div>
 
 
-          <% @courses.each do |course| %>
+        <% @courses.each do |course| %>
           <div class="box-flex-index card-medium first-card">
-            <div class="card-content-left">
-              <div>
+
+
+
+            <div class="row">
+              <div class="col-xs-9" >
                 <h3 class="heading"><%=course.title%></h3>
               </div>
-              <div class="paragraph">
-                <% desc_as_text = Truncato.truncate course.description, max_length: 400 %>
-                <%= desc_as_text.html_safe %>
-                <!-- desc_as_text.truncate(27, escape: false) -->
+
+              <div class="col-xs-1 col-xs-offset-2 bookmark-index-padding">
+                <div class="bookmark-background">
+                <% if current_user.nil? || Bookmark.where(course_id: course.id, user_id: current_user.id).empty? %>
+                  <i class="single-icon-index"><%= link_to("", course_bookmarks_path(course), method: :post, :class => "far fa-bookmark") %></i>
+                <% else %>
+                  <% b = Bookmark.where(course_id: course.id, user_id: current_user.id) %>
+                  <i class="single-icon-index"><%= link_to("", course_bookmark_path(course, b[0].id), method: :delete, :class => "fas fa-bookmark") %></i>
+                <% end %>
+                </div>
               </div>
             </div>
-            <div class="card-content-right">
-              <div class="icon-next">
-                <i class="fas fa-graduation-cap"></i>
-                <p><%= course.knowledge_level %></p>
-              </div>
-              <div class="icon-next">
-                <i class="far fa-clock"></i>
-                <p><%= course.duration%></p>
-              </div>
-              <div class="icon-next">
-                <i class="fas fa-coins"></i>
-                <p><%= course.price %></p>
-              </div>
-              <% if !course.avg_rating.nil? %>
-              <div class="icon-next">
-                <i class="fas fa-star"></i>
-                <p><%= course.avg_rating %></p>
-              </div>
-              <% end %>
 
 
-              <div class="card-button">
-               <%= link_to("See Details", course_path(course), class: "button-green-primary") %>
-             </div>
-           </div>
-              <div class="bookmark-background">
-              <% b = Bookmark.where(course_id: course.id, user_id: current_user.id) %>
-              <% if b.empty? %>
-                <i class="single-icon-index"><%= link_to("", course_bookmarks_path(course), method: :post, :class => "far fa-bookmark") %></i>
-              <% else %>
-                <i class="single-icon-index"><%= link_to("", course_bookmark_path(course, b[0].id), method: :delete, :class => "fas fa-bookmark") %></i>
-              <% end %>
-              </div>
-         </div>
-         <% end %>
+
+            <div class="row display-table-cell">
+
+
+                <div class="card-content-left col-xs-9">
+                  <% desc_as_text = Truncato.truncate course.description, max_length: 400 %>
+                  <%= desc_as_text.html_safe %>
+                  <!-- desc_as_text.truncate(27, escape: false) -->
+                </div>
+
+                <div class="card-content-right col-xs-3">
+
+
+                  <div class="content-right-attributes">
+                    <div class="icon-next">
+                      <i class="fas fa-graduation-cap"></i>
+                      <p><%= course.knowledge_level %></p>
+                    </div>
+                    <div class="icon-next">
+                      <i class="far fa-clock"></i>
+                      <p><%= course.duration%></p>
+                    </div>
+                    <div class="icon-next">
+                      <i class="fas fa-coins"></i>
+                      <p><%= course.price %></p>
+                    </div>
+                    <% if !course.avg_rating.nil? %>
+                      <div class="icon-next">
+                        <i class="fas fa-star"></i>
+                        <p><%= course.avg_rating %></p>
+                      </div>
+                    <% end %>
+                  </div>
+
+                  <div class="card-button">
+                     <%= link_to("See Details", course_path(course), class: "button-green-primary") %>
+                  </div>
+
+                </div>
+
+
+            </div>
+
+
+
+          </div>
+        <% end %>
          <!-- container1 -->
          <div class="indent-next-buttons">
           <%= link_to_previous_page @courses, 'Previous Page', class: "button-red-secondary" %>

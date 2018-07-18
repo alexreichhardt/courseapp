@@ -15,7 +15,7 @@ class UdacityImporter
           next
         else
           p "#{course["uuid"]} already in db"
-          full_description = course["summary"] + " " + course["expected_learning"] + " " + course["required_knowledge"]
+          full_description = course["summary"] + "\n" + "\n" + course["expected_learning"] + "\n" + "\n" + course["required_knowledge"]
           puts "creating a course.."
           Course.create!(
             platform_id: course["key"],

@@ -28,30 +28,30 @@
   padding-right: 10px;
 }
 
-.card-content-left {
-  width: 80%;
-  padding-right: 20px;
-  margin-top: 24px;
+.card-content-right {
+  border-left: 2px dashed $light-gray;
+  float: none;
+  display: table-cell;
+  height: 155px;
+
 }
 
-.card-content-right {
-  margin-top: 84px;
-  margin-right: -12px;
-  padding-left: 15px;
-  width: 25%;
-  position: relative;
-  border-radius: 0px 2px 2px 0px;
-  border-left: 2px dashed $light-gray;
+.card-content-left {
+  float: none;
+  display: table-cell;
 
 }
 
 .card-button {
+  margin-top: 12px;
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 12px;
 }
 
-.card-content-left .paragraph {
-  margin-top: 32px;
+.display-table-cell {
+  display: table;
+  margin-top: 8px;
 }
+
+
 
