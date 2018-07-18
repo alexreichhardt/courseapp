@@ -3,8 +3,6 @@ class CoursesController < ApplicationController
 
 
   def index
-
-
     @search_input = params.dig(:criteria, :search)
     @error = ""
     @levels = params.dig(:criteria, :knowledge_level)
@@ -73,6 +71,14 @@ class CoursesController < ApplicationController
 
 
   def show
+
+    @search_input = params.dig(:criteria, :search)
+    @error = ""
+    @levels = params.dig(:criteria, :knowledge_level)
+    @platforms = params.dig(:criteria, :platform)
+    @prices = params.dig(:criteria, :price)
+    @completion_times = params.dig(:criteria, :completion_time)
+
     @course = Course.find(params[:id])
     @bookmarked = false
     @reviews = CourseReview.where(course_id: params[:id])
