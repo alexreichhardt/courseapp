@@ -248,47 +248,47 @@
         </div>
       </div>
     </div>
-    <div id="categories">
+  </div>
+  <div class="wrapper background-home3" style="padding-bottom:50px;">
+    <div class="medium-placeholder"></div>
+    <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <div class="category-container">
             <h3 class="heading">Pick your favourite category:</h2>
           </div>
         </div>
-       <!--  <div class="cards-home-all">
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="box homecards">
-              <h3><%= link_to "Python", courses_path(criteria: {search: "python"}), class: "icon link" %></h3>
+        <div class="container-categories" style="width: 100%; margin: 0 24px;">
+          <div class="categories-section">
+            <div class="category-header">
+              <i class="far fa-heart"></i>
+              <p>Most Popular</p>
+            </div>
+            <hr>
+            <div class="category-row">
+              <% @top_categories_count.each do |category| %>
+              <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+              <% end %>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="box homecards">
-              <h3><%= link_to "Ruby", courses_path(criteria: {search: "ruby"}), class: "icon link" %></h3>
+
+
+          <div class="categories-section">
+            <div class="category-header">
+              <i class="fas fa-globe"></i>
+              <p>All</p>
+            </div>
+            <hr>
+            <div class="category-row">
+              <% @categories.each do |category| %>
+              <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+              <% end %>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="box homecards">
-              <h3><%= link_to "JavaScript", courses_path(criteria: {search: "javascript"}), class: "link" %></h3>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="box homecards">
-              <h3><%= link_to "Django", courses_path(criteria: {search: "django"}), class: "link" %></h3>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="box homecards">
-              <h3><%= link_to "Rails", courses_path(criteria: {search: "rails"}), class: "link" %></h3>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="box homecards">
-              <h3><%= link_to "NodeJs", courses_path(criteria: {search: "nodejs"}), class: "link" %></h3>
-            </div>
-          </div>
-        </div> -->
+        </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
