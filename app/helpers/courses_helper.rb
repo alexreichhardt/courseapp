@@ -154,5 +154,39 @@ module CoursesHelper
     end
     html.html_safe
   end
+
+  def category_card(category, category_count)
+    html = nil
+
+    html = <<-HTML
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="box category-box">
+          <div class="category-card">
+            <div class="category-card-content">
+                <div class="category-card-image">
+                    <!-- background image -->
+<!--                     <div class="card-info">
+                        <h1>Mono st</h3>
+                        <div class="card-timestamp">4 hours ago</div>
+                    </div> -->
+                </div>
+                <div class="category-card-footer">
+                    <h3>  #{category} </h3>
+                    <p>#{category_count} courses</p>
+<!--                     <div>
+                        <p>includes 3000 courses</p>
+                        <p>bookmarked by 34000 users</p>
+                    </div> -->
+                </div>
+            <!-- category-card-content -->
+            </div>
+          </div>
+        <!-- Box -->
+        </div>
+      <!-- col -->
+      </div>
+    HTML
+    html.html_safe
+  end
 end
 

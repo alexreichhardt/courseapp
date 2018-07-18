@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: [:show, :index, :categories]
 
   def index
 
@@ -80,6 +80,10 @@ class CoursesController < ApplicationController
         @bookmarked = true
       end
     end
+  end
+
+  def categories
+
   end
 
 
