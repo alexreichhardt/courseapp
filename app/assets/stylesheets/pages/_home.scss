@@ -169,9 +169,15 @@ input[type=submit] {
   min-height: 250px;
   margin-top: -125px;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 28px;
+  padding-right: 28px;
   flex-wrap: wrap;
+  background-color: #f9fcfc;
+  box-shadow: 0 4px 9px 0 rgba(23,28,33,.06);
+  border-radius: 4px;
+  p {
+    font-weight: 200;
+  }
 }
 
 .step-number {
@@ -196,7 +202,7 @@ input[type=submit] {
 }
 
 .usp-item {
-  flex: 0 0 30%;
+  flex: 0 0 25%;
   text-align: center;
   padding-left: 5px;
   padding-right: 5px;
@@ -242,4 +248,14 @@ input[type=submit] {
     font-size: 60px;
   }
 
+}
+
+.img-size {
+  height: 50%;
+  width: 50%;
+}
+
+.img-box {
+  text-align: center;
+  width: 100%;
 }

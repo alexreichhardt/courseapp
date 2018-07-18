@@ -161,6 +161,7 @@
     <div class="row">
       <div class="box flex box-position">
         <div class="usp-item">
+          <i class="far fa-user fa-2x"></i>
           <h3 class="heading">
             Personal.
           </h3>
@@ -169,6 +170,7 @@
           </p>
         </div>
         <div class="usp-item">
+          <i class="fas fa-align-center fa-2x"></i>
           <h3 class="heading">
             All in one.
           </h3>
@@ -177,6 +179,7 @@
           </p>
         </div>
         <div class="usp-item">
+          <i class="far fa-clock fa-2x"></i>
           <h3 class="heading">
             Convenient.
           </h3>
@@ -191,8 +194,8 @@
       <div class="small-placeholder"></div>
       <h3 class="heading margin-padding-box">Your perfect course is just 3 steps away:</h3>
       <div class="flex margin-padding-box" style="justify-content: space-between;">
-        <div class="step-number">
-          <i class="fas fa-search fa-10x"></i>
+        <div class="img-box">
+          <%= image_tag "person-searching", class:"white img-size" %>
         </div>
         <div class="box step-content" style= "display: flex;">
           <div class="step-number" style= "flex: 0 0 30%;">
@@ -222,13 +225,13 @@
             </p>
           </div>
         </div>
-        <div class="step-number">
-          <i class="far fa-hand-pointer fa-10x"></i>
+        <div class="img-box">
+          <%= image_tag "results", class:"white img-size" %>
         </div>
       </div>
       <div class="flex margin-padding-box" style="justify-content: space-between;">
-        <div class="step-number">
-          <i class="fas fa-star fa-10x"></i>
+        <div class="img-box">
+          <%= image_tag "write-review", class:"white img-size" %>
         </div>
         <div class="box step-content" style= "display: flex;">
           <div class="step-number" style= "flex: 0 0 30%;">
@@ -252,7 +255,7 @@
             <h3 class="heading">Pick your favourite category:</h2>
           </div>
         </div>
-        <div class="cards-home-all">
+       <!--  <div class="cards-home-all">
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="box homecards">
               <h3><%= link_to "Python", courses_path(criteria: {search: "python"}), class: "icon link" %></h3>
@@ -283,7 +286,7 @@
               <h3><%= link_to "NodeJs", courses_path(criteria: {search: "nodejs"}), class: "link" %></h3>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
