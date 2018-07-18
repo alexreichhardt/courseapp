@@ -3,6 +3,8 @@ class Course < ApplicationRecord
                 "Software Testing", "Software Engineering", "Development Tools", "Front-end & Design", "DevOps",
                 "Security", "Data-Analysis"]
 
+
+
   enum knowledge_level: [:beginner, :intermediate, :advanced, :undetermined]
   has_many :bookmarks, dependent: :destroy
   has_many :course_reviews, dependent: :destroy

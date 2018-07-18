@@ -1,12 +1,13 @@
-.container-categories {
-  width: 1200px;
-  margin: 0 auto;
-  margin-top: 24px;
-}
-
 .category-box {
   padding: 16px;
   margin: 0px;
+    margin-bottom: 16px;
+
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: rgba(220,220,220, 0.3)
+  }
 }
 
 .category-card {
@@ -16,30 +17,23 @@
   h3 {
     margin-top: 0;
     padding: 8px;
+    padding-top: 16px;
+    padding-bottom: 2px;
     margin-bottom: 0;
     font-size: 16px;
   }
 
   p {
     margin-top: 0;
-    padding: 8px;
+    padding: 0px 8px;
+    font-weight: lighter;
   }
-
-
 }
-
 
 .category-card-image{
-    background-image: url('https://cdn.dribbble.com/users/13307/screenshots/3522736/web_site_design_teaser.jpg');
     background-size: cover;
     background-position: center;
-    height: 170px;
+    height: 180px;
     position: relative;
-}
-
-
-.category-card-footer {
-    // display: flex;
-    // justify-content: space-between;
-    padding-top: 12px;
+    background-color:blue;
 }
