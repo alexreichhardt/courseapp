@@ -2,11 +2,10 @@
   padding: 16px;
   margin: 0px;
     margin-bottom: 16px;
-
-  transition: 0.3s ease;
+  transition: .5s ease;
 
   &:hover {
-    background-color: rgba(220,220,220, 0.3)
+    background-color: rgba(192,192,192,0.3)
   }
 }
 
@@ -35,5 +34,4 @@
     background-position: center;
     height: 180px;
     position: relative;
-    background-color:blue;
 }
