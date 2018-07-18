@@ -101,7 +101,7 @@ class UdemyImporter
           instance_attributes[:platform] = "udemy"
           instance_attributes[:title] = response["title"]
           instance_attributes[:subtitle] = nil
-          instance_attributes[:description] = response["description"]
+          instance_attributes[:description] = remove_strong_tags(response["description"])
           instance_attributes[:categories] = categories(response)
           instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
           instance_attributes[:price_unit] = price_unit(response)
@@ -164,6 +164,13 @@ class UdemyImporter
     # end
 
 
+  end
+
+  def remove_strong_tags(description)
+    doc = Nokogiri::HTML("#{description}")
+    doc.css('strong').each { |node| node.replace(node.children) }
+    doc.to_s
+    # doc.at_xpath("//p").to_s
   end
 
   def get_completion_time(content_length)
