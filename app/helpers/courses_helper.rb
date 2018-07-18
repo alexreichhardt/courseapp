@@ -119,5 +119,24 @@ module CoursesHelper
     html.html_safe
   end
 
-end
+######## link back ######
+  def check_levels(levels)
+    if levels == ""
+      levels = []
+    end
+  end
 
+  def build_criteria_hash(search, levels, platforms, prices, completion_times)
+
+    criteria_hash = {}
+
+    criteria_hash[:search] = search if !search&.blank?
+    criteria_hash[:knowledge_level] = levels if !levels&.blank?
+    criteria_hash[:platform] = platforms if !platforms&.blank?
+    criteria_hash[:price] = prices if !prices&.blank?
+    criteria_hash[:completion_time] = completion_times if !completion_times&.blank?
+
+    criteria_hash
+
+  end
+end

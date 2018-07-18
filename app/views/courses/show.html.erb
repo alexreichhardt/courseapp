@@ -123,6 +123,10 @@
         <div class="add-review">
           <p>Already took it?</p>
           <%= link_to "Add Review", new_course_course_review_path(@course.id), class: "button-green-secondary" %>
+        <hr>
+
+           <%= link_to "Back to Results", courses_path(criteria: build_criteria_hash(@search_input, @levels, @platforms, @prices, @completion_times)), class: "button-red-secondary" %>
+
         </div>
       </div>
     </div>
