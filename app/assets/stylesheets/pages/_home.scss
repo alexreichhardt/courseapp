@@ -42,6 +42,7 @@
 }
 
 .more-info-container {
+  margin-top: 20px;
   text-align: center;
   p {
     font-size: 20px;
@@ -52,18 +53,10 @@
     font-weight: bolder;
     color: rgba(250, 250, 250, 0.7)
   }
-  :hover {
-    p {
-      color: white;
-    }
-    i {
-      color: white;
-    }
-  }
 }
 
 .more-info {
-  margin-top: 80px;
+  text-align: center;
 }
 
 .category-container {
@@ -110,7 +103,7 @@ flex-direction: row;
 
 
 .criteria_search {
-  width: 37vw;
+  width: 50vw;
 }
 
 .searchbar {
@@ -155,5 +148,21 @@ input[type=submit] {
 
 .max_width {
  max-width: 80%;
+}
+
+.button-advanced-search {
+  font-weight: bold;
+  color: white;
+  background-color: rgba(250, 250, 250, 0.2);
+  border-radius: 4px;
+  padding: 12px 20px;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+  border-color: rgba(250, 250, 250, 0.0);
+  &:hover {
+    color: $green-primary;
+    background-color: white;
+    text-decoration: none;
+  }
 }
 
