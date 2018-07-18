@@ -34,7 +34,7 @@
 .paragraph {
   font-weight: 400;
   font-size: 16px;
-  text-align: justify;
+
   font-style: normal;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .medium-placeholder {
-  height: 30px;
+  height: 100px;
 }
 
 .flex {
@@ -98,3 +98,9 @@
   font-size: 20px;
 }
 
+.margin-padding-box {
+  margin-right: 24px;
+  margin-left: 24px;
+  padding: 12px;
+
+}
