@@ -1,7 +1,7 @@
 
 <!-- blue header -->
   <div class="wrapper-header">
-    <div class="header-container">
+    <div class="container">
       <div class="header-content">
         <h1>Browse all categories</h1>
         <p>Explore different fields of computer science such as Software Engineering, Computer Security or Database Management</p>
@@ -11,31 +11,36 @@
 
 
   <div class="container-categories">
-
-    <div class="categories-section">
-      <div class="category-header">
-        <i class="far fa-heart"></i>
-        <p>Most Popular</p>
-      </div>
-      <hr>
-      <div class="category-row">
-        <% @top_categories_count.each do |category| %>
-        <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
-        <% end %>
-      </div>
+     <div class="medium-placeholder">
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="categories-section">
+          <div class="category-header">
+            <i class="far fa-heart"></i>
+            <p>Most Popular</p>
+          </div>
+          <hr>
+          <div class="category-row">
+            <% @top_categories_count.each do |category| %>
+            <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+            <% end %>
+          </div>
+        </div>
 
 
-    <div class="categories-section">
-      <div class="category-header">
-        <i class="fas fa-globe"></i>
-        <p>All</p>
-      </div>
-      <hr>
-      <div class="category-row">
-        <% @categories.each do |category| %>
-        <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
-        <% end %>
+        <div class="categories-section">
+          <div class="category-header">
+            <i class="fas fa-globe"></i>
+            <p>All</p>
+          </div>
+          <hr>
+          <div class="category-row">
+            <% @categories.each do |category| %>
+            <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   <!-- container categories -->
