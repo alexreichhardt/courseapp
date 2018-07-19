@@ -48,7 +48,7 @@
                 <% author_id = review.user_id %>
                 <% author = User.find(author_id) %>
                 <% author_avatar = author.avatar.identifier %>
-               <%=  cl_image_tag(author.avatar, class: "avatar-md")  %>
+               <%=  cl_image_tag(author_avatar, class: "avatar-md")  %>
 
                 <p class="paragraph" style="text-align: center; margin-top: 8px;"><%= author.name %></p>
               </div>

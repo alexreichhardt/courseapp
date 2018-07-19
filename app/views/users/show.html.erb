@@ -97,11 +97,7 @@
       <div class="box">
         <div class="card-avatar">
           <div class="card-avatar-content">
-            <% if current_user.avatar.file.nil?%>
-              <%= image_tag "https://static.boredpanda.com/blog/wp-content/uploads/2018/03/funny-embarrassing-childhood-youth-pictures-coverimage.jpg", class: "avatar-md-lg" %>
-            <% else %>
               <%= cl_image_tag(current_user.avatar.filename, class: "avatar-md-lg") %>
-            <% end %>
             <h2>Hey <%= @user.name %>!</h2>
             <p>How are you today?</p>
           </div>
