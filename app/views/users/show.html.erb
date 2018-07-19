@@ -27,17 +27,17 @@
                     <h3 class="heading"><%=course.title%></h3>
                   </div>
                   <div class="horizontal-icons">
-                    <div class="icon-next" style="margin-top: 0px;">
+                    <div class="icon-next icon-inline" style="margin-top: 0px;">
                       <i class="fas fa-graduation-cap"></i>
-                      <p><%= course.knowledge_level %></p>
+                      <p><%= course.knowledge_level.capitalize %></p>
                     </div>
-                    <div class="icon-next" style="margin-top: 0px;">
+                    <div class="icon-next icon-inline" style="margin-top: 0px;">
                       <i class="far fa-clock"></i>
                       <p><%= course.duration%></p>
                     </div>
-                    <div class="icon-next" style="margin-top: 0px;">
+                    <div class="icon-next icon-inline" style="margin-top: 0px;">
                       <i class="fas fa-coins"></i>
-                      <p><%= course.price %></p>
+                      <p><%= "#{course.price} #{course.price_unit}" %></p>
                     </div>
                   </div>
                   <div class="content" >
