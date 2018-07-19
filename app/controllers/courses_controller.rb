@@ -46,16 +46,18 @@ class CoursesController < ApplicationController
     end
 
     # price
-    if @prices
-      selected_options = params[:criteria][:price].reject(&:blank?)
+
+    # if @prices
+
+      selected_options = params[:criteria][:price]&.reject(&:blank?)
       if selected_options.blank? || selected_options.count == 2
-        @courses = @courses.where("price >= 0")
+        @courses = @courses # .where("price >= 0")
+      elsif selected_options[0] == "Paid"
+        @courses = @courses.where("price > 0 OR price is null" )
       elsif selected_options[0] == "Free"
         @courses = @courses.where("price = 0")
-      elsif selected_options[0] == "Paid"
-        @courses = @courses.where("price > 0")
       end
-    end
+    # end
 
     # completion time
     if @completion_times
