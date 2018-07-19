@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
     # price
 
     # if @prices
-    if params.dig(:criteria, :platform)
+    if params.dig(:criteria, :price)
       selected_options = params[:criteria][:price].reject(&:blank?)
       if selected_options.blank? || selected_options.count == 2
         @courses = @courses # .where("price >= 0")
