@@ -27,7 +27,11 @@
         </div>
         <div class="course-attributes">
           <div class="box box-horizontal">
-            <%= course_attributes(@course.sum_ratings, @course.avg_rating, @course.language, @course.active) %>
+            <% if @course.instructor["instructors"].nil? %>
+              <%= course_attributes("Max Mustermann", @course.sum_ratings, @course.avg_rating, @course.language, @course.active) %>
+            <% else %>
+              <%= course_attributes(@course.instructor["instructors"][0]["name"], @course.sum_ratings, @course.avg_rating, @course.language, @course.active) %>
+            <%end%>
           </div>
         </div>
         <hr>
