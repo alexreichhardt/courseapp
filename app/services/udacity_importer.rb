@@ -29,7 +29,7 @@ class UdacityImporter
             image: course["image"],
             organization: { organizers: course["affiliates"] == [] ? nil : UdacityImporter.format_organization(course["affiliates"]) },
             duration: UdacityImporter.get_duration(course["expected_duration"], course["expected_duration_unit"]),
-            duration_unit: course["expected_duration_unit"],
+            duration_unit: UdacityImporter.get_duration_unit(course["expected_duration"], course["expected_duration_unit"]),
             url: course["homepage"],
             active: true,
             completion_time: UdacityImporter.get_completion_time(course["expected_duration_unit"]),
@@ -39,6 +39,15 @@ class UdacityImporter
             )
         end
       end
+    end
+  end
+
+  def self.get_duration_unit(duration, duration_unit)
+    if duration == 1
+      new_unit = duration_unit.gsub 's', ''
+      new_unit
+    else
+      duration_unit
     end
   end
 
@@ -58,7 +67,9 @@ class UdacityImporter
   end
 
   def self.get_duration(duration, unit)
-    a = duration.to_s + " " + unit
+    if duration == 0
+      return "1 hour"
+    a = duration.to_s + " " + UdacityImporter.get_duration_unit(duration, unit)
     return a
   end
 
