@@ -5,11 +5,10 @@
       <div class="col-xs-12 col-md-3">
         <div class="filter-container filters-card">
           <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
-          <div>
+        <div>
+      </div>
 
-          </div>
-
-          <!-- <div class="small-placeholder"></div> -->
+          <div class="small-placeholder"></div>
 
           <ul class="filter ul-reset">
             <li class="filter-item">
@@ -177,8 +176,6 @@
                     <div class="card-button">
                       <%= link_to("See Details", course_path(course, criteria: {search: @search_input, knowledge_level: @levels, platform: @platforms, price: @prices, completion_time: @completion_times}), class: "button-green-primary") %>
                     </div>
-
-                  </div>
               </div>
             </div>
           </section>
