@@ -15,7 +15,7 @@
 }
 
 #index-search-box {
-  padding: 12px 20px;
+  padding: 18px 20px;
   margin-top: 16px;
   margin-bottom: 8px;
 
@@ -28,16 +28,12 @@
   input {
     height: 42px;
     width: 20%;
-
   }
 }
 
 .index-search-form {
   display:flex;
   // justify-content: space-between;
-  padding-right: 10px;
-
-
 }
 
 .index-search-input {
@@ -53,7 +49,7 @@
 .filter-container {
   z-index: 10;
   margin-top: 0px;
-  padding-top: 20px;
+  padding-top: 16px;
   padding-bottom: 16px;
   background-color: $blue-sidebar;
   position: fixed !important;
@@ -190,11 +186,11 @@ input[type=submit] {
 }
 
 .filter-attribute-item {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .filter-attribute-list-inner {
-  padding: 0 0px 15px;
+  padding: 0 0px 10px;
 }
 
 .filter-attribute-item:first-child {
