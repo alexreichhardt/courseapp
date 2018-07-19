@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @platforms = params.dig(:criteria, :platform)
     @prices = params.dig(:criteria, :price)
     @completion_times = params.dig(:criteria, :completion_time)
+    @reviews = CourseReview.where(user_id: current_user.id)
 
     if params[:id].to_i != current_user.id
       redirect_to root_path(error: "Account does not belong to you")
