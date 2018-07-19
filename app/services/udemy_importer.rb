@@ -97,13 +97,17 @@ class UdemyImporter
           p "already exists in db"
           next
         else
+          p response["price"]
+          p response["discount"]
+          p "next --------"
+
           instance_attributes[:platform_id] = response["id"]
           instance_attributes[:platform] = "udemy"
           instance_attributes[:title] = response["title"]
           instance_attributes[:subtitle] = nil
           instance_attributes[:description] = remove_strong_tags(response["description"])
           instance_attributes[:categories] = categories(response)
-          instance_attributes[:price] = edit_price(response["price"], response["discount_price"] )
+          instance_attributes[:price] = edit_price(response["price"], response["discount"])
           instance_attributes[:price_unit] = price_unit(response)
           instance_attributes[:image] = response["image_100x100"]
           instance_attributes[:organization] = nil
@@ -111,8 +115,8 @@ class UdemyImporter
           instance_attributes[:active] = active_status(response["status_label"])
           instance_attributes[:language] = "english"
           instance_attributes[:instructor] = instructors(response["visible_instructors"])
-          instance_attributes[:duration] = get_duration(response["estimated_content_length"])
-          instance_attributes[:duration_unit] = "hours"
+          instance_attributes[:duration] = get_duration(response["estimated_content_length"].to_s) +" "+get_duration_unit(response["estimated_content_length"])
+          instance_attributes[:duration_unit] = get_duration_unit(response["estimated_content_length"])
           instance_attributes[:knowledge_level] = skill_level(response["instructional_level"])
           instance_attributes[:completion_time] = get_completion_time(response["estimated_content_length"])
 
@@ -138,7 +142,22 @@ class UdemyImporter
 
   def get_duration(duration)
     if !duration.nil?
-      a = (duration.to_i / 60).to_s + " "
+      a = (duration.to_i / 60).to_s
+      if a == "0"
+        "1"
+      else
+        a
+      end
+    else
+      nil
+    end
+  end
+
+  def get_duration_unit(duration)
+    if !duration.nil? && (duration.to_i / 60) < 2
+      "hour"
+    elsif  !duration.nil?
+      "hours"
     else
       nil
     end
@@ -228,12 +247,13 @@ class UdemyImporter
   end
 
   def edit_price(list, discount)
-    if discount.nil? && list == "Free"
-      return 0
-    elsif discount.nil? && list != "Free"
-      return list["amount"]
+    if list == "Free"
+      0
+    elsif discount["price"]["amount"] != discount["list_price"]["amount"]
+      discount["price"]["amount"]
     else
-      nil
+      discount["list_price"]["amount"]
     end
   end
+
 end

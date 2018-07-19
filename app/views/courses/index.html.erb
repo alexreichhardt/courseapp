@@ -184,7 +184,10 @@
                   </div>
 
                   <div class="card-button">
-                     <%= link_to("See Details", course_path(course), class: "button-green-primary") %>
+                     <%= link_to("See Details", course_path(course, criteria: {search: @search_input, knowledge_level: @levels, platform: @platforms, price: @prices, completion_time: @completion_times}), class: "button-green-primary") %>
+
+
+
                   </div>
 
                 </div>
