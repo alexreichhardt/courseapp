@@ -1,57 +1,57 @@
 
-# # This file should contain all the record creation needed to seed the database with its default values.
-# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-# #
-# # Examples:
-# #
-# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-# #   Character.create(name: 'Luke', movie: movies.first)
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
 
 
 
 
-# # p user["name"]["first"] + user["name"]["last"]
-# # p user["email"]
+# p user["name"]["first"] + user["name"]["last"]
+# p user["email"]
 
 
-# 20.times do
-#   url = "https://randomuser.me/api/"
-#   user_serialized = open(url).read
-#   user = JSON.parse(user_serialized)
-#   user = user["results"][0]
-#   name = user["name"]["first"].capitalize + " " + user["name"]["last"].capitalize
+20.times do
+  url = "https://randomuser.me/api/"
+  user_serialized = open(url).read
+  user = JSON.parse(user_serialized)
+  user = user["results"][0]
+  name = user["name"]["first"].capitalize + " " + user["name"]["last"].capitalize
 
-#   User.create!(email: user["email"],
-#                 password: user["login"]["password"],
-#                 name: name,
-#                 remote_avatar_url: user["picture"]["medium"])
-# end
-
-
-# courses = Course.all
-
-# titles = ["Great course", "Amazing Learnings", "Great instructor", "Steep learning curve", "Great lectures!"]
-
-# contents = [ "The course is perfectly planned for people with a little programming knowledge and even for absolute beginners. The exercises are challenging and at the end of the course you get more exercises to practice on your own.",
-#             "Helpful Instructor, no question of his knowledge whatsoever. Probably that's were my problem is coming from. I generally miss more detailed explanation here and there",
-#             "This course is amazing for beginners , you will find almost everything you need to start coding with Python , the most impressive thing in this course is the two mile stone projects ( Tic Tac Toe and Blackjack! ) you can apply almost everything you learned in the course by creating those projects , and they will give you self confidence if you are not familiar with coding",
-#             "I had no previous exposure to any programming language. I could still get a good understanding of the language and am able to code just by following the videos and solving exercises. The barrier i had for learning python is broken and I can take my skill higher with more practice.",
-#             "Excellent Course! Easy to understand, clear explanations, informative, very well organized. I always wanted such type of training. The Instructor is very prompt in replying to doubts. The course is very well designed, practical and valuable for anyone who wants to enhance their skills. Thank you.",
-#             "This is an amazing course! Despite my background in humanities, I was able to follow Jose's instructions. He explains material very clearly and recaps major points at the end of every lecture to emphasize them. This strategy is the very structured and clear way",
-#             "It is in high level. As for the beginners it is very difficult to understand.",
-#             "The course is quite extensive. It really gives an overview of how Python works. By no doubts I can recommend it to everyone who plans to develop Python knowledge and skills, even to ones who are already familiar with basic Python concepts.",
-# ]
-
-# courses.each do |course|
-#   t = rand(3..7)
-#   t.times do
-#     CourseReview.create!(title: (titles.sample), content: contents.sample, rating: rand(3..5), course_id: course.id, user_id: User.all.pluck(:id).sample)
-#   end
-# end
-
-200.times do
-  Bookmark.create!(user_id: User.all.pluck(:id).sample, course_id: Course.all.pluck(:id).sample)
+  User.create!(email: user["email"],
+                password: user["login"]["password"],
+                name: name,
+                remote_avatar_url: user["picture"]["medium"])
 end
+
+
+courses = Course.all
+
+titles = ["Great course", "Amazing Learnings", "Great instructor", "Steep learning curve", "Great lectures!"]
+
+contents = [ "The course is perfectly planned for people with a little programming knowledge and even for absolute beginners. The exercises are challenging and at the end of the course you get more exercises to practice on your own.",
+            "Helpful Instructor, no question of his knowledge whatsoever. Probably that's were my problem is coming from. I generally miss more detailed explanation here and there",
+            "This course is amazing for beginners , you will find almost everything you need to start coding with Python , the most impressive thing in this course is the two mile stone projects ( Tic Tac Toe and Blackjack! ) you can apply almost everything you learned in the course by creating those projects , and they will give you self confidence if you are not familiar with coding",
+            "I had no previous exposure to any programming language. I could still get a good understanding of the language and am able to code just by following the videos and solving exercises. The barrier i had for learning python is broken and I can take my skill higher with more practice.",
+            "Excellent Course! Easy to understand, clear explanations, informative, very well organized. I always wanted such type of training. The Instructor is very prompt in replying to doubts. The course is very well designed, practical and valuable for anyone who wants to enhance their skills. Thank you.",
+            "This is an amazing course! Despite my background in humanities, I was able to follow Jose's instructions. He explains material very clearly and recaps major points at the end of every lecture to emphasize them. This strategy is the very structured and clear way",
+            "It is in high level. As for the beginners it is very difficult to understand.",
+            "The course is quite extensive. It really gives an overview of how Python works. By no doubts I can recommend it to everyone who plans to develop Python knowledge and skills, even to ones who are already familiar with basic Python concepts.",
+]
+
+courses.each do |course|
+  t = rand(3..7)
+  t.times do
+    CourseReview.create!(title: (titles.sample), content: contents.sample, rating: rand(3..5), course_id: course.id, user_id: User.all.pluck(:id).sample)
+  end
+end
+
+# 200.times do
+#   Bookmark.create!(user_id: User.all.pluck(:id).sample, course_id: Course.all.pluck(:id).sample)
+# end
 # User.delete_all
 
 # User.create!(
