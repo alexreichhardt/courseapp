@@ -87,13 +87,15 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-12">
-            <div class="more-info-container">
-              <div class="more-info">
-                <p class="light-paragraph">or</p>
-                <button type="button" class="button-advanced-search" data-toggle="modal" data-target="#exampleModalCenter">
-                  Specify Search
-                </button>
+          
+            <div class="col-xs-12">
+              <div class="more-info-container">
+                <div class="more-info">
+                  <p class="light-paragraph">or</p>
+                  <button type="button" class="button-advanced-search" data-toggle="modal" data-target="#exampleModalCenter">
+                    Advanced Search
+                  </button>
+                 
               </div>
 
               <i class=""> <%= link_to "", "#more-information", class: "fas fa-angle-down single-icon-home" %> </i>
@@ -110,23 +112,27 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content box">
           <div class="modal-header">
-            <h3 class="heading" id="exampleModalLongTitle">Specify your search</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <div class="flex modal-flex">
+            <h3 class="heading" id="exampleModalLongTitle">Advanced Search</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
           </div>
           <div class="modal-body">
             <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
               <div>
                 <h3 class="subheading">Please enter your search</h3>
-                <%= f.input :search, id: "search", as: :string,
-                          input_html: {
-                            class: "awesomplete searchbar",
-                            data: {
-                              categories: Course::CATEGORIES.join(", ")
+                <div class="modal-search">
+                  <%= f.input :search, id: "search", as: :string, label: false,
+                            input_html: {
+                              class: "awesomplete searchbar fix-width-search",
+                              data: {
+                                categories: Course::CATEGORIES.join(", ")
+                              }
                             }
-                          }
-                %>
+                  %>
+                </div>
               </div>
               <div>
                 <h3 class="subheading">Indicate your skill level here:</h3>

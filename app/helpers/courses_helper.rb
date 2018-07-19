@@ -19,14 +19,14 @@ module CoursesHelper
     html.html_safe
   end
 
-  def course_attributes(number_of_ratings, avg_rating, language, active)
+  def course_attributes(instructor, number_of_ratings, avg_rating, language, active)
     active = active?(active)
     html = nil
     if number_of_ratings < 3
       html = <<-HTML
         <div class="center-align-3-elements">
           <p style="margin-bottom: 4px;">Instructor<p>
-          <p style= "font-weight: 300;">Max Mustermann</p>
+          <p style= "font-weight: 300;">#{instructor.capitalize}</p>
         </div>
         <div class="center-align-3-elements">
           <p style="margin-bottom: 4px;">Language<p>
@@ -41,7 +41,7 @@ module CoursesHelper
       html = <<-HTML
         <div class="center-align-4-elements">
           <p style="margin-bottom: 4px;">Instructor<p>
-          <p style= "font-weight: 300;">Max Mustermann</p>
+          <p style= "font-weight: 300;">#{instructor.capitalize}</p>
         </div>
         <div class="center-align-4-elements">
           <p style="margin-bottom: 4px;">Language<p>

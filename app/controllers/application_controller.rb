@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
+  def last_page_visited_path(resource)
+    if session[:last_visited_path].present?
+      session[:last_visited_path]
+    end
+  end
+
 end

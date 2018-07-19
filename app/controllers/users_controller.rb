@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   def show
 
+    @search_input = params.dig(:criteria, :search)
+    @error = ""
+    @levels = params.dig(:criteria, :knowledge_level)
+    @platforms = params.dig(:criteria, :platform)
+    @prices = params.dig(:criteria, :price)
+    @completion_times = params.dig(:criteria, :completion_time)
+    @reviews = CourseReview.where(user_id: current_user.id)
+
     if params[:id].to_i != current_user.id
       redirect_to root_path(error: "Account does not belong to you")
     else
