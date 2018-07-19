@@ -130,7 +130,7 @@ module CoursesHelper
 
     criteria_hash = {}
 
-    criteria_hash[:search] = search if !search&.blank?
+    criteria_hash[:search] = search
     criteria_hash[:knowledge_level] = levels if !levels&.blank?
     criteria_hash[:platform] = platforms if !platforms&.blank?
     criteria_hash[:price] = prices if !prices&.blank?

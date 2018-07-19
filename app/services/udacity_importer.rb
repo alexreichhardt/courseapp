@@ -69,8 +69,10 @@ class UdacityImporter
   def self.get_duration(duration, unit)
     if duration == 0
       return "1 hour"
-    a = duration.to_s + " " + UdacityImporter.get_duration_unit(duration, unit)
-    return a
+    else
+      a = duration.to_s + " " + UdacityImporter.get_duration_unit(duration, unit)
+      return a
+    end
   end
 
   def self.get_completion_time(duration_unit)
