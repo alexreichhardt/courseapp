@@ -25,12 +25,12 @@ class UdemyImporter
     ids = []
     page_num = 1
     loop do
-      if page_num == 2
+      if page_num == 25
         p ids
         return ids
         break
       end
-      url = "/?page=#{page_num}&page_size=10&category=Development&language=en"
+      url = "/?page=#{page_num}&page_size=100&category=Development&language=en"
       response = self.class.get(url, @options)
 
       p "Error Code #{response.code}"
