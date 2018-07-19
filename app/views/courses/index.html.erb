@@ -139,6 +139,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="row display-table-cell">
                   <div class="card-content-left col-xs-9">
                     <% desc_as_text = Truncato.truncate course.description, max_length: 400 %>
@@ -153,13 +154,13 @@
                         <p><%= course.knowledge_level.capitalize %></p>
                       </div>
                       <% end %>
-                      <% unless course.avg_rating.nil? %>
+                      <% unless course.duration.nil? %>
                       <div class="icon-next">
                         <i class="far fa-clock"></i>
                         <p><%= course.duration%></p>
                       </div>
                       <% end %>
-                      <% unless course.avg_rating.nil? %>
+                      <% unless course.price.nil? %>
                       <div class="icon-next">
                         <i class="fas fa-coins"></i>
                         <p><%= "#{course.price} #{course.price_unit}" %></p>
