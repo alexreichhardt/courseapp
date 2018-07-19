@@ -138,7 +138,7 @@ class UdemyImporter
 
   def get_duration(duration)
     if !duration.nil?
-      a = (duration.to_i / 60).to_s + " " + "hours"
+      a = (duration.to_i / 60).to_s + " "
     else
       nil
     end
