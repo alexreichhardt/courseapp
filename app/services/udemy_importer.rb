@@ -25,7 +25,7 @@ class UdemyImporter
     ids = []
     page_num = 1
     loop do
-      if page_num == 20
+      if page_num == 2
         p ids
         return ids
         break
