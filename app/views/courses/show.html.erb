@@ -6,7 +6,7 @@
       <!-- for css of the left side -->
       <div class="box">
         <div class="flex align-horizontal">
-          <p><%= @course.platform %> online course<p>
+          <p><%= @course.platform.capitalize %> online course<p>
           <% if @bookmarked == false %>
             <i class="single-icon"><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
           <% else %>
