@@ -42,6 +42,16 @@
     color: rgba(11, 63, 150, 0.8);
   }
 }
+.single-icon-home {
+  margin-top: 12px;
+  font-size: 32px;
+  color: #E6E6E6;
+  &:hover {
+    color: white;
+    text-decoration: none;
+
+  }
+}
 
 .stars {
   padding-left: 15px;

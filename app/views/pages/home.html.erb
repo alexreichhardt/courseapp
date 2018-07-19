@@ -63,45 +63,48 @@
                 </div>
               </h2>
             </div>
-            <div>
-              <div class="form-wrapper">
-                <div class="growingform">
-                  <%= simple_form_for :criteria, url: courses_path,
-                      wrapper: :inline_form,
-                      html: { class: "form-inline test"},
-                      wrapper_mappings: {
-                      boolean: :inline_boolean}, method: :get do |f| %>
+          <div>
+          <div class="form-wrapper">
+            <div class="growingform">
+              <%= simple_form_for :criteria, url: courses_path,
+                  wrapper: :inline_form,
+                  html: { class: "form-inline test"},
+                  wrapper_mappings: {
+                  boolean: :inline_boolean}, method: :get do |f| %>
 
-                  <div class="flex">
-                    <%= f.input :search, id: "search", as: :string,
-                                input_html: {
-                                  class: "awesomplete",
-                                  data: {
-                                    categories: Course::CATEGORIES.join(", ")
-                                  }
-                                }
+                <div class="flex">
+                  <%= f.input :search, id: "search", as: :string,
+                      input_html: {
+                        class: "awesomplete",
+                        data: {
+                        categories: Course::CATEGORIES.join(", ")
+                        }
+                      }
                     %>
                     <%= f.button :submit, "Hunt", class: "button-green-primary-landing"%>
-                  </div>
-                  <% end %>
                 </div>
+                  <% end %>
               </div>
             </div>
-            <div class="col-xs-12">
-              <div class="more-info-container">
-                <div class="more-info">
-                  <p class="light-paragraph">or</p>
-                  <button type="button" class="button-advanced-search" data-toggle="modal" data-target="#exampleModalCenter">
-                    Specify Search
-                  </button>
-                  <!-- <p >Browse Categories</p> -->
-                </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="more-info-container">
+              <div class="more-info">
+                <p class="light-paragraph">or</p>
+                <button type="button" class="button-advanced-search" data-toggle="modal" data-target="#exampleModalCenter">
+                  Specify Search
+                </button>
               </div>
+
+              <i class=""> <%= link_to "", "#more-information", class: "fas fa-angle-down single-icon-home" %> </i>
+
+
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -155,33 +158,36 @@
 <div class="wrapper background-home2">
   <div class="container">
     <div class="row">
-      <div class="box flex box-position">
-        <div class="usp-item">
-          <i class="far fa-user fa-2x"></i>
-          <h3 class="heading">
-            Personal.
-          </h3>
-          <p class="paragraph">
-            Filter courses according to your current skill level and find the best match possible to reach your goals.
-          </p>
-        </div>
-        <div class="usp-item">
-          <i class="fas fa-align-center fa-2x"></i>
-          <h3 class="heading">
-            All in one.
-          </h3>
-          <p class="paragraph">
-            Benefit from the broad variety courses offered by the four largest online platforms, all aggregated in one place.
-          </p>
-        </div>
-        <div class="usp-item">
-          <i class="far fa-clock fa-2x"></i>
-          <h3 class="heading">
-            Convenient.
-          </h3>
-          <p class="paragraph">
-            Bookmark courses to check them out later. All of your favorites are a click away on your profile page.
-          </p>
+      <div id="usps">
+          <section id="more-information"></section>
+          <div class="box flex box-position">
+            <div class="usp-item">
+              <i class="far fa-user fa-2x"></i>
+              <h3 class="heading">
+                Personal.
+              </h3>
+              <p class="paragraph">
+                Filter courses according to your current skill level and find the best match to reach your goals.
+              </p>
+            </div>
+            <div class="usp-item">
+              <i class="fas fa-align-center fa-2x"></i>
+              <h3 class="heading">
+                All in one.
+              </h3>
+              <p class="paragraph">
+                Benefit from a variety of courses offered by the four largest online platforms all aggregated in one place.
+              </p>
+            </div>
+            <div class="usp-item">
+              <i class="far fa-clock fa-2x"></i>
+              <h3 class="heading">
+                Convenient.
+              </h3>
+              <p class="paragraph">
+                Bookmark courses to check them out later. All of your favorites are a click away from your profile page.
+              </p>
+            </div>
         </div>
       </div>
     </div>
@@ -202,7 +208,7 @@
             Search & Filter
           </h3>
           <p class="paragraph">
-            Start browsing through our massive offering of courses either by using the search bar or our "browse categories" page. Within a click you will have all the matching courses displayed on our results page. Feel free to apply further filtering in order to narrow the result list down as much as you like to find the perfect course.
+            Start by browsing through our comprehensive collection of courses either by entering a keyword in the search bar or accessing our "browse categories" page. All the matching results will be displayed on our results page. You can then apply further filtering and narrow the list as much as you'd like to find the perfect course.
           </p>
           </div>
         </div>
@@ -217,7 +223,7 @@
               Bookmark & Select
             </h3>
             <p class="paragraph">
-              After this selection process you will probably have a small list of courses that fit you and you would like to save for the future. With our newly implemented bookmarking feature it is really easy to keep track of those courses. Just bookmark them and in case you want to start, just click on the respective course link and you will be redirected.
+              After reaching a more specified selection, you will have a smaller list of courses that suits your needs. With our bookmarking feature, you can click on the bookmark icon to keep track of the courses you are interested in. Then, you can revisit the course display page and start anytime you want!
             </p>
           </div>
         </div>
@@ -238,7 +244,7 @@
             Start & Review
           </h3>
           <p class="paragraph">
-            After you successfully completeted the courses of your choice on one of our partners' websites, feel free to leave your feedback for the particular course. Reviews are very helpful for our community in order to further increase the partical insights into the courses. In order to compose a review just click on the respective course on your user page.
+            After you have successfully completeted a courses of your choice on one of our partners' websites, feel free to leave feedback for the particular course. Reviews are a great resource for our community as they provide a student's insight for people who are considering the course. In order to write a review just click on the respective course on your user page.
           </p>
           </div>
         </div>
@@ -251,7 +257,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="category-container">
-            <h3 class="heading">Pick your favourite category:</h3>
+            <h3 class="heading">Categories:</h3>
           </div>
           <div class="medium-placeholder">
 
