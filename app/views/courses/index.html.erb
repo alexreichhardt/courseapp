@@ -120,90 +120,73 @@
 
 
         <% @courses.each do |course| %>
-          <div class="box-flex-index card-medium first-card">
-
-
-
-            <div class="row">
-              <div class="col-xs-9" >
-                <h3 class="heading"><%=course.title%></h3>
-              </div>
-
-              <div class="col-xs-1 col-xs-offset-2 bookmark-index-padding">
-                <div class="bookmark-background">
-                <% if current_user.nil? || Bookmark.where(course_id: course.id, user_id: current_user.id).empty? %>
-                  <i class="single-icon-index"><%= link_to("", course_bookmarks_path(course), method: :post, :class => "far fa-bookmark") %></i>
-                <% else %>
-                  <% b = Bookmark.where(course_id: course.id, user_id: current_user.id) %>
-                  <i class="single-icon-index"><%= link_to("", course_bookmark_path(course, b[0].id), method: :delete, :class => "fas fa-bookmark") %></i>
-                <% end %>
+        <% course_sec = "course" + course.id.to_s  %>
+          <section id="<%=course_sec%>">
+            <div class="box-flex-index card-medium first-card">
+              <div class="row">
+                <div class="col-xs-9" >
+                  <h3 class="heading"><%=course.title%></h3>
                 </div>
+
+                <div class="col-xs-1 col-xs-offset-2 bookmark-index-padding">
+                  <div class="bookmark-background">
+                  <% if current_user.nil? || Bookmark.where(course_id: course.id, user_id: current_user.id).empty? %>
+                    <i class="single-icon-index"><%= link_to("", course_bookmarks_path(course), method: :post, :class => "far fa-bookmark") %></i>
+                  <% else %>
+                    <% b = Bookmark.where(course_id: course.id, user_id: current_user.id) %>
+                    <i class="single-icon-index"><%= link_to("", course_bookmark_path(course, b[0].id), method: :delete, :class => "fas fa-bookmark") %></i>
+                  <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="row display-table-cell">
+                  <div class="card-content-left col-xs-9">
+                    <% desc_as_text = Truncato.truncate course.description, max_length: 400 %>
+                    <%= desc_as_text.html_safe %>
+                    <!-- desc_as_text.truncate(27, escape: false) -->
+                  </div>
+                  <div class="card-content-right col-xs-3">
+                    <div class="content-right-attributes">
+                      <% unless course.knowledge_level.nil? %>
+                      <div class="icon-next">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p><%= course.knowledge_level.capitalize %></p>
+                      </div>
+                      <% end %>
+                      <% unless course.avg_rating.nil? %>
+                      <div class="icon-next">
+                        <i class="far fa-clock"></i>
+                        <p><%= course.duration%></p>
+                      </div>
+                      <% end %>
+                      <% unless course.avg_rating.nil? %>
+                      <div class="icon-next">
+                        <i class="fas fa-coins"></i>
+                        <p><%= "#{course.price} #{course.price_unit}" %></p>
+                      </div>
+                      <% end %>
+                      <% unless course.avg_rating.nil? %>
+                      <div class="icon-next">
+                        <i class="fas fa-star"></i>
+                        <p><%= course.avg_rating %></p>
+                      </div>
+                      <% end %>
+                    </div>
+
+                    <div class="card-button">
+                      <%= link_to("See Details", course_path(course, criteria: {search: @search_input, knowledge_level: @levels, platform: @platforms, price: @prices, completion_time: @completion_times}), class: "button-green-primary") %>
+                    </div>
               </div>
             </div>
-
-
-
-            <div class="row display-table-cell">
-
-
-                <div class="card-content-left col-xs-9">
-                  <% desc_as_text = Truncato.truncate course.description, max_length: 400 %>
-                  <%= desc_as_text.html_safe %>
-                  <!-- desc_as_text.truncate(27, escape: false) -->
-                </div>
-
-                <div class="card-content-right col-xs-3">
-
-
-                  <div class="content-right-attributes">
-                    <% unless course.knowledge_level.nil? %>
-                    <div class="icon-next">
-                      <i class="fas fa-graduation-cap"></i>
-                      <p><%= course.knowledge_level.capitalize %></p>
-                    </div>
-                    <% end %>
-                    <% unless course.avg_rating.nil? %>
-                    <div class="icon-next">
-                      <i class="far fa-clock"></i>
-                      <p><%= course.duration%></p>
-                    </div>
-                    <% end %>
-                    <% unless course.avg_rating.nil? %>
-                    <div class="icon-next">
-                      <i class="fas fa-coins"></i>
-                      <p><%= "#{course.price} #{course.price_unit}" %></p>
-                    </div>
-                    <% end %>
-                    <% unless course.avg_rating.nil? %>
-                    <div class="icon-next">
-                      <i class="fas fa-star"></i>
-                      <p><%= course.avg_rating %></p>
-                    </div>
-                    <% end %>
-                  </div>
-
-                  <div class="card-button">
-                     <%= link_to("See Details", course_path(course, criteria: {search: @search_input, knowledge_level: @levels, platform: @platforms, price: @prices, completion_time: @completion_times}), class: "button-green-primary") %>
-
-
-
-                  </div>
-
-                </div>
-
-
-            </div>
-
-
-
-          </div>
+          </section>
         <% end %>
 
+
          <!-- container1 -->
-         <div class="indent-next-buttons">
-          <%= link_to_previous_page @courses, 'Previous Page', class: "button-red-secondary" %>
-          <%= link_to_next_page @courses, 'Next Page', class: "button-green-secondary" %>
-        </div>
+           <div class="indent-next-buttons">
+            <%= link_to_previous_page @courses, 'Previous Page', class: "button-red-secondary" %>
+            <%= link_to_next_page @courses, 'Next Page', class: "button-green-secondary" %>
+          </div>
         <!-- CONTAINER -->
       </div>
       <!-- col -->

@@ -9,11 +9,17 @@ class BookmarksController < ApplicationController
       course = Course.find(params[:course_id])
       new_bookmark = Bookmark.new(user_id: current_user.id, course_id: course.id)
       new_bookmark.save!
-      # redirect_to course_path(params[:course_id])
-      redirect_to request.referrer
 
-    else
-       redirect_to new_user_session_path(redirect_to: course_path(params[:id]))
+      # redirect_to course_path(params[:course_id])
+
+
+      if URI(request.referer).path == "/courses"
+        redirect_to URI(request.referer).to_s + "#course#{params[:course_id]}"
+      elsif URI(request.referer).path == "/courses/#{params[:course_id]}"
+        redirect_to request.referer
+      end
+
+      # (anchor: 'contact' )
     end
   end
 

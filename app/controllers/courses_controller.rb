@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
 
     # completion time
     if @completion_times
-      selected_options = params[:criteria][:completion_time].reject(&:blank?)
+      selected_options = params[:criteria][:completion_time]&.reject(&:blank?)
       if selected_options[0] == "> 1 week"
         @courses = @courses.where("completion_time = 'long'")
       elsif selected_options[0] == "< 1 week"
