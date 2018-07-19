@@ -22,7 +22,6 @@ class CoursesController < ApplicationController
     else
       # otherwise apply use search alogrithm
       @courses = Course.search_global(@search_input)
-
       @courses = @courses.page(params[:page]).per(10)
     end
 
@@ -48,8 +47,8 @@ class CoursesController < ApplicationController
     # price
 
     # if @prices
-
-      selected_options = params[:criteria][:price]&.reject(&:blank?)
+    if params.dig(:criteria, :platform)
+      selected_options = params[:criteria][:price].reject(&:blank?)
       if selected_options.blank? || selected_options.count == 2
         @courses = @courses # .where("price >= 0")
       elsif selected_options[0] == "Paid"
@@ -57,6 +56,7 @@ class CoursesController < ApplicationController
       elsif selected_options[0] == "Free"
         @courses = @courses.where("price = 0")
       end
+    end
     # end
 
     # completion time
