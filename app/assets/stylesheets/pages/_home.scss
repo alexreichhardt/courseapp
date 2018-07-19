@@ -259,3 +259,13 @@ input[type=submit] {
   text-align: center;
   width: 100%;
 }
+
+.modal-flex {
+  justify-content: space-between;
+}
+
+.modal-search {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
