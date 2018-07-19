@@ -10,13 +10,9 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <div class="navbar-link-wrapper">
-      <%= link_to 'Categories', categories_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    </div>
+      <%= link_to 'Categories', categories_path, class: "navbar-wagon-item navbar-wagon-link navbar-link-wrapper" %>
     <%if !user_signed_in?%>
-      <div class="navbar-link-wrapper">
-        <%= link_to 'Login', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link"%>
-      </div>
+        <%= link_to 'Login', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link navbar-link-wrapper"%>
     <%end%>
 
 

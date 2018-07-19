@@ -53,7 +53,7 @@
 .filter-container {
   z-index: 10;
   margin-top: 0px;
-  padding-top: 20px;
+  padding-top: 16px;
   padding-bottom: 16px;
   background-color: $blue-sidebar;
   position: fixed !important;
@@ -190,11 +190,11 @@ input[type=submit] {
 }
 
 .filter-attribute-item {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .filter-attribute-list-inner {
-  padding: 0 0px 15px;
+  padding: 0 0px 10px;
 }
 
 .filter-attribute-item:first-child {
