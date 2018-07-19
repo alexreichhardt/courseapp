@@ -23,14 +23,14 @@ class UdemyImporter
     @auth = { username:ENV['YOUR_CLIENT_ID'] , password: ENV['YOUR_CLIENT_SECRET'] }
     @options = {basic_auth: @auth}
     ids = []
-    page_num = 2
+    page_num = 1
     loop do
-      if page_num == 3
+      if page_num == 20
         p ids
         return ids
         break
       end
-      url = "/?page=#{page_num}&page_size=20&category=Development&language=en"
+      url = "/?page=#{page_num}&page_size=100&category=Development&language=en"
       response = self.class.get(url, @options)
 
       p "Error Code #{response.code}"
