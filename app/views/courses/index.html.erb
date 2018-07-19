@@ -157,23 +157,29 @@
 
 
                   <div class="content-right-attributes">
+                    <% unless course.knowledge_level.nil? %>
                     <div class="icon-next">
                       <i class="fas fa-graduation-cap"></i>
-                      <p><%= course.knowledge_level %></p>
+                      <p><%= course.knowledge_level.capitalize %></p>
                     </div>
+                    <% end %>
+                    <% unless course.avg_rating.nil? %>
                     <div class="icon-next">
                       <i class="far fa-clock"></i>
                       <p><%= course.duration%></p>
                     </div>
+                    <% end %>
+                    <% unless course.avg_rating.nil? %>
                     <div class="icon-next">
                       <i class="fas fa-coins"></i>
-                      <p><%= course.price %></p>
+                      <p><%= "#{course.price} #{course.price_unit}" %></p>
                     </div>
-                    <% if !course.avg_rating.nil? %>
-                      <div class="icon-next">
-                        <i class="fas fa-star"></i>
-                        <p><%= course.avg_rating %></p>
-                      </div>
+                    <% end %>
+                    <% unless course.avg_rating.nil? %>
+                    <div class="icon-next">
+                      <i class="fas fa-star"></i>
+                      <p><%= course.avg_rating %></p>
+                    </div>
                     <% end %>
                   </div>
 
@@ -190,7 +196,7 @@
 
           </div>
         <% end %>
-      
+
          <!-- container1 -->
          <div class="indent-next-buttons">
           <%= link_to_previous_page @courses, 'Previous Page', class: "button-red-secondary" %>
