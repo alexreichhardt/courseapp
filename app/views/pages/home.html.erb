@@ -121,7 +121,7 @@
                 <div class="modal-search">
                   <%= f.input :search, id: "search", as: :string, label: false,
                             input_html: {
-                              class: "awesomplete searchbar",
+                              class: "awesomplete searchbar fix-width-search",
                               data: {
                                 categories: Course::CATEGORIES.join(", ")
                               }
