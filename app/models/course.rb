@@ -1,7 +1,7 @@
 class Course < ApplicationRecord
   CATEGORIES = ["Web Development", "Mobile Apps", "Programming Languages", "Game Development", "Databases",
                 "Software Testing", "Software Engineering", "Development Tools", "Front-end & Design", "DevOps",
-                "Security", "Data-Analysis"]
+                "Security", "Data-Analysis", "Ruby", "Python", "Java", "React", "C++", "Spring", "Node.js", "Tensorflow", "Angular", "Php", "Scala", "Swift", "Javascript", "Blockchain" ,"Solidity", "Ethereum", "Crypto"]
 
 
 

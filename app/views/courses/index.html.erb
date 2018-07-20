@@ -5,6 +5,7 @@
       <div class="col-xs-12 col-md-3">
         <div class="filter-container filters-card">
           <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+
         <div>
       </div>
 
@@ -81,6 +82,7 @@
           </ul>
           <div>
             <%= f.hidden_field :search, value: @search_input %>
+
             <!-- submit button -->
             <%= f.button :submit, "Search", class: "button-white-sidebar"%>
             <%= button_to "Clear", "#", class: "uncheck-all btn button-white-sidebar-inv" %>
@@ -103,8 +105,17 @@
                   html: { class: "form-inline index-search-form"},
                   wrapper_mappings: {
                   boolean: :inline_boolean}, :method => :get do |f| %>
+                  <%= f.input :search, id: "search", as: :string,
+                      input_html: {
+                        class: "awesomplete",
+                        data: {
+                        categories: Course::CATEGORIES.join(", ")
+                        },
+                        value: @search_input || ''
+                      }
+                    %>
 
-              <%= f.input :search, id: "search", as: :string, input_html: {value: @search_input || ''} %>
+
               <%= f.button :submit, "Hunt", class: "button-green-primary" %>
               <% end %>
             </div>
