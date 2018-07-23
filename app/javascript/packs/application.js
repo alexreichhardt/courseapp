@@ -10,6 +10,7 @@ import { categoryChoiceHome } from "../components/categorychoicehome";
 import { accordion } from "../components/filteraccordion";
 import { uncheckallfilter } from "../components/uncheckallfilter"
 import { initAwesomplete } from "../components/init_awesomplete"
+import { loadBookmarkIcon } from "../components/loadingbookmark.js"
 
 // import { listenToTurbolinks } from "../components/turbolinks"
 
@@ -25,4 +26,5 @@ document.addEventListener("turbolinks:load", () => {
   categoryChoiceHome();
   categoryChoice();
   initAwesomplete();
+  loadBookmarkIcon();
 });

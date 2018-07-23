@@ -7,12 +7,7 @@
       <div class="box">
         <div class="flex align-horizontal">
           <p><%= @course.platform.capitalize %> online course<p>
-          <% if @bookmarked == false %>
-            <i class="single-icon"><%= link_to("", course_bookmarks_path(@course), method: :post, :class => "far fa-bookmark") %></i>
-          <% else %>
-          <% a = Bookmark.where(course_id: @course.id, user_id: current_user.id) %>
-            <i class="single-icon"><%= link_to("", course_bookmark_path(@course.id, a[0].id), method: :delete, :class => "fas fa-bookmark") %></i>
-          <% end %>
+          <%= link_to_toggle_course_bookmark(@course) %>
         </div>
         <h1 class="title"><%= @course.title %></h1>
         <!-- course description -->

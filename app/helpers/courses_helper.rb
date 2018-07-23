@@ -139,4 +139,42 @@ module CoursesHelper
     criteria_hash
 
   end
+
+  def link_to_toggle_course_bookmark(course)
+
+    url_create = course_bookmarks_path(course)
+    bookmark = Bookmark.find_by(course_id: course.id, user_id: current_user.id)
+
+    if !user_signed_in?
+      link_to_with_icon('far fa-bookmark', '', url_create, {
+          method: 'POST',
+          remote: true,
+          id: "bookmark-icon",
+          class: "single-icon-index",
+        })
+    else
+      if course.bookmarked?(current_user.id)
+        url_destroy = course_bookmark_path(course.id, bookmark.id)
+        link_to_with_icon('fas fa-bookmark', '', url_destroy, {
+            method: 'DELETE',
+            remote: true,
+            id: "bookmark-icon",
+            class: "single-icon-index",
+            })
+      else
+        link_to_with_icon('far fa-bookmark', '', url_create, {
+            method: 'POST',
+            remote: true,
+            id: "bookmark-icon",
+            class: "single-icon-index",
+          })
+      end
+    end
+  end
+
+  def link_to_with_icon(icon_css, title, url, options = {})
+        icon = content_tag(:i, nil, class: icon_css)
+        title_with_icon = icon << ' '.html_safe << h(title)
+        link_to(title_with_icon, url, options)
+  end
 end
