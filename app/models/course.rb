@@ -47,6 +47,21 @@ class Course < ApplicationRecord
     self.categories["subjects"].join(', ')
   end
 
+  def bookmarked?(user_id) # input: user_id
+    Bookmark.where(user_id: user_id, course_id: self.id).present?
+  end
+
+  def bookmark!(user_id) # input: user_id
+    b = Bookmark.new(user_id: user_id, course_id: self.id)
+    b.save!
+  end
+
+  def unbookmark!(user_id)
+    b = Bookmark.find_by(user_id: user_id, course_id: self.id)
+    b.destroy!
+  end
+
+
 end
 
 

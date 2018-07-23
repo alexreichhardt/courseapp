@@ -22,7 +22,9 @@ module Courseapp
     # the framework and any gems in your application.
     config.active_job.queue_adapter = :sidekiq
     config.ignored_paths = %W(/users/sign_in /users/sign_up /users/password /users/sign_out /users/confirm_password /users)
+    config.action_controller.include_all_helpers = true
   end
 
 
 end
+
