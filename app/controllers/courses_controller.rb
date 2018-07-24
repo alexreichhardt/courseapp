@@ -10,8 +10,6 @@ class CoursesController < ApplicationController
     @prices = params.dig(:criteria, :price)
     @completion_times = params.dig(:criteria, :completion_time)
 
-
-
     if @search_input.blank?
       # display all courses if user makes no input
       @courses = Course.includes(:bookmarks).page(params[:page]).per(10)

@@ -7,7 +7,11 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @course.bookmark!(current_user.id)
+    if user_signed_in?
+      @course.bookmark!(current_user.id)
+    else
+      redirect_to new_user_session_path(redirect_to: course_path(params[:id]))
+    end
   end
 
   def destroy
@@ -17,6 +21,6 @@ class BookmarksController < ApplicationController
   private
 
   def load_course
-      @course = Course.find(params[:course_id])
-    end
+    @course = Course.find(params[:course_id])
+  end
 end

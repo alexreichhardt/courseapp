@@ -143,16 +143,19 @@ module CoursesHelper
   def link_to_toggle_course_bookmark(course)
 
     url_create = course_bookmarks_path(course)
-    bookmark = Bookmark.find_by(course_id: course.id, user_id: current_user.id)
+
+    url_session = new_user_session_path(redirect_to: courses_path(criteria: build_criteria_hash(@search_input, @levels, @platforms, @prices, @completion_times)))
 
     if !user_signed_in?
-      link_to_with_icon('far fa-bookmark', '', url_create, {
-          method: 'POST',
-          remote: true,
+      link_to_with_icon('far fa-bookmark', '', url_session, {
+          method: 'GET',
+          remote: false,
           id: "bookmark-icon",
           class: "single-icon-index",
         })
+
     else
+      bookmark = Bookmark.find_by(course_id: course.id, user_id: current_user.id)
       if course.bookmarked?(current_user.id)
         url_destroy = course_bookmark_path(course.id, bookmark.id)
         link_to_with_icon('fas fa-bookmark', '', url_destroy, {
