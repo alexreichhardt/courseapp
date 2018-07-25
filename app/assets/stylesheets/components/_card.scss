@@ -30,16 +30,7 @@
 
 .card-content-right {
   border-left: 2px dashed $light-gray;
-  float: none;
-  display: table-cell;
   height: 155px;
-
-}
-
-.card-content-left {
-  float: none;
-  display: table-cell;
-
 }
 
 .card-button {
@@ -49,9 +40,9 @@
 }
 
 .display-table-cell {
-  display: table;
   margin-top: 8px;
 }
+
 
 
 

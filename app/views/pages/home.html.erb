@@ -72,7 +72,7 @@
                   wrapper_mappings: {
                   boolean: :inline_boolean}, method: :get do |f| %>
 
-                <div class="flex">
+                <div class="flex" style="width:100%;">
                   <%= f.input :search, id: "search", as: :string,
                       input_html: {
                         class: "awesomplete",
@@ -278,7 +278,9 @@
             <hr>
             <div class="category-row">
               <% @top_categories_count.each do |category| %>
-              <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+              <div class="col-xs-12 col-md-6 col-lg-3">
+                <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+              </div>
               <% end %>
             </div>
           </div>
@@ -292,7 +294,9 @@
             <hr>
             <div class="category-row">
               <% @categories.each do |category| %>
-              <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                  <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+                </div>
               <% end %>
             </div>
           </div>
