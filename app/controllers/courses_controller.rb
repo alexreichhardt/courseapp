@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
     @platforms = params.dig(:criteria, :platform)
     @prices = params.dig(:criteria, :price)
     @completion_times = params.dig(:criteria, :completion_time)
+    @categories = categories
 
     if @search_input.blank?
       # display all courses if user makes no input
@@ -68,6 +69,7 @@ class CoursesController < ApplicationController
       end
     end
   end
+
 
 
   def show

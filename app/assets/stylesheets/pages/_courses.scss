@@ -53,6 +53,7 @@
   padding-bottom: 16px;
   background-color: $blue-sidebar;
   position: fixed !important;
+  left:0;
   top: 70 !important;
   height: 100%;
   h3 {
@@ -81,16 +82,6 @@
   }
 }
 
-.results-row {
-  .container {
-    padding-right: 80px;
-  }
-}
-
-.results-row > .col-xs-12.col-md-2 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
 
 .filters-card {
   // border: 0.5px solid #cecece;
@@ -199,4 +190,31 @@ input[type=submit] {
 
 .inherit-all {
   all: inherit;
+}
+
+@media (max-width: 768px) {
+  .filter-container {
+    display: none;
+  }
+  .content-right-attributes {
+    display: flex;
+  }
+  .card-content-right {
+    border: 0px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .show-large {
+    display: none;
+  }
+}
+
+.cards-container {
+  margin-top: 16px;
+}
+
+@media (max-width: 480px) {
+
 }
