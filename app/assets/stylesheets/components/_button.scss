@@ -107,5 +107,22 @@
 
 }
 
+.button-mobile-filter {
+  color: $blue-sidebar;
+  border: 2px solid $blue-sidebar;
+  background-color: white;
+  border-radius: 1px;
+  padding: 7px 12px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    color: white;
+    background-color: $blue-sidebar;
+    border: 2px solid $blue-sidebar;
+    text-decoration: none;
+  }
+
+}
 
 

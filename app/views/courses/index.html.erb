@@ -1,4 +1,15 @@
-
+<!-- <div class="navbar-wagon filter-mobile">
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Some mobile link</a></li>
+        <li><a href="#">Other one</a></li>
+        <li><a href="#">Other one</a></li>
+      </ul>
+    </div>
+  </div>
+</div> -->
   <div class="container fullwidth">
     <div class="row">
       <!-- left side -->
@@ -95,6 +106,7 @@
         <div class="container1">
           <!-- search -->
           <div class="box" id="index-search-box">
+            <div class="flex">
             <%= simple_form_for :criteria, url: courses_path,
                   wrapper: :inline_form,
                   html: { class: "form-inline index-search-form"},
@@ -113,9 +125,69 @@
 
               <%= f.button :submit, "Hunt", class: "button-green-primary" %>
               <% end %>
+              <div class="filter-mobile">
+                <button type="button" class="button-mobile-filter" data-toggle="modal" data-target="#exampleModalCenter">
+                  Filter
+                </button>
+             </div>
+              </div>
             </div>
 
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content box">
+          <div class="modal-header">
+            <div class="flex modal-flex">
+            <h3 class="heading" id="exampleModalLongTitle">Filter Results</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
+                            <div>
+                <h3 class="subheading">Indicate your skill level here:</h3>
+                <div class="flex" style="min-height: 80px;">
+                  <%= label_select_filter_mobile("knowledge_level", @levels, "beginner") %>
+                  <%= label_select_filter_mobile("knowledge_level", @levels, "intermediate") %>
+                  <%= label_select_filter_mobile("knowledge_level", @levels, "advanced") %>
+                </div>
+              </div>
+              <div>
+                <h3 class="subheading">What's your budget?</h3>
+                <div class="flex" style="min-height: 80px;">
+                  <%= label_select_filter_mobile("platform", @platforms, "udemy") %>
+                  <%= label_select_filter_mobile("platform", @platforms, "udacity") %>
+                </div>
+                <div class="flex">
+                  <%= label_select_filter_mobile("platform", @platforms, "edx") %>
+                  <%= label_select_filter_mobile("platform", @platforms, "futurelearn") %>
+                </div>
+              </div>
+              <div>
+                <h3 class="subheading">What's your budget?</h3>
+                <div class="flex" style="min-height: 80px;">
+                  <%= label_select_filter_mobile("price", @prices, "Free") %>
+                  <%= label_select_filter_mobile("price", @prices, "Paid") %>
+                </div>
+              </div>
+              <div>
+                <h3 class="subheading">Please indicate completion time</h3>
+                <div class="flex" style="min-height:80px;">
+                  <%= label_select_filter_mobile("completion_time", @completion_times, "> 1 week") %>
+                  <%= label_select_filter_mobile("completion_time", @completion_times, "< 1 week") %>
+                </div>
+              </div>
 
+              <div class="modal-footer">
+                <%= f.button :submit, "Specify Search", class: "button-green-primary"%>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
             <!-- result information -->
           <div class="result-title">
