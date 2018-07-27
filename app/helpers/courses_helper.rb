@@ -19,6 +19,26 @@ module CoursesHelper
     html.html_safe
   end
 
+  def label_select_filter_mobile(key, filter, value)
+    html = nil
+    if filter&.include?(value)
+      html = <<-HTML
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[#{key}][]" id="criteria_#{key}_#{value}" checked>
+        <label class="collection_check_boxes category-choice-mobile active" for="criteria_#{key}_#{value}">
+          #{value.capitalize}
+        </label>
+      HTML
+    else
+      html = <<-HTML
+        <input class="form-check-input hidden required" type="checkbox" value="#{value}" name="criteria[#{key}][]" id="criteria_#{key}_#{value}">
+        <label class="collection_check_boxes category-choice-mobile" for="criteria_#{key}_#{value}">
+          #{value.capitalize}
+        </label>
+      HTML
+    end
+    html.html_safe
+  end
+
   def course_attributes(instructor, number_of_ratings, avg_rating, language, active)
     active = active?(active)
     html = nil

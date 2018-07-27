@@ -7,6 +7,7 @@ import { loadDynamicBannerText } from '../components/dynamictext';
 import { pickTabs } from "../components/picktabs";
 import { categoryChoice } from "../components/categorychoice";
 import { categoryChoiceHome } from "../components/categorychoicehome";
+import { categoryChoiceMobile } from "../components/categorychoicemobile";
 import { accordion } from "../components/filteraccordion";
 import { uncheckallfilter } from "../components/uncheckallfilter"
 import { initAwesomplete } from "../components/init_awesomplete"
@@ -23,6 +24,7 @@ document.addEventListener("turbolinks:load", () => {
   accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list');
   enableReadMore();
   loadDynamicBannerText();
+  categoryChoiceMobile();
   categoryChoiceHome();
   categoryChoice();
   initAwesomplete();
