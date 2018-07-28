@@ -135,7 +135,7 @@
 }
 
 .category-choice-mobile {
-
+  font-size: 14px;
   color: $blue-sidebar;
   margin-right: 5px;
   width: 100%;
@@ -143,7 +143,7 @@
   border: 2px solid $blue-sidebar;
   flex: 0 0 30%;
   text-align: center;
-  padding: 8px 12px;
+  padding: 4px 8px;
   transition: 0.3s ease;
   &:hover {
     opacity: 1;
@@ -240,6 +240,26 @@ input[type=submit] {
     border: 0px;
     height: 100px;
   }
+  .flex-mobile {
+    width:80%;
+    justify-content:space-between;
+  }
+  .width-search-mobile {
+
+  }
+  #index-search-box {
+    input {
+      height: 42px;
+      width: 67px;
+      margin-right: 20px;
+      border-radius: 0px 1px 1px 0px;
+
+    }
+    .form-control {
+    width: 100%;
+    height: 42px;
+  }
+  }
 }
 
 @media (max-width: 992px) {
@@ -253,6 +273,7 @@ input[type=submit] {
   .filter-mobile {
     display: none;
   }
+
 }
 
 .cards-container {
@@ -261,4 +282,10 @@ input[type=submit] {
 
 @media (max-width: 480px) {
 
+}
+
+.align-button-right {
+  padding: 0px;
+  padding-top: 15px;
+  text-align: left;
 }
