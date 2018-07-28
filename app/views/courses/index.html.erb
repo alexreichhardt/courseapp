@@ -106,10 +106,10 @@
         <div class="container1">
           <!-- search -->
           <div class="box" id="index-search-box">
-            <div class="flex">
+            <div class="flex flex-mobile">
             <%= simple_form_for :criteria, url: courses_path,
                   wrapper: :inline_form,
-                  html: { class: "form-inline index-search-form"},
+                  html: { class: "form-inline index-search-form width-search-mobile"},
                   wrapper_mappings: {
                   boolean: :inline_boolean}, :method => :get do |f| %>
                   <%= f.input :search, id: "search", as: :string,
@@ -123,15 +123,15 @@
                     %>
 
 
-              <%= f.button :submit, "Hunt", class: "button-green-primary" %>
+              <%= f.button :submit, "Hunt", class: "button-green-primary button-mobile"%>
               <% end %>
-              <div class="filter-mobile">
+              <div class="filter-mobile" >
                 <button type="button" class="button-mobile-filter" data-toggle="modal" data-target="#exampleModalCenter">
                   Filter
                 </button>
              </div>
-              </div>
             </div>
+          </div>
 
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -147,40 +147,40 @@
           <div class="modal-body">
             <%= simple_form_for :criteria, url: courses_path, :method => :get do |f| %>
                             <div>
-                <h3 class="subheading">Indicate your skill level here:</h3>
-                <div class="flex" style="min-height: 80px;">
+                <h3 class="subheading-small">Indicate your skill level here:</h3>
+                <div class="flex" style="min-height: 50px;">
                   <%= label_select_filter_mobile("knowledge_level", @levels, "beginner") %>
                   <%= label_select_filter_mobile("knowledge_level", @levels, "intermediate") %>
                   <%= label_select_filter_mobile("knowledge_level", @levels, "advanced") %>
                 </div>
               </div>
               <div>
-                <h3 class="subheading">What's your budget?</h3>
-                <div class="flex" style="min-height: 80px;">
+                <h3 class="subheading-small" style="margin-bottom: 12px;">Which platform(s) do you prefer?</h3>
+                <div class="flex" style="min-height: 25px;">
                   <%= label_select_filter_mobile("platform", @platforms, "udemy") %>
                   <%= label_select_filter_mobile("platform", @platforms, "udacity") %>
                 </div>
-                <div class="flex">
+                <div class="flex" style="min-height: 25px; margin-bottom: 12px;" >
                   <%= label_select_filter_mobile("platform", @platforms, "edx") %>
                   <%= label_select_filter_mobile("platform", @platforms, "futurelearn") %>
                 </div>
               </div>
               <div>
-                <h3 class="subheading">What's your budget?</h3>
-                <div class="flex" style="min-height: 80px;">
+                <h3 class="subheading-small" >What's your budget?</h3>
+                <div class="flex" style="min-height: 50px;">
                   <%= label_select_filter_mobile("price", @prices, "Free") %>
                   <%= label_select_filter_mobile("price", @prices, "Paid") %>
                 </div>
               </div>
               <div>
-                <h3 class="subheading">Please indicate completion time</h3>
-                <div class="flex" style="min-height:80px;">
+                <h3 class="subheading-small">Please indicate completion time</h3>
+                <div class="flex" style="min-height:50px;">
                   <%= label_select_filter_mobile("completion_time", @completion_times, "> 1 week") %>
                   <%= label_select_filter_mobile("completion_time", @completion_times, "< 1 week") %>
                 </div>
               </div>
 
-              <div class="modal-footer">
+              <div class="modal-footer align-button-right">
                 <%= f.button :submit, "Specify Search", class: "button-green-primary"%>
               </div>
             <% end %>
