@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
 
   def index
     @search_input = params.dig(:criteria, :search)
-    @error = ""
+    @error = nil
     @levels = params.dig(:criteria, :knowledge_level)
     @platforms = params.dig(:criteria, :platform)
     @prices = params.dig(:criteria, :price)
