@@ -259,7 +259,7 @@
 
       <div class="col-md-3 show-large cards-container">
 
-        <% @categories.each do |category| %>
+        <% @top_categories.each do |category| %>
             <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
         <% end %>
 

@@ -119,6 +119,22 @@
           </div>
         </div>
       </div>
+      <div class="box">
+        <div class="col-xs-12">
+          <% i = 0 %>
+          <% @categories.each do |category| %>
+            <%= render 'shared/category', category_name: category[1][0], image: category[1][1], count: category[1][2]  %>
+            <% i += 1 %>
+            <% break if i == 2 %>
+          <% end %>
+
+
+        </div>
+
+        <div>
+          <%= link_to "See all", categories_path, class: "button-green-secondary" %>
+        <hr>
+      </div>
     </div>
   </div>
 </div>
